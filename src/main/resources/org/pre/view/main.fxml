@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+       <fx:include fx:id="MenuBar" source="MenuBar.fxml" />
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.45" BorderPane.alignment="CENTER">
+            <TabPane tabClosingPolicy="UNAVAILABLE" maxWidth="520">
+                <Tab text="Import Data">
+                    <fx:include fx:id="ImportData" source="tab/ImportData.fxml" />
+                </Tab>
+                <Tab text="MVA Strategy">
+                      <fx:include fx:id="MvaStrategy" source="tab/MvaStrategy.fxml" />
+                </Tab>
+            </TabPane>
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+                <Tab text="Data Manager">
+                    <fx:include fx:id="DataManager" source="tab/DataManager.fxml" />
+                </Tab>
+                <Tab text="Strategy Manager">
+                    <fx:include fx:id="StoppedStrategies" source="tab/StrategyManager.fxml" />
+                </Tab>
+                <Tab text="Result Analyser">
+                    <fx:include fx:id="ResultAnalyser" source="tab/ResultAnalyser.fxml" />
+                </Tab>
+
+            </TabPane>
+      </SplitPane>
+   </center>
+   <bottom>
+      <HBox maxHeight="30.0" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
