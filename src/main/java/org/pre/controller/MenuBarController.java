@@ -40,7 +40,7 @@ public class MenuBarController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("FX Predictor V 1.0");
-        alert.setContentText("by Nino Hafen, Rinon, Dimitrios Tsichlakis!");
+        alert.setContentText("by Nino Hafen, Rinon Belegu, Dimitrios Tsichlakis!");
         alert.showAndWait();
     }
 
