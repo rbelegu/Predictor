@@ -16,12 +16,22 @@
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pre.controller.tab.DataManagerController">
 <children>
     <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+        <TableView fx:id="tableDataManager" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
             <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
             <columns>
-                <TableColumn prefWidth="75.0" text="Data Set Name">
+                <TableColumn fx:id="idColumn" prefWidth="20.0" text="Id">
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="Underlying">
+                <TableColumn fx:id="underlyingColumn" prefWidth="75.0" text="Underlying">
+                </TableColumn>
+                <TableColumn fx:id="fromDateColumn" prefWidth="75.0" text="From Date">
+                </TableColumn>
+                <TableColumn fx:id="toDateColumn" prefWidth="75.0" text="To Date">
+                </TableColumn>
+                <TableColumn fx:id="numberOfDatapointsColumn" prefWidth="75.0" text="Number of datapoints">
+                </TableColumn>
+                <TableColumn fx:id="statusColumn" prefWidth="75.0" text="Status">
+                </TableColumn>
+                <TableColumn fx:id="timestampColumn" prefWidth="75.0" text="Timestamp">
                 </TableColumn>
             </columns>
             <GridPane.margin>

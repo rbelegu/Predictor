@@ -2,12 +2,14 @@ package org.pre.dao;
 
 
 import org.pre.db.Database;
+import org.pre.pojo.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
+
 
 public class DataDAO {
     private Database database;
@@ -27,25 +29,40 @@ public class DataDAO {
 
 
     /**
-     * -.
+     * Schreibt die Daten von einem DatenSet in einem Stück (commit) in die DB.
      * -
-     * @param yahoo			Yahoo Data Run
-     * @param dataset_id		Data Set id als FK
+     * @param dataList		Yahoo Data Run
      */
-    public void insertDataRun(Map yahoo, Integer dataset_id) throws SQLException {
-        PreparedStatement insertData = null;
-        String insertStatement = "INSERT INTO " + TABLE_NAME + "( "
-                + ID + ", " + DATASED_ID + ", " + RATE_DATE + ", "
-                + RATE + ", " + TIMESTAMP + ") VALUES (?,?,?,?,?,?,?,?)";
+    public boolean insertDataRun(List<Data> dataList) throws SQLException {
+        Connection conn = database.getConnection();
+        boolean flag = false;
+        PreparedStatement insertData;
+        String insertStatement = "INSERT INTO " + TABLE_NAME +
+                "( " + DATASED_ID + ", " + RATE_DATE + ", "
+                + RATE + ") VALUES (?,?,?)";
+
         try{
-            Connection conn = database.getConnection();
-
-
+            insertData = conn.prepareStatement(insertStatement);
+            for (Data data : dataList){
+                insertData.setInt(1, data.getUnderlying_id());
+                insertData.setDate(2, data.getRateDate());
+                insertData.setDouble(3,data.getRate());
+                insertData.execute();
+            }
+            conn.commit();
+            flag = true;
         }catch (SQLException e){
-
+            System.out.println(e.getMessage());
+                try{
+                    System.err.print("Transaction is being rolled back");
+                    conn.rollback();
+                }catch(SQLException exc){
+                    e.printStackTrace();
+                }
+        } finally{
+            conn.close();
         }
-
-
+        return  flag;
     }
 
 

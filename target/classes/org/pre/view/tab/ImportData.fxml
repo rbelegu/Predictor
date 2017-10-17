@@ -24,28 +24,29 @@
 
                 <GridPane>
                     <columnConstraints>
-                        <ColumnConstraints maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                        <ColumnConstraints maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints maxWidth="2500.0" minWidth="219.0" prefWidth="219.0" />
+            <ColumnConstraints maxWidth="2500.0" minWidth="27.0" prefWidth="58.0" />
+                        <ColumnConstraints maxWidth="473.0" minWidth="250.0" prefWidth="472.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
+            <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
                         <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
+            <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
                         <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
                         <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
                     </rowConstraints>
 
-                    <Label text="Upload Data Set(s):" underline="true">
+                    <Label text="Import Data Set:" underline="true">
             <font>
                <Font name="System Bold" size="15.0" />
             </font></Label>
-         <Button mnemonicParsing="false" text="Upload" GridPane.columnIndex="0" GridPane.rowIndex="3">
-            <GridPane.margin>
-               <Insets top="10.0" />
-            </GridPane.margin></Button>
-         <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <DatePicker GridPane.columnIndex="2" GridPane.rowIndex="1" />
-         <TextField text="Symbol" GridPane.rowIndex="1" />
+         <TextField prefHeight="31.0" prefWidth="204.0" promptText="Symbol" GridPane.rowIndex="2" />
+         <DatePicker promptText="from" GridPane.rowIndex="5" />
+         <DatePicker promptText="to" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+         <Label text="Symbol (eg. EURCHF=X):" GridPane.rowIndex="1" />
+         <Label text="Data Set from:" GridPane.rowIndex="4" />
+         <Label text="Data set to:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -54,7 +55,7 @@
                     </padding>
                 </GridPane>
                 <ToolBar nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-                        <Button mnemonicParsing="false" text="Import Data" textFill="#222121">
+                        <Button mnemonicParsing="false" onAction="#ImportData" text="Import Data" textFill="#222121">
                             <font>
                                 <Font size="16.0" />
                             </font>

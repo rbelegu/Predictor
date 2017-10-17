@@ -5,33 +5,21 @@ import javafx.beans.property.*;
 import java.sql.Timestamp;
 
 public class Result {
-    private IntegerProperty id = new SimpleIntegerProperty();
-    private StringProperty parameter = new SimpleStringProperty();
-    private StringProperty status = new SimpleStringProperty();
-    private DoubleProperty averageYield = new SimpleDoubleProperty();
-    private DoubleProperty accumulatedPl = new SimpleDoubleProperty();
-    private DoubleProperty averagePlVol = new SimpleDoubleProperty();
-    private IntegerProperty countProfitTrades = new SimpleIntegerProperty();
-    private IntegerProperty countLossTrades = new SimpleIntegerProperty();
-    private DoubleProperty maxProfitTrade = new SimpleDoubleProperty();
-    private DoubleProperty maxLossTrade = new SimpleDoubleProperty();
-    private ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final IntegerProperty strategy_id = new SimpleIntegerProperty();
+    private final StringProperty parameter = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
+    private final DoubleProperty averageYield = new SimpleDoubleProperty();
+    private final DoubleProperty accumulatedPl = new SimpleDoubleProperty();
+    private final DoubleProperty averagePlVol = new SimpleDoubleProperty();
+    private final IntegerProperty countProfitTrades = new SimpleIntegerProperty();
+    private final IntegerProperty countLossTrades = new SimpleIntegerProperty();
+    private final DoubleProperty maxProfitTrade = new SimpleDoubleProperty();
+    private final DoubleProperty maxLossTrade = new SimpleDoubleProperty();
+    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
 
     public Result(){
 
-    }
-
-    public Result(StringProperty parameter, StringProperty status, DoubleProperty averageYield, DoubleProperty accumulatedPl, DoubleProperty averagePlVol, IntegerProperty countProfitTrades, IntegerProperty countLossTrades, DoubleProperty maxProfitTrade, DoubleProperty maxLossTrade, ObjectProperty<Timestamp> timestamp) {
-        this.parameter = parameter;
-        this.status = status;
-        this.averageYield = averageYield;
-        this.accumulatedPl = accumulatedPl;
-        this.averagePlVol = averagePlVol;
-        this.countProfitTrades = countProfitTrades;
-        this.countLossTrades = countLossTrades;
-        this.maxProfitTrade = maxProfitTrade;
-        this.maxLossTrade = maxLossTrade;
-        this.timestamp = timestamp;
     }
 
     public int getId() {
@@ -44,6 +32,18 @@ public class Result {
 
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public int getStrategy_id() {
+        return strategy_id.get();
+    }
+
+    public IntegerProperty strategy_idProperty() {
+        return strategy_id;
+    }
+
+    public void setStrategy_id(int strategy_id) {
+        this.strategy_id.set(strategy_id);
     }
 
     public String getParameter() {
@@ -154,7 +154,7 @@ public class Result {
         this.maxLossTrade.set(maxLossTrade);
     }
 
-    public Timestamp gettimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp.get();
     }
 
@@ -162,7 +162,7 @@ public class Result {
         return timestamp;
     }
 
-    public void settimestamp(Timestamp timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp.set(timestamp);
     }
 
@@ -170,6 +170,7 @@ public class Result {
     public String toString() {
         return "Result{" +
                 "id=" + id +
+                ", strategy_id=" + strategy_id +
                 ", parameter=" + parameter +
                 ", status=" + status +
                 ", averageYield=" + averageYield +

@@ -6,30 +6,18 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class Strategy {
-    private IntegerProperty id = new SimpleIntegerProperty();
-    private StringProperty type = new SimpleStringProperty();
-    private StringProperty parameter = new SimpleStringProperty();
-    private StringProperty status = new SimpleStringProperty();
-    private IntegerProperty size = new SimpleIntegerProperty();
-    private IntegerProperty underlying_id = new SimpleIntegerProperty();
-    private StringProperty underlying = new SimpleStringProperty();
-    private ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
-    private ObjectProperty<Date> tillDate = new SimpleObjectProperty<Date>();
-    private ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty type = new SimpleStringProperty();
+    private final StringProperty parameter = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
+    private final IntegerProperty size = new SimpleIntegerProperty();
+    private final IntegerProperty underlying_id = new SimpleIntegerProperty();
+    private final StringProperty underlying = new SimpleStringProperty();
+    private final ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<Date> tillDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
 
     public Strategy(){
-
-    }
-
-    public Strategy(StringProperty type, StringProperty parameter, StringProperty status, IntegerProperty underlying_id, StringProperty underlying, ObjectProperty<Date> fromDate, ObjectProperty<Date> tillDate, ObjectProperty<Timestamp> timestamp) {
-        this.type = type;
-        this.parameter = parameter;
-        this.status = status;
-        this.underlying_id = underlying_id;
-        this.underlying = underlying;
-        this.fromDate = fromDate;
-        this.tillDate = tillDate;
-        this.timestamp = timestamp;
     }
 
     public int getId() {

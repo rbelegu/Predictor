@@ -7,23 +7,17 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class DataSet {
-    private IntegerProperty id = new SimpleIntegerProperty();
-    private StringProperty underlying = new SimpleStringProperty();
-    private ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
-    private ObjectProperty<Date> toDate = new SimpleObjectProperty<Date>();
-    private IntegerProperty datapoints = new SimpleIntegerProperty();
-    private StringProperty status = new SimpleStringProperty();
-    private ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty underlying = new SimpleStringProperty();
+    private final ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<Date> toDate = new SimpleObjectProperty<Date>();
+    private final IntegerProperty datapoints = new SimpleIntegerProperty();
+    private final StringProperty status = new SimpleStringProperty();
+    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
 
     public DataSet(){
     }
-    public DataSet(String underlying, Date fromDate, Date toDate, String status, Integer datapoints){
-    setUnderlying(underlying);
-    setFromDate(fromDate);
-    setToDate(toDate);
-    setDatapoints(datapoints);
-    setStatus(status);
-    }
+
     public int getId() {
         return id.get();
     }
