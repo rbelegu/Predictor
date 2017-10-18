@@ -23,6 +23,7 @@ public class Database {
             config.addDataSourceProperty( "cachePrepStmts" , "true" );
             config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
             config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
+            config.setConnectionTestQuery("SELECT 1");
             try {
                 ds = new HikariDataSource( config );
             }catch (Exception e){
@@ -89,6 +90,7 @@ public class Database {
                 + "   ratedate DATE NOT NULL,"
                 + "   rate DOUBLE NOT NULL,"
                 + "   timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE  CURRENT_TIMESTAMP,"
+                + "   UNIQUE KEY (dataset_id,ratedate),"
                 + "   PRIMARY KEY (id),"
                 + "   FOREIGN KEY (dataset_id) REFERENCES dataset(id))" +
                 "ENGINE=INNODB DEFAULT  CHARSET=UTF8";

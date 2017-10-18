@@ -1,20 +1,17 @@
 package org.pre.dao;
 
-
 import com.mysql.jdbc.Statement;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+import org.controlsfx.control.Notifications;
 import org.pre.db.Database;
-import org.pre.pojo.Data;
 import org.pre.pojo.DataSet;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import java.sql.*;
-import java.util.EmptyStackException;
-import java.util.List;
-import java.util.Map;
+
+
 
 public class DataSetDAO {
-    private static Database database;
+    private Database database;
     private final static String TABLE_NAME = "dataset";
     private final static String ID = "id";
     private final static String UNDERLYING = "underlying";
@@ -33,31 +30,35 @@ public class DataSetDAO {
     /**
      * BLA BLA
      */
-    public static int addDataSet(DataSet dataSet) throws SQLException {
+    public int addDataSet(DataSet dataSet) throws SQLException {
         Connection conn = database.getConnection();
         ResultSet rs;
-        int autoIncKeyFromApi = -1;
-        PreparedStatement stmt;
+        int dataSetId = -1;
+        PreparedStatement prestmt;
         try {
             String insertStatement = "INSERT INTO " + TABLE_NAME +
                     "( " + UNDERLYING + ", " + FROM_DATE + ", "
                     + TO_DATE + ", " + DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
-            stmt = conn.prepareStatement(insertStatement);
-            stmt.setString(1,dataSet.getUnderlying());
-            stmt.setDate(2, dataSet.getFromDate());
-            stmt.setDate(3, dataSet.gettoDate());
-            stmt.setDouble(4,dataSet.getDatapoints());
-            stmt.setString(5, dataSet.getStatus());
-            stmt.setTimestamp(6, dataSet.getCreationTimestamp());
+            prestmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS);
+            prestmt.setString(1, dataSet.getUnderlying());
+            prestmt.setDate(2, dataSet.getFromDate());
+            prestmt.setDate(3, dataSet.gettoDate());
+            prestmt.setDouble(4, dataSet.getDatapoints());
+            prestmt.setString(5, dataSet.getStatus());
+            prestmt.setTimestamp(6, dataSet.getCreationTimestamp());
 
-            stmt.executeUpdate();
+            prestmt.executeUpdate();
+            rs = prestmt.getGeneratedKeys();
             conn.commit();
-        }catch (Exception e){
-            e.printStackTrace();
-        } finally {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }  finally {
             conn.close();
         }
-        return autoIncKeyFromApi;
+        return dataSetId;
     }
+
+
 
 }

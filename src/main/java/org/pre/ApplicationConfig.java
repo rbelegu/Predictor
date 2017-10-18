@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
+import org.pre.dao.DataSetDAO;
 import org.pre.db.Database;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,8 @@ public class ApplicationConfig {
     public Database database() {
         return new Database();
     }
+
+
 
     @Bean
     public Executor executor() {
