@@ -4,7 +4,7 @@ import javafx.beans.property.*;
 
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 public class DataSet {
     private final IntegerProperty id = new SimpleIntegerProperty();

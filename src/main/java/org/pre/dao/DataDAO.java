@@ -33,7 +33,7 @@ public class DataDAO {
      * -
      * @param dataList		Yahoo Data Run
      */
-    public boolean insertDataRun(List<Data> dataList) throws SQLException {
+    public boolean addDataList(List<Data> dataList) throws SQLException {
         Connection conn = database.getConnection();
         boolean flag = false;
         PreparedStatement insertData;
