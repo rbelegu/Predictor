@@ -6,6 +6,8 @@ import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
 import org.pre.dao.DataSetDAO;
 import org.pre.db.Database;
+import org.pre.model.DataSetModel;
+import org.pre.pojo.DataSet;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -25,8 +27,6 @@ public class ApplicationConfig {
         return new Database();
     }
 
-
-
     @Bean
     public Executor executor() {
         return Executors.newCachedThreadPool(r -> {
@@ -37,6 +37,11 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public DataSetModel dataSetModel(){
+        return new DataSetModel();
+    }
+
+    @Bean
     @Scope("prototype")
     public MenuBarController menuBarController() {
         return new MenuBarController();
@@ -44,8 +49,8 @@ public class ApplicationConfig {
 
     @Bean
     @Scope("prototype")
-    public ImportDataController importDataController() {
-        return new ImportDataController();
+    public ImportDataController importDataController(DataSetModel dataSetModel) {
+        return new ImportDataController(dataSetModel);
     }
 
     @Bean
@@ -56,8 +61,8 @@ public class ApplicationConfig {
 
     @Bean
     @Scope("prototype")
-    public DataManagerController dataManagerController() {
-        return new DataManagerController();
+    public DataManagerController dataManagerController(DataSetModel dataSetModel) {
+        return new DataManagerController(dataSetModel);
     }
 
     @Bean

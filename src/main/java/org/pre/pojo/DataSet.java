@@ -15,7 +15,16 @@ public class DataSet {
     private final StringProperty status = new SimpleStringProperty();
     private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
 
-    public DataSet(){
+    public DataSet(){};
+
+    public DataSet(Integer id, String underlying, Date fromDate, Date toDate, Integer datapoints, String status, Timestamp timestmap) {
+    setId(id);
+    setUnderlying(underlying);
+    setFromDate(fromDate);
+    setToDate(toDate);
+    setDatapoints(datapoints);
+    setStatus(status);
+    setTimestamp(timestmap);
     }
 
     public int getId() {
@@ -90,16 +99,16 @@ public class DataSet {
         this.status.set(status);
     }
 
-    public Timestamp getCreationTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp.get();
     }
 
-    public ObjectProperty<Timestamp> creationTimestampProperty() {
+    public ObjectProperty<Timestamp> timestampProperty() {
         return timestamp;
     }
 
-    public void setCreationTimestamp(Timestamp creationTimestamp) {
-        this.timestamp.set(creationTimestamp);
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp.set(timestamp);
     }
 
     @Override
@@ -111,7 +120,7 @@ public class DataSet {
                 ", toDate=" + toDate +
                 ", datapoints=" + datapoints +
                 ", status=" + status +
-                ", creationTimestamp=" + timestamp +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }

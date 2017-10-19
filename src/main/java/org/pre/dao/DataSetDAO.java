@@ -2,12 +2,15 @@ package org.pre.dao;
 
 import com.mysql.jdbc.Statement;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.controlsfx.control.Notifications;
 import org.pre.db.Database;
 import org.pre.pojo.DataSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.*;
-
+import java.util.List;
+import java.util.Observable;
 
 
 public class DataSetDAO {
@@ -30,10 +33,9 @@ public class DataSetDAO {
     /**
      * BLA BLA
      */
-    public int addDataSet(DataSet dataSet) throws SQLException {
+    public DataSet addDataSet(DataSet dataSet) throws SQLException {
         Connection conn = database.getConnection();
-        ResultSet rs;
-        int dataSetId = -1;
+        ResultSet resultSet;
         PreparedStatement prestmt;
         try {
             String insertStatement = "INSERT INTO " + TABLE_NAME +
@@ -45,18 +47,51 @@ public class DataSetDAO {
             prestmt.setDate(3, dataSet.gettoDate());
             prestmt.setDouble(4, dataSet.getDatapoints());
             prestmt.setString(5, dataSet.getStatus());
-            prestmt.setTimestamp(6, dataSet.getCreationTimestamp());
+            prestmt.setTimestamp(6, dataSet.getTimestamp());
 
             prestmt.executeUpdate();
-            rs = prestmt.getGeneratedKeys();
+            resultSet = prestmt.getGeneratedKeys();
             conn.commit();
-            if (rs.next()) {
-                return rs.getInt(1);
+            if (resultSet.next()) {
+                dataSet.setId(resultSet.getInt(1));
+                return dataSet;
             }
         }  finally {
             conn.close();
         }
-        return dataSetId;
+        return dataSet;
+    }
+
+
+    /**
+     * BLA BLA
+     */
+    public ObservableList<DataSet> getDataSetList() throws SQLException {
+        ObservableList<DataSet> dataSetList = FXCollections.observableArrayList();
+        Connection conn = database.getConnection();
+        ResultSet resultSet;
+        PreparedStatement prestmt;
+        try {
+            String insertStatement = "SELECT " + ID + ", " + UNDERLYING + ", " + FROM_DATE + ", " + TO_DATE + ", " +
+                    DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
+            prestmt = conn.prepareStatement(insertStatement);
+            resultSet = prestmt.executeQuery();
+            conn.commit();
+            while (resultSet.next()){
+                //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
+                dataSetList.add(new DataSet(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getDate(4),
+                        resultSet.getInt(5),
+                        resultSet.getString(6),
+                        resultSet.getTimestamp(7)));
+            }
+        }  finally {
+            conn.close();
+        }
+        return dataSetList;
     }
 
 
