@@ -9,10 +9,25 @@ import org.pre.dao.DataSetDAO;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
+
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.concurrent.Executor;
+
+import static java.time.ZonedDateTime.from;
+import static yahoofinance.histquotes.Interval.DAILY;
 
 public class DataSetModel {
     private Executor exec;
@@ -60,8 +75,19 @@ public class DataSetModel {
                 DataSet currentDataSet = newAccess.insertDataSet(dataSet);
                 dataSetList.addAll(currentDataSet);
                 Thread.sleep(5000);
+                Calendar from = Calendar.getInstance();
+                Calendar to = Calendar.getInstance();
+                from.add(Calendar.YEAR, -3); // from 1 year ago
+                Stock stock = null;
+                try {
+                    stock = YahooFinance.get(currentDataSet.getUnderlying());
+                } catch (IOException e) {
+                    e.printStackTrace();
 
-
+                }
+                List<HistoricalQuote> HistQuotes = stock.getHistory(from, GregorianCalendar.from(currentDataSet.getToDate().atStartOfDay(ZoneId.systemDefault())) , Interval.DAILY);
+                System.out.println(HistQuotes.size());
+                //System.out.println(HistQuotes.toString());
                 currentDataSet.setStatus(ProgressStatus.DONE.toString());
                 newAccess.updateDataSet(currentDataSet);
                 return null;
