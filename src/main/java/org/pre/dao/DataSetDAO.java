@@ -37,7 +37,7 @@ public class DataSetDAO {
     /**
      * BLA BLA
      */
-    public DataSet addDataSet(DataSet dataSet) throws SQLException {
+    public DataSet insertDataSet(DataSet dataSet) throws SQLException {
         Connection conn = database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
@@ -64,6 +64,39 @@ public class DataSetDAO {
             conn.close();
         }
         return dataSet;
+    }
+
+
+    /**
+     * BLA BLA
+     */
+    public void updateDataSet(DataSet dataSet) throws SQLException {
+        Connection conn = database.getConnection();
+        ResultSet resultSet;
+        PreparedStatement prestmt;
+        try {
+            String insertStatement = "UPDATE " + TABLE_NAME + " SET "
+                    + UNDERLYING + " = ?, "
+                    + FROM_DATE + " = ?, "
+                    + TO_DATE + " = ?, "
+                    + DATAPOINTS + " = ?, "
+                    + STATUS + " = ?, "
+                    + TIMESTAMP + " = ? WHERE "
+                    + ID + " = ?";
+
+            prestmt = conn.prepareStatement(insertStatement);
+            prestmt.setString(1, dataSet.getUnderlying());
+            prestmt.setDate(2, java.sql.Date.valueOf(dataSet.getFromDate()));
+            prestmt.setDate(3, java.sql.Date.valueOf(dataSet.getToDate()));
+            prestmt.setDouble(4, dataSet.getDatapoints());
+            prestmt.setString(5, dataSet.getStatus());
+            prestmt.setTimestamp(6, java.sql.Timestamp.valueOf(dataSet.getTimestamp()));
+            prestmt.setInt(7, dataSet.getId());
+            prestmt.executeUpdate();
+            conn.commit();
+        }  finally {
+            conn.close();
+        }
     }
 
 

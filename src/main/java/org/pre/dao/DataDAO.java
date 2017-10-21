@@ -45,7 +45,7 @@ public class DataDAO {
             insertData = conn.prepareStatement(insertStatement);
             for (Data data : dataList){
                 insertData.setInt(1, data.getUnderlying_id());
-                insertData.setDate(2, data.getRateDate());
+                insertData.setDate(2, java.sql.Date.valueOf(data.getRateDate()));
                 insertData.setDouble(3,data.getRate());
                 insertData.execute();
             }

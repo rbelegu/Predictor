@@ -1,18 +1,13 @@
 package org.pre.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.pre.dao.DataSetDAO;
-import org.pre.db.Database;
 import org.pre.pojo.DataSet;
+import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -44,7 +39,10 @@ public class DataSetModel {
                 return newAccess.getDataSetList();
             }
         };
-        loadTask.setOnFailed(e -> loadTask.getException().printStackTrace());
+        loadTask.setOnFailed(event ->{
+            Throwable exception = loadTask.getException();
+            System.err.println(exception.getCause() + "\n" + exception.getMessage());
+        });
         loadTask.setOnSucceeded(e -> dataSetList.addAll(loadTask.getValue()));
         exec.execute(loadTask);
     }
@@ -57,20 +55,27 @@ public class DataSetModel {
         Task<DataSet> loadTask = new Task<DataSet>(){
             @Override
             public DataSet call() throws Exception {
+                // Speichern des Objekts mit Running Status in DB und danach in Tabelle publishen.
                 DataSetDAO newAccess = new DataSetDAO();
-                return newAccess.addDataSet(dataSet);
+                DataSet currentDataSet = newAccess.insertDataSet(dataSet);
+                dataSetList.addAll(currentDataSet);
+                Thread.sleep(5000);
+
+
+                currentDataSet.setStatus(ProgressStatus.DONE.toString());
+                newAccess.updateDataSet(currentDataSet);
+                return null;
+
             }
         };
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
-            Notifications.create().title("Oooops").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
+            Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
         });
-        loadTask.setOnSucceeded(event -> dataSetList.addAll(loadTask.getValue()));
+        loadTask.setOnSucceeded(event -> System.out.println("OLA KALA"));
         exec.execute(loadTask);
     }
 
-    public void test(){
 
-    }
 }

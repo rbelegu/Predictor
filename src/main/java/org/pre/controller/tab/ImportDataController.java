@@ -2,14 +2,16 @@ package org.pre.controller.tab;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+import org.pre.controller.util.DateUtils;
 import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
+import org.pre.util.ProgressStatus;
+import org.springframework.cglib.core.Local;
 
 import java.sql.SQLException;
 import java.time.DayOfWeek;
@@ -56,7 +58,6 @@ public class ImportDataController {
                 }
             }
         });
-
         toDatePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
             if (fromDatePicker.getValue() != null && toDatePicker.getValue() != null) {
                 if (fromDatePicker.getValue().isAfter(toDatePicker.getValue())) {
@@ -64,51 +65,27 @@ public class ImportDataController {
                 }
             }
         });
+        toDatePicker.setDayCellFactory(DateUtils.getDatePickerRestriction());
+        fromDatePicker.setDayCellFactory(DateUtils.getDatePickerRestriction());
 
-        fromDatePicker.setDayCellFactory(
-                new Callback<DatePicker, DateCell>() {
-                    public DateCell call(final DatePicker datePicker) {
-                        return new DateCell() {
-                            @Override
-                            public void updateItem(LocalDate item, boolean empty) {
-// Must call super
-                                super.updateItem(item, empty);
-// Disable all future date cells
-                                if (item.isAfter(LocalDate.now())) {
-                                    this.setDisable(true);
-                                }
-
-// Show Weekends in blue
-                                DayOfWeek day = DayOfWeek.from(item);
-                                if (day == DayOfWeek.SATURDAY ||
-                                        day == DayOfWeek.SUNDAY) {
-                                    this.setTextFill(Color.BLUE);
-                                }
-                            }
-                        };
-                    }
-                });
 
 
     }
 
 
     @FXML
-    private void ImportData(ActionEvent event) throws SQLException {
-        System.out.println("neuer Test");
-
-        LocalDate today = LocalDate.now();
-
-
-        DataSet bernd = new DataSet();
-        bernd.setDatapoints(5);
-        bernd.setStatus("TEST");
-        bernd.setUnderlying(underlyingTextField.getText());
-        bernd.setFromDate(LocalDate.now());
-        bernd.setToDate(LocalDate.now());
-        bernd.setTimestamp(LocalDateTime.now());
-        dataSetModel.addDataSet(bernd);
-
+    private void ImportData(ActionEvent event)  {
+        if (toDatePicker.getValue().isAfter(LocalDate.now()) || fromDatePicker.getValue().isAfter(LocalDate.now())){
+            Notifications.create().title("Error: Future Date(s)").text("Your date(s) are in the future! Please adjust your date(s).").hideAfter(Duration.minutes(5)).showError();
+        } else {
+            DataSet dataSet = new DataSet();
+            dataSet.setUnderlying(underlyingTextField.getText());
+            dataSet.setFromDate(fromDatePicker.getValue());
+            dataSet.setToDate(toDatePicker.getValue());
+            dataSet.setStatus(ProgressStatus.RUNNING.toString());
+            dataSet.setTimestamp(LocalDateTime.now());
+            dataSetModel.addDataSet(dataSet);
+        }
 
     }
 

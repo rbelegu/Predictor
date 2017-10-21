@@ -2,15 +2,16 @@ package org.pre.pojo;
 
 import javafx.beans.property.*;
 
-import java.sql.Timestamp;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class Data {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final IntegerProperty underlying_id = new SimpleIntegerProperty();
-    private final ObjectProperty<Date> rateDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<LocalDate> rateDate = new SimpleObjectProperty<>();
     private final DoubleProperty rate = new SimpleDoubleProperty();
-    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
 
     public Data() {
@@ -40,15 +41,15 @@ public class Data {
         this.underlying_id.set(underlying_id);
     }
 
-    public Date getRateDate() {
+    public LocalDate getRateDate() {
         return rateDate.get();
     }
 
-    public ObjectProperty<Date> rateDateProperty() {
+    public ObjectProperty<LocalDate> rateDateProperty() {
         return rateDate;
     }
 
-    public void setRateDate(Date rateDate) {
+    public void setRateDate(LocalDate rateDate) {
         this.rateDate.set(rateDate);
     }
 
@@ -64,26 +65,15 @@ public class Data {
         this.rate.set(rate);
     }
 
-    public Timestamp getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp.get();
     }
 
-    public ObjectProperty<Timestamp> timestampProperty() {
+    public ObjectProperty<LocalDateTime> timestampProperty() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp.set(timestamp);
-    }
-
-    @Override
-    public String toString() {
-        return "Data{" +
-                "id=" + id +
-                ", underlying_id=" + underlying_id +
-                ", rateDate=" + rateDate +
-                ", rate=" + rate +
-                ", timestamp=" + timestamp +
-                '}';
     }
 }

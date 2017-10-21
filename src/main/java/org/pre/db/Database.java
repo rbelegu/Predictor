@@ -3,6 +3,10 @@ package org.pre.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +20,7 @@ public class Database {
 
         static {
             config.setJdbcUrl( "jdbc:mysql://localhost/predictor" );
+            config.setConnectionTestQuery("SELECT 1");
             config.setUsername( "root" );
             config.setPassword( "" );
             config.setMaximumPoolSize(10);
@@ -23,7 +28,7 @@ public class Database {
             config.addDataSourceProperty( "cachePrepStmts" , "true" );
             config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
             config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
-            config.setConnectionTestQuery("SELECT 1");
+
             try {
                 ds = new HikariDataSource( config );
             }catch (Exception e){
@@ -66,8 +71,8 @@ public class Database {
                 + "   underlying VARCHAR(30) NOT NULL ,"
                 + "   from_date DATE NOT NULL,"
                 + "   to_date DATE NOT NULL,"
-                + "   data_points INT NOT NULL,"
-                + "   status VARCHAR(30) NOT NULL,"
+                + "   data_points INT,"
+                + "   status VARCHAR(30),"
                 + "   timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE  CURRENT_TIMESTAMP,"
                 + "   UNIQUE KEY (underlying,from_date,to_date),"
                 + "   PRIMARY KEY (id))" +
