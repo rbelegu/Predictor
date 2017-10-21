@@ -3,21 +3,23 @@ package org.pre.pojo;
 import javafx.beans.property.*;
 
 
-import java.sql.Timestamp;
-import java.sql.Date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class DataSet {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty underlying = new SimpleStringProperty();
-    private final ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
-    private final ObjectProperty<Date> toDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<LocalDate> fromDate = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalDate> toDate = new SimpleObjectProperty<>();
     private final IntegerProperty datapoints = new SimpleIntegerProperty();
     private final StringProperty status = new SimpleStringProperty();
-    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
     public DataSet(){};
 
-    public DataSet(Integer id, String underlying, Date fromDate, Date toDate, Integer datapoints, String status, Timestamp timestmap) {
+    public DataSet(Integer id, String underlying, LocalDate fromDate, LocalDate toDate, Integer datapoints, String status, LocalDateTime timestmap) {
     setId(id);
     setUnderlying(underlying);
     setFromDate(fromDate);
@@ -51,27 +53,27 @@ public class DataSet {
         this.underlying.set(underlying);
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate.get();
     }
 
-    public ObjectProperty<Date> fromDateProperty() {
+    public ObjectProperty<LocalDate> fromDateProperty() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate.set(fromDate);
     }
 
-    public Date gettoDate() {
+    public LocalDate getToDate() {
         return toDate.get();
     }
 
-    public ObjectProperty<Date> toDateProperty() {
+    public ObjectProperty<LocalDate> toDateProperty() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate.set(toDate);
     }
 
@@ -99,15 +101,15 @@ public class DataSet {
         this.status.set(status);
     }
 
-    public Timestamp getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp.get();
     }
 
-    public ObjectProperty<Timestamp> timestampProperty() {
+    public ObjectProperty<LocalDateTime> timestampProperty() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp.set(timestamp);
     }
 

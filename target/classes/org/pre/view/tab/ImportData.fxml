@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
+
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pre.controller.tab.ImportDataController">
         <GridPane prefHeight="705.0" prefWidth="677.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -41,9 +42,9 @@
             <font>
                <Font name="System Bold" size="15.0" />
             </font></Label>
-         <TextField prefHeight="31.0" prefWidth="204.0" promptText="Symbol" GridPane.rowIndex="2" />
-         <DatePicker promptText="from" GridPane.rowIndex="5" />
-         <DatePicker promptText="to" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+         <TextField fx:id="underlyingTextField" prefHeight="31.0" prefWidth="204.0" promptText="Symbol" GridPane.rowIndex="2" />
+         <DatePicker fx:id="fromDatePicker" promptText="from" GridPane.rowIndex="5" />
+         <DatePicker fx:id="toDatePicker" promptText="to" GridPane.columnIndex="2" GridPane.rowIndex="5" />
          <Label text="Symbol (eg. EURCHF=X):" GridPane.rowIndex="1" />
          <Label text="Data Set from:" GridPane.rowIndex="4" />
          <Label text="Data set to:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -55,7 +56,7 @@
                     </padding>
                 </GridPane>
                 <ToolBar nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-                        <Button mnemonicParsing="false" onAction="#ImportData" text="Import Data" textFill="#222121">
+                        <Button fx:id="importDateBtn" mnemonicParsing="false" onAction="#ImportData" text="Import Data" textFill="#222121">
                             <font>
                                 <Font size="16.0" />
                             </font>

@@ -8,9 +8,13 @@ import org.controlsfx.control.Notifications;
 import org.pre.db.Database;
 import org.pre.pojo.DataSet;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.sql.*;
-import java.util.List;
-import java.util.Observable;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 
 public class DataSetDAO {
@@ -43,11 +47,11 @@ public class DataSetDAO {
                     + TO_DATE + ", " + DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
             prestmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS);
             prestmt.setString(1, dataSet.getUnderlying());
-            prestmt.setDate(2, dataSet.getFromDate());
-            prestmt.setDate(3, dataSet.gettoDate());
+            prestmt.setDate(2, java.sql.Date.valueOf(dataSet.getFromDate()));
+            prestmt.setDate(3, java.sql.Date.valueOf(dataSet.getToDate()));
             prestmt.setDouble(4, dataSet.getDatapoints());
             prestmt.setString(5, dataSet.getStatus());
-            prestmt.setTimestamp(6, dataSet.getTimestamp());
+            prestmt.setTimestamp(6, java.sql.Timestamp.valueOf(dataSet.getTimestamp()));
 
             prestmt.executeUpdate();
             resultSet = prestmt.getGeneratedKeys();
@@ -82,11 +86,11 @@ public class DataSetDAO {
                 dataSetList.add(new DataSet(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getDate(3),
-                        resultSet.getDate(4),
+                        resultSet.getDate(3).toLocalDate(),
+                        resultSet.getDate(4).toLocalDate(),
                         resultSet.getInt(5),
                         resultSet.getString(6),
-                        resultSet.getTimestamp(7)));
+                        resultSet.getTimestamp(7).toLocalDateTime()));
             }
         }  finally {
             conn.close();
