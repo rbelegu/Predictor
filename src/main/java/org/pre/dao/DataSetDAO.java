@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 
 public class DataSetDAO {
-    private Database database;
+    private static Database database;
     private final static String TABLE_NAME = "dataset";
     private final static String ID = "id";
     private final static String UNDERLYING = "underlying";
@@ -37,7 +37,7 @@ public class DataSetDAO {
     /**
      * BLA BLA
      */
-    public DataSet insertDataSet(DataSet dataSet) throws SQLException {
+    public static DataSet insertDataSet(DataSet dataSet) throws SQLException {
         Connection conn = database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
