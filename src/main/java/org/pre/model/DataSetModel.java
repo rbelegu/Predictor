@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.pre.dao.DataDAO;
 import org.pre.dao.DataSetDAO;
+import org.pre.pojo.Data;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,25 +73,20 @@ public class DataSetModel {
             @Override
             public DataSet call() throws Exception {
                 // Speichern des Objekts mit Running Status in DB und danach in Tabelle publishen.
-                DataSetDAO newAccess = new DataSetDAO();
-                DataSet currentDataSet = newAccess.insertDataSet(dataSet);
-                dataSetList.addAll(currentDataSet);
-                Thread.sleep(5000);
-                Calendar from = Calendar.getInstance();
-                Calendar to = Calendar.getInstance();
-                from.add(Calendar.YEAR, -3); // from 1 year ago
-                Stock stock = null;
-                try {
-                    stock = YahooFinance.get(currentDataSet.getUnderlying());
-                } catch (IOException e) {
-                    e.printStackTrace();
 
-                }
-                List<HistoricalQuote> HistQuotes = stock.getHistory(from, GregorianCalendar.from(currentDataSet.getToDate().atStartOfDay(ZoneId.systemDefault())) , Interval.DAILY);
-                System.out.println(HistQuotes.size());
+                DataDAO dataDAO = new DataDAO();
+                DataSetDAO dataSetDAO = new DataSetDAO();
+                DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
+                dataSetList.addAll(currentDataSet);
+
+                List<Data> dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
+                System.out.println(dataList.size());
+                currentDataSet.setDatapoints(dataList.size());
                 //System.out.println(HistQuotes.toString());
+                dataDAO.insertDataList(dataList);
                 currentDataSet.setStatus(ProgressStatus.DONE.toString());
-                newAccess.updateDataSet(currentDataSet);
+                dataSetDAO.updateDataSet(currentDataSet);
+
                 return null;
 
             }

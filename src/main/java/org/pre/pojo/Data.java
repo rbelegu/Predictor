@@ -17,6 +17,12 @@ public class Data {
     public Data() {
     }
 
+    public Data(Integer underlying_id, LocalDate rateDate, Double rate) {
+    setUnderlying_id(underlying_id);
+    setRateDate(rateDate);
+    setRate(rate);
+    }
+
     public int getId() {
         return id.get();
     }

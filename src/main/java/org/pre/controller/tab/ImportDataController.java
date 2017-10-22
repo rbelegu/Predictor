@@ -49,6 +49,11 @@ public class ImportDataController {
                 underlyingTextField.textProperty().isEmpty()
                         .or(fromDatePicker.valueProperty().isNull())
                         .or(toDatePicker.valueProperty().isNull()));
+        // Symbol Textfeld alles gross schreiben
+        underlyingTextField.textProperty().addListener((ov, oldValue, newValue) -> {
+            underlyingTextField.setText(newValue.toUpperCase());
+        });
+
 
         //Prüfen ob to Datum nicht vor dem from Datum ist.
         fromDatePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {

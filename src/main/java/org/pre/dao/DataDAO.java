@@ -1,13 +1,25 @@
 package org.pre.dao;
 
 
+import javafx.collections.FXCollections;
+import org.pre.controller.util.DateUtils;
 import org.pre.db.Database;
 import org.pre.pojo.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -33,7 +45,7 @@ public class DataDAO {
      * -
      * @param dataList		Yahoo Data Run
      */
-    public boolean addDataList(List<Data> dataList) throws SQLException {
+    public boolean insertDataList(List<Data> dataList) throws SQLException {
         Connection conn = database.getConnection();
         boolean flag = false;
         PreparedStatement insertData;
@@ -63,6 +75,33 @@ public class DataDAO {
             conn.close();
         }
         return  flag;
+    }
+
+
+    public List<Data> getDataListFromYahooApi(String symbol, LocalDate dateFrom, LocalDate dateTo, Integer underlying_id) throws IOException {
+        Stock stock = null;
+        try {
+            stock = YahooFinance.get(symbol);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+        List<HistoricalQuote> HistQuotes = stock.getHistory(GregorianCalendar.from(dateFrom.atStartOfDay(ZoneId.systemDefault())), GregorianCalendar.from(dateTo.atStartOfDay(ZoneId.systemDefault())), Interval.DAILY);
+        System.out.println(HistQuotes.toString());
+
+
+        List<Data> list = FXCollections.observableArrayList();
+        for (HistoricalQuote line : HistQuotes) {
+            try
+            {
+          list.add(new Data(underlying_id, DateUtils.getLocalDatefromCalendar(line.getDate()), line.getClose().doubleValue()));
+        }catch (NullPointerException e){
+                System.out.println(line.getClose());
+            e.printStackTrace();}
+        }
+
+        return list;
     }
 
 
