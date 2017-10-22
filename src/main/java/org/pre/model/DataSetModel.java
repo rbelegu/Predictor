@@ -11,25 +11,13 @@ import org.pre.pojo.Data;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
-import yahoofinance.histquotes.Interval;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Calendar;
-
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
-
-import static java.time.ZonedDateTime.from;
-import static yahoofinance.histquotes.Interval.DAILY;
 
 public class DataSetModel {
     private Executor exec;
@@ -78,17 +66,19 @@ public class DataSetModel {
                 DataSetDAO dataSetDAO = new DataSetDAO();
                 DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
                 dataSetList.addAll(currentDataSet);
-
-                List<Data> dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
-                System.out.println(dataList.size());
-                currentDataSet.setDatapoints(dataList.size());
-                //System.out.println(HistQuotes.toString());
-                dataDAO.insertDataList(dataList);
-                currentDataSet.setStatus(ProgressStatus.DONE.toString());
-                dataSetDAO.updateDataSet(currentDataSet);
-
-                return null;
-
+                List<Data> dataList = new ArrayList<>();
+                try {
+                    dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
+                    currentDataSet.setDatapoints(dataList.size());
+                    dataDAO.insertDataList(dataList);
+                    currentDataSet.setStatus(ProgressStatus.DONE.toString());
+                    dataSetDAO.updateDataSet(currentDataSet);
+                }catch(Exception e){
+                      currentDataSet.setStatus(ProgressStatus.FAILED.toString());
+                      dataSetDAO.updateDataSet(currentDataSet);
+                      throw e;
+                }
+                return currentDataSet;
             }
         };
         loadTask.setOnFailed(event ->{
@@ -96,7 +86,9 @@ public class DataSetModel {
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
             Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
         });
-        loadTask.setOnSucceeded(event -> System.out.println("OLA KALA"));
+        loadTask.setOnSucceeded(event -> {
+            Notifications.create().title("Import was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation();
+        });
         exec.execute(loadTask);
     }
 

@@ -3,18 +3,13 @@ package org.pre.controller.tab;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
-import org.pre.controller.util.DateUtils;
+import org.pre.controller.util.CellUtils;
 import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
-import org.springframework.cglib.core.Local;
 
-import java.sql.SQLException;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.concurrent.Executor;
@@ -70,8 +65,8 @@ public class ImportDataController {
                 }
             }
         });
-        toDatePicker.setDayCellFactory(DateUtils.getDatePickerRestriction());
-        fromDatePicker.setDayCellFactory(DateUtils.getDatePickerRestriction());
+        toDatePicker.setDayCellFactory(CellUtils.getDatePickerRestriction());
+        fromDatePicker.setDayCellFactory(CellUtils.getDatePickerRestriction());
 
 
 

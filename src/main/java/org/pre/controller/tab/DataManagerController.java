@@ -1,19 +1,16 @@
 package org.pre.controller.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
 import org.controlsfx.control.table.TableFilter;
-import org.pre.controller.util.DateUtils;
+import org.pre.controller.util.CellUtils;
 import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
+import org.pre.util.DateUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;
 
 
 public class DataManagerController {
@@ -53,9 +50,9 @@ public class DataManagerController {
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         timestampColumn.setCellValueFactory(cellData -> cellData.getValue().timestampProperty());
         // Spezial Fälle, Umwandlung LocalDate in Customized Format
-        fromDateColumn.setCellFactory(DateUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
-        toDateColumn.setCellFactory(DateUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
-        timestampColumn.setCellFactory(DateUtils.getDateCell(DateUtils.getCustomizedTimestampFormat()));
+        fromDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
+        toDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
+        timestampColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedTimestampFormat()));
         tableDataManager.setItems(dataSetModel.getDataSetList());
         TableFilter filter = new TableFilter(tableDataManager);
     }

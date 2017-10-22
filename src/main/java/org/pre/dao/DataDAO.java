@@ -2,9 +2,9 @@ package org.pre.dao;
 
 
 import javafx.collections.FXCollections;
-import org.pre.controller.util.DateUtils;
 import org.pre.db.Database;
 import org.pre.pojo.Data;
+import org.pre.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
@@ -18,7 +18,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
