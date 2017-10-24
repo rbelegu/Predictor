@@ -66,11 +66,9 @@ public class DataSetModel {
                 DataDAO dataDAO = new DataDAO();
                 DataSetDAO dataSetDAO = new DataSetDAO();
                 DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
-                Thread.sleep(5000);
                 Platform.runLater(() ->{
                 dataSetList.addAll(currentDataSet);});
                 List<Data> dataList;
-                Thread.sleep(5000);
                 try {
                     dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
                     Platform.runLater(() ->{
