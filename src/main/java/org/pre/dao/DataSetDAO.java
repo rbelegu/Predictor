@@ -37,7 +37,7 @@ public class DataSetDAO {
     /**
      * BLA BLA
      */
-    public static DataSet insertDataSet(DataSet dataSet) throws SQLException {
+    public DataSet insertDataSet(DataSet dataSet) throws SQLException {
         Connection conn = database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;

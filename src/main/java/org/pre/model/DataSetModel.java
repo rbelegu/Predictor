@@ -1,5 +1,6 @@
 package org.pre.model;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -65,16 +66,22 @@ public class DataSetModel {
                 DataDAO dataDAO = new DataDAO();
                 DataSetDAO dataSetDAO = new DataSetDAO();
                 DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
-                dataSetList.addAll(currentDataSet);
-                List<Data> dataList = new ArrayList<>();
+                Thread.sleep(5000);
+                Platform.runLater(() ->{
+                dataSetList.addAll(currentDataSet);});
+                List<Data> dataList;
+                Thread.sleep(5000);
                 try {
                     dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
-                    currentDataSet.setDatapoints(dataList.size());
-                    dataDAO.insertDataList(dataList);
-                    currentDataSet.setStatus(ProgressStatus.DONE.toString());
+                    Platform.runLater(() ->{
+                    currentDataSet.setDatapoints(dataList.size());});
+                   dataDAO.insertDataList(dataList);
+                    Platform.runLater(() ->{
+                    currentDataSet.setStatus(ProgressStatus.DONE.toString());});
                     dataSetDAO.updateDataSet(currentDataSet);
                 }catch(Exception e){
-                      currentDataSet.setStatus(ProgressStatus.FAILED.toString());
+                    Platform.runLater(() ->{
+                      currentDataSet.setStatus(ProgressStatus.FAILED.toString());});
                       dataSetDAO.updateDataSet(currentDataSet);
                       throw e;
                 }
@@ -86,9 +93,7 @@ public class DataSetModel {
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
             Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
         });
-        loadTask.setOnSucceeded(event -> {
-            Notifications.create().title("Import was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation();
-        });
+        loadTask.setOnSucceeded(event -> Notifications.create().title("Import was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation());
         exec.execute(loadTask);
     }
 
