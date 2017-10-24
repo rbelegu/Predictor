@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.prefs.Preferences;
 
 
 public class Database {
@@ -18,11 +19,12 @@ public class Database {
         private static HikariConfig config = new HikariConfig();
         private static HikariDataSource ds;
 
-        static {
-            config.setJdbcUrl( "jdbc:mysql://localhost/predictor" );
+    static {
+            DBPreferences dbPreferences = new DBPreferences();
+            config.setJdbcUrl( dbPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
+            config.setUsername( dbPreferences.getdbUser() );        //root
+            config.setPassword( dbPreferences.getdbPassword() );    //no Password
             config.setConnectionTestQuery("SELECT 1");
-            config.setUsername( "root" );
-            config.setPassword( "" );
             config.setMaximumPoolSize(10);
             config.setAutoCommit(false);
             config.addDataSourceProperty( "cachePrepStmts" , "true" );
