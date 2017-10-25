@@ -88,7 +88,7 @@ public class DataDAO {
 
         assert stock != null;
         List<HistoricalQuote> HistQuotes = stock.getHistory(GregorianCalendar.from(dateFrom.atStartOfDay(ZoneId.systemDefault())), GregorianCalendar.from(dateTo.atStartOfDay(ZoneId.systemDefault())), Interval.DAILY);
-        System.out.println(HistQuotes.toString());
+
 
 
         List<Data> list = FXCollections.observableArrayList();
