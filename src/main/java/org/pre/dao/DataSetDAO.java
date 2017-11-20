@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static org.pre.util.DateUtils.convertLocalDateToSQLDate;
+import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
 
 public class DataSetDAO {
@@ -47,8 +49,8 @@ public class DataSetDAO {
                     + TO_DATE + ", " + DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
             prestmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS);
             prestmt.setString(1, dataSet.getUnderlying());
-            prestmt.setDate(2, java.sql.Date.valueOf(dataSet.getFromDate()));
-            prestmt.setDate(3, java.sql.Date.valueOf(dataSet.getToDate()));
+            prestmt.setDate(2, convertLocalDateToSQLDate(dataSet.getFromDate()));
+            prestmt.setDate(3, convertLocalDateToSQLDate(dataSet.getToDate()));
             prestmt.setDouble(4, dataSet.getDatapoints());
             prestmt.setString(5, dataSet.getStatus());
             prestmt.setTimestamp(6, java.sql.Timestamp.valueOf(dataSet.getTimestamp()));
@@ -86,8 +88,8 @@ public class DataSetDAO {
 
             prestmt = conn.prepareStatement(insertStatement);
             prestmt.setString(1, dataSet.getUnderlying());
-            prestmt.setDate(2, java.sql.Date.valueOf(dataSet.getFromDate()));
-            prestmt.setDate(3, java.sql.Date.valueOf(dataSet.getToDate()));
+            prestmt.setDate(2, convertLocalDateToSQLDate(dataSet.getFromDate()));
+            prestmt.setDate(3, convertLocalDateToSQLDate(dataSet.getToDate()));
             prestmt.setDouble(4, dataSet.getDatapoints());
             prestmt.setString(5, dataSet.getStatus());
             prestmt.setTimestamp(6, java.sql.Timestamp.valueOf(dataSet.getTimestamp()));
@@ -119,8 +121,8 @@ public class DataSetDAO {
                 dataSetList.add(new DataSet(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getDate(3).toLocalDate(),
-                        resultSet.getDate(4).toLocalDate(),
+                        convertSQLDateToLocalDate(resultSet.getDate(3)),
+                        convertSQLDateToLocalDate(resultSet.getDate(4)),
                         resultSet.getInt(5),
                         resultSet.getString(6),
                         resultSet.getTimestamp(7).toLocalDateTime()));

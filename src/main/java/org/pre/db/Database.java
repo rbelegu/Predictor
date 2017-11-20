@@ -71,12 +71,12 @@ public class Database {
         String sqlCreate = "CREATE TABLE IF NOT EXISTS dataset"
                 + "  (id INT NOT NULL AUTO_INCREMENT,"
                 + "   underlying VARCHAR(30) NOT NULL ,"
-                + "   from_date DATE NOT NULL,"
-                + "   to_date DATE NOT NULL,"
+                + "   from_date DATE,"
+                + "   to_date DATE,"
                 + "   data_points INT,"
                 + "   status VARCHAR(30),"
                 + "   timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE  CURRENT_TIMESTAMP,"
-                + "   UNIQUE KEY (underlying,from_date,to_date),"
+                + "   UNIQUE KEY (underlying),"
                 + "   PRIMARY KEY (id))" +
                 "ENGINE=INNODB DEFAULT  CHARSET=UTF8";
         Statement stmt = getConnection().createStatement();

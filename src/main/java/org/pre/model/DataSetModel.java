@@ -57,7 +57,7 @@ public class DataSetModel {
         return dataSetList;
     }
 
-    public void addDataSet(DataSet dataSet){
+    public void addDataSet(DataSet dataSet, String csvPath){
         Task<DataSet> loadTask = new Task<DataSet>(){
             @Override
             public DataSet call() throws Exception {
@@ -66,20 +66,18 @@ public class DataSetModel {
                 DataDAO dataDAO = new DataDAO();
                 DataSetDAO dataSetDAO = new DataSetDAO();
                 DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
-                Platform.runLater(() ->{
-                dataSetList.addAll(currentDataSet);});
+                Platform.runLater(() -> dataSetList.addAll(currentDataSet));
                 List<Data> dataList;
                 try {
-                    dataList = dataDAO.getDataListFromYahooApi(currentDataSet.getUnderlying(), currentDataSet.getFromDate(), currentDataSet.getToDate(), currentDataSet.getId());
-                    Platform.runLater(() ->{
-                    currentDataSet.setDatapoints(dataList.size());});
+                    dataList = dataDAO.getDataListFromCsv(csvPath, currentDataSet.getId());
+                    Platform.runLater(() -> currentDataSet.setDatapoints(dataList.size()));
+                    Platform.runLater(() -> currentDataSet.setFromDate(dataList.get(0).getRateDate()));
+                    Platform.runLater(() -> currentDataSet.setToDate((dataList.get(dataList.size()-1).getRateDate())));
                    dataDAO.insertDataList(dataList);
-                    Platform.runLater(() ->{
-                    currentDataSet.setStatus(ProgressStatus.DONE.toString());});
+                    Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.DONE.toString()));
                     dataSetDAO.updateDataSet(currentDataSet);
                 }catch(Exception e){
-                    Platform.runLater(() ->{
-                      currentDataSet.setStatus(ProgressStatus.FAILED.toString());});
+                    Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.FAILED.toString()));
                       dataSetDAO.updateDataSet(currentDataSet);
                       throw e;
                 }

@@ -3,6 +3,7 @@ package org.pre.controller.tab;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
 import org.pre.model.DataSetModel;
@@ -31,6 +32,8 @@ public class DataManagerController {
     private TableColumn<DataSet, String> statusColumn;
     @FXML
     private TableColumn<DataSet, LocalDateTime> timestampColumn;
+    @FXML
+    private TableColumn<DataSet, Boolean> checkBoxColumn;
 
 
     private final DataSetModel dataSetModel;
@@ -49,7 +52,9 @@ public class DataManagerController {
         numberOfDatapointsColumn.setCellValueFactory(cellData -> cellData.getValue().datapointsProperty().asObject());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         timestampColumn.setCellValueFactory(cellData -> cellData.getValue().timestampProperty());
+        checkBoxColumn.setCellValueFactory(cellData -> cellData.getValue().checkedProperty());
         // Spezial Fälle, Umwandlung LocalDate in Customized Format
+        checkBoxColumn.setCellFactory(param -> new CheckBoxTableCell<DataSet, Boolean>());
         fromDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
         toDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
         timestampColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedTimestampFormat()));

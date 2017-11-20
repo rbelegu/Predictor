@@ -1,83 +1,107 @@
 package org.pre.controller.tab;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import org.controlsfx.control.CheckListView;
-import org.controlsfx.control.ListSelectionView;
+import javafx.scene.control.Button;
 
-import java.util.List;
+import javafx.scene.control.TextField;
+
+import org.pre.model.DataSetModel;
+import org.pre.pojo.DataSet;
 
 
 public class MvaStrategyController {
-    public ObservableList<String> strings;
 
     @FXML
-    CheckListView<String> DataSetsComboBox;
+    private TextField mvaMinField;
 
     @FXML
-    ListSelectionView<String> Test;
+    private TextField mvaMaxField;
 
     @FXML
-    private void CreateMvaStrategies(ActionEvent event)
-    {
-        System.out.println("lollolol");
-        strings.remove("Item 19");
+    private Button createMvaStrategiesBtn;
+
+
+    private final DataSetModel dataSetModel;
+
+
+    public MvaStrategyController(DataSetModel dataSetModel){
+        this.dataSetModel = dataSetModel;
     }
 
-    public MvaStrategyController(){
-        strings = FXCollections.observableArrayList();
-        for (int i = 0; i <= 20; i++) {
-            strings.add("EURCHF=X;16.05.2017;17.11.20" + i);
+
+
+
+    public void initialize() {
+        // Button ist nur Aktive wenn die Felder auch ausgefüllt sind!
+        createMvaStrategiesBtn.disableProperty().bind(
+                mvaMinField.textProperty().isEmpty()
+                        .or(mvaMaxField.textProperty().isEmpty()));
+        // MVA Min Field
+        mvaMinField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    mvaMinField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+        // MVA Max Field
+        mvaMaxField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    mvaMaxField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+
+        // MVA Max Field
+        mvaMaxField.focusedProperty().addListener((ov, oldV, newV) -> {
+            if (!newV) { // focus lost
+                // Your code
+                if (!mvaMaxField.getText().isEmpty()){
+                    if (Integer.parseInt(mvaMaxField.getText())<1) {
+                      mvaMaxField.setText("");
+                 }   else  if(!mvaMinField.getText().isEmpty()){
+                            if(Integer.parseInt(mvaMaxField.getText())< Integer.parseInt(mvaMinField.getText())) {
+                        mvaMinField.setText("");
+                 }}
+            }   }
+        });
+
+        // MVA Min Field
+        mvaMinField.focusedProperty().addListener((ov, oldV, newV) -> {
+            if (!newV) { // focus lost
+                // Your code
+                if (!mvaMinField.getText().isEmpty()){
+                    if (Integer.parseInt(mvaMinField.getText())<1) {
+                        mvaMinField.setText("");
+                    }   else  if(!mvaMaxField.getText().isEmpty()){
+                        if(Integer.parseInt(mvaMaxField.getText())< Integer.parseInt(mvaMinField.getText())) {
+                            mvaMaxField.setText("");
+                        }}
+                }   }
+        });
+
+
+    }
+
+    @FXML
+    private void CreateMvaStrategies(ActionEvent event) {
+        for (DataSet item : dataSetModel.getDataSetList()){
+            if(item.isChecked()){
+                System.out.println(item.getUnderlying());
+            }
+            //check the boolean value of each item to determine checkbox state
         }
-    }
-    public void initialize(){
-        // create the data to show in the CheckComboBox
-        strings.addListener(new ListChangeListener<String>() {
-            public void onChanged(ListChangeListener.Change<? extends String> c) {
-                while (c.next()) {
-                    if (c.wasAdded()) {
-                        List<? extends String> asl = c.getAddedSubList();
-                        for (String s : asl) {
-                            System.out.println("Neuer inhalt" + s);
-                            Test.getSourceItems().add(s);
-                            //permutate
-                        }
-                    }
-                    if (c.wasRemoved()) {
-                        List<? extends String> removed = c.getRemoved();
-                        for (String s : removed) {
-                            System.out.println("Neuer inhalt" + s);
-                            Test.getSourceItems().remove(s);
-                            Test.getTargetItems().remove(s);
-                            //permutate
-                        }
-                    }
-            }}
-        });
-
-        // Create the CheckComboBox with the data
-        DataSetsComboBox.getItems().addAll(strings);
-        // and listen to the relevant events (e.g. when the selected indices or
-        // selected items change).
-        DataSetsComboBox.getCheckModel().getCheckedItems().addListener(new ListChangeListener<String>() {
-            public void onChanged(ListChangeListener.Change<? extends String> c) {
-                System.out.println(DataSetsComboBox.getCheckModel().getCheckedItems());
-            }
-        });
-
-        // Create the CheckComboBox with the data
-        Test.getSourceItems().addAll(strings);
-        // and listen to the relevant events (e.g. when the selected indices or
-        // selected items change).
-        Test.getTargetItems().addListener(new ListChangeListener<String>() {
-            public void onChanged(ListChangeListener.Change<? extends String> c) {
-                System.out.println(Test.getTargetItems());
-            }
-        });
     }
 
 

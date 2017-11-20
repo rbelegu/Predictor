@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 
 public class DataSet {
+    private final BooleanProperty checked = new SimpleBooleanProperty();
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty underlying = new SimpleStringProperty();
     private final ObjectProperty<LocalDate> fromDate = new SimpleObjectProperty<>();
@@ -27,6 +28,18 @@ public class DataSet {
     setDatapoints(datapoints);
     setStatus(status);
     setTimestamp(timestmap);
+    }
+
+    public boolean isChecked() {
+        return checked.get();
+    }
+
+    public BooleanProperty checkedProperty() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked.set(checked);
     }
 
     public int getId() {

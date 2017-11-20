@@ -1,20 +1,13 @@
 package org.pre;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
-import org.pre.dao.DataSetDAO;
 import org.pre.db.Database;
 import org.pre.model.DataSetModel;
-import org.pre.pojo.DataSet;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import org.springframework.ui.Model;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -55,8 +48,8 @@ public class ApplicationConfig {
 
     @Bean
     @Scope("prototype")
-    public MvaStrategyController mvaStrategyController() {
-        return new MvaStrategyController();
+    public MvaStrategyController mvaStrategyController(DataSetModel dataSetModel) {
+        return new MvaStrategyController(dataSetModel);
     }
 
     @Bean

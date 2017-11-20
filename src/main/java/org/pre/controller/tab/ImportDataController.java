@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.pre.controller.util.CellUtils;
@@ -12,6 +14,7 @@ import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.concurrent.Executor;
@@ -22,15 +25,14 @@ public class ImportDataController {
     private TextField underlyingTextField;
 
     @FXML
-    private DatePicker fromDatePicker;
+    private TextField csvPathField;
 
     @FXML
-    private DatePicker toDatePicker;
+    private Button csvBrowseBtn;
 
     @FXML
     private Button importDateBtn;
 
-    private Executor exec;
     private final DataSetModel dataSetModel;
 
 
@@ -44,49 +46,35 @@ public class ImportDataController {
         // Button ist nur Aktive wenn die Felder auch ausgefüllt sind!
         importDateBtn.disableProperty().bind(
                 underlyingTextField.textProperty().isEmpty()
-                        .or(fromDatePicker.valueProperty().isNull())
-                        .or(toDatePicker.valueProperty().isNull()));
+                        .or(csvPathField.textProperty().isEmpty()));
         // Symbol Textfeld alles gross schreiben
         underlyingTextField.textProperty().addListener((ov, oldValue, newValue) -> {
             underlyingTextField.setText(newValue.toUpperCase());
         });
 
+    }
 
-        //Prüfen ob to Datum nicht vor dem from Datum ist.
-        fromDatePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (toDatePicker.getValue() != null && fromDatePicker.getValue() != null) {
-                if (fromDatePicker.getValue().isAfter(toDatePicker.getValue())) {
-                    toDatePicker.setValue(null);
-                }
-            }
-        });
-        toDatePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (fromDatePicker.getValue() != null && toDatePicker.getValue() != null) {
-                if (fromDatePicker.getValue().isAfter(toDatePicker.getValue())) {
-                    fromDatePicker.setValue(null);
-                }
-            }
-        });
-        toDatePicker.setDayCellFactory(CellUtils.getDatePickerRestriction());
-        fromDatePicker.setDayCellFactory(CellUtils.getDatePickerRestriction());
-
-
-
+    @FXML
+    private void CsvPath(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(new Stage());
+        if(file != null){
+            csvPathField.textProperty().setValue(file.toString());
+        }
     }
 
 
     @FXML
     private void ImportData(ActionEvent event)  {
-        if (toDatePicker.getValue().isAfter(LocalDate.now()) || fromDatePicker.getValue().isAfter(LocalDate.now())){
-            Notifications.create().title("Error: Future Date(s)").text("Your date(s) are in the future! Please adjust your date(s).").hideAfter(Duration.minutes(5)).showError();
-        } else {
             DataSet dataSet = new DataSet();
             dataSet.setUnderlying(underlyingTextField.getText());
-            dataSet.setFromDate(fromDatePicker.getValue());
-            dataSet.setToDate(toDatePicker.getValue());
+          //  dataSet.setFromDate(fromDatePicker.getValue());
+          //  dataSet.setToDate(toDatePicker.getValue());
             dataSet.setStatus(ProgressStatus.RUNNING.toString());
             dataSet.setTimestamp(LocalDateTime.now());
-            dataSetModel.addDataSet(dataSet);
+            dataSetModel.addDataSet(dataSet, csvPathField.getText());
       //      DataSet dataSet2 = new DataSet();
         //    dataSet2.setUnderlying("EURGBP=X");
         //    dataSet2.setFromDate(fromDatePicker.getValue());
@@ -101,7 +89,7 @@ public class ImportDataController {
           //  dataSet3.setStatus(ProgressStatus.RUNNING.toString());
           //  dataSet3.setTimestamp(LocalDateTime.now());
           //  dataSetModel.addDataSet(dataSet3);
-        }
+       // }
 
     }
 

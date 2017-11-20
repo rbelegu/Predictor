@@ -13,6 +13,9 @@ import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -79,29 +83,30 @@ public class DataDAO {
     }
 
 
-    public List<Data> getDataListFromYahooApi(String symbol, LocalDate dateFrom, LocalDate dateTo, Integer underlying_id) throws IOException {
-        Stock stock = null;
-        try {
-            stock = YahooFinance.get(symbol);
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
-
-        assert stock != null;
-        List<HistoricalQuote> HistQuotes = stock.getHistory(GregorianCalendar.from(dateFrom.atStartOfDay(ZoneId.systemDefault())), GregorianCalendar.from(dateTo.atStartOfDay(ZoneId.systemDefault())), Interval.DAILY);
-
-
-
+    public List<Data> getDataListFromCsv(String path, Integer underlying_id) throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
+        String CsvFile = path;
+        String FieldDelimiter = ";";
         List<Data> list = FXCollections.observableArrayList();
-        for (HistoricalQuote line : HistQuotes) {
-            try
-            {
-          list.add(new Data(underlying_id, DateUtils.getLocalDatefromCalendar(line.getDate()), line.getClose().doubleValue()));
-        }catch (NullPointerException e){
-                System.out.println(line.getClose());
-            e.printStackTrace();}
+        BufferedReader br;
+        System.out.println("TEST");
+        try {
+            br = new BufferedReader(new FileReader(CsvFile));
+            br.readLine(); // this will read the first line
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(FieldDelimiter, -1);
+                list.add(new Data(underlying_id, LocalDate.parse(fields[0], formatter), Double.parseDouble(fields[1])));
+            }
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+        // Sort old to new
+        list.sort((o1, o2) -> o1.getRateDate().compareTo(o2.getRateDate()));
+
 
         return list;
     }

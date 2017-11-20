@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
@@ -10,9 +9,8 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
-
 <?import javafx.scene.text.Font?>
+
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pre.controller.tab.ImportDataController">
         <GridPane prefHeight="705.0" prefWidth="677.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -26,8 +24,8 @@
                 <GridPane>
                     <columnConstraints>
                         <ColumnConstraints maxWidth="2500.0" minWidth="219.0" prefWidth="219.0" />
-            <ColumnConstraints maxWidth="2500.0" minWidth="27.0" prefWidth="58.0" />
-                        <ColumnConstraints maxWidth="473.0" minWidth="250.0" prefWidth="472.0" />
+            <ColumnConstraints maxWidth="2500.0" minWidth="27.0" prefWidth="156.0" />
+                        <ColumnConstraints maxWidth="473.0" minWidth="146.0" prefWidth="205.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="46.0" minHeight="33.0" prefHeight="33.0" />
@@ -42,12 +40,14 @@
             <font>
                <Font name="System Bold" size="15.0" />
             </font></Label>
-         <TextField fx:id="underlyingTextField" prefHeight="31.0" prefWidth="204.0" promptText="Symbol" GridPane.rowIndex="2" />
-         <DatePicker fx:id="fromDatePicker" promptText="from" GridPane.rowIndex="5" />
-         <DatePicker fx:id="toDatePicker" promptText="to" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-         <Label text="Symbol (eg. EURCHF=X):" GridPane.rowIndex="1" />
-         <Label text="Data Set from:" GridPane.rowIndex="4" />
-         <Label text="Data set to:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         <TextField fx:id="underlyingTextField" prefHeight="31.0" prefWidth="204.0" promptText="Data Set" GridPane.rowIndex="2" />
+         <Label prefHeight="21.0" prefWidth="206.0" text="Data Set (eg. EURCHF=V1):" GridPane.rowIndex="1" />
+         <Label text="CSV Path:" GridPane.rowIndex="4" />
+         <TextField fx:id="csvPathField" prefWidth="212.0" promptText="CSV Path" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+         <Button fx:id="csvBrowseBtn" onAction="#CsvPath" mnemonicParsing="false" text="Browse CSV" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <GridPane.margin>
+               <Insets left="10.0" />
+            </GridPane.margin></Button>
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
