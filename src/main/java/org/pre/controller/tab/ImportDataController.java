@@ -70,28 +70,10 @@ public class ImportDataController {
     private void ImportData(ActionEvent event)  {
             DataSet dataSet = new DataSet();
             dataSet.setUnderlying(underlyingTextField.getText());
-          //  dataSet.setFromDate(fromDatePicker.getValue());
-          //  dataSet.setToDate(toDatePicker.getValue());
             dataSet.setStatus(ProgressStatus.RUNNING.toString());
             dataSet.setTimestamp(LocalDateTime.now());
             dataSetModel.addDataSet(dataSet, csvPathField.getText());
-      //      DataSet dataSet2 = new DataSet();
-        //    dataSet2.setUnderlying("EURGBP=X");
-        //    dataSet2.setFromDate(fromDatePicker.getValue());
-         //   dataSet2.setToDate(toDatePicker.getValue());
-         //   dataSet2.setStatus(ProgressStatus.RUNNING.toString());
-            //dataSet2.setTimestamp(LocalDateTime.now());
-          //  dataSetModel.addDataSet(dataSet2);
-          //  DataSet dataSet3 = new DataSet();
-          //  dataSet3.setUnderlying("EURCHF=X");
-          //  dataSet3.setFromDate(fromDatePicker.getValue());
-          //  dataSet3.setToDate(toDatePicker.getValue());
-          //  dataSet3.setStatus(ProgressStatus.RUNNING.toString());
-          //  dataSet3.setTimestamp(LocalDateTime.now());
-          //  dataSetModel.addDataSet(dataSet3);
-       // }
-
-    }
+         }
 
 
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 
 import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
+import org.pre.util.ProgressStatus;
 
 
 public class MvaStrategyController {
@@ -97,7 +98,7 @@ public class MvaStrategyController {
     @FXML
     private void CreateMvaStrategies(ActionEvent event) {
         for (DataSet item : dataSetModel.getDataSetList()){
-            if(item.isChecked()){
+            if(item.isChecked() && item.getStatus().equals(ProgressStatus.DONE.name())){
                 System.out.println(item.getUnderlying());
             }
             //check the boolean value of each item to determine checkbox state
