@@ -22,7 +22,7 @@
                 </Tab>
             </TabPane>
             <TabPane tabClosingPolicy="UNAVAILABLE">
-                <Tab text="Data Manager">
+                <Tab text="Data Set Manager">
                     <fx:include fx:id="DataManager" source="tab/DataManager.fxml" />
                 </Tab>
                 <Tab text="Strategy Manager">

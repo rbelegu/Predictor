@@ -2,13 +2,13 @@ package org.pre.pojo;
 
 import javafx.beans.property.*;
 
-import java.sql.Timestamp;
+
+import java.time.LocalDateTime;
 
 public class Result {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final IntegerProperty strategy_id = new SimpleIntegerProperty();
     private final StringProperty parameter = new SimpleStringProperty();
-    private final StringProperty status = new SimpleStringProperty();
     private final DoubleProperty averageYield = new SimpleDoubleProperty();
     private final DoubleProperty accumulatedPl = new SimpleDoubleProperty();
     private final DoubleProperty averagePlVol = new SimpleDoubleProperty();
@@ -16,10 +16,22 @@ public class Result {
     private final IntegerProperty countLossTrades = new SimpleIntegerProperty();
     private final DoubleProperty maxProfitTrade = new SimpleDoubleProperty();
     private final DoubleProperty maxLossTrade = new SimpleDoubleProperty();
-    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
-    public Result(){
-
+    public Result(){}
+    public Result(Integer id, Integer strategy_id,String parameter, Double averageYield, Double accumulatedPL, Double averagePlVol, Integer countProfitTrades, Integer countLossTrader,
+            Double maxProfitTrade, Double maxLossTrade, LocalDateTime timestamp) {
+        setId(id);
+        setStrategy_id(strategy_id);
+        setParameter(parameter);
+        setAverageYield(averageYield);
+        setAccumulatedPl(accumulatedPL);
+        setAveragePlVol(averagePlVol);
+        setCountProfitTrades(countProfitTrades);
+        setCountLossTrades(countLossTrader);
+        setMaxLossTrade(maxLossTrade);
+        setMaxProfitTrade(maxProfitTrade);
+        setTimestamp(timestamp);
     }
 
     public int getId() {
@@ -56,18 +68,6 @@ public class Result {
 
     public void setParameter(String parameter) {
         this.parameter.set(parameter);
-    }
-
-    public String getStatus() {
-        return status.get();
-    }
-
-    public StringProperty statusProperty() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status.set(status);
     }
 
     public double getAverageYield() {
@@ -154,33 +154,15 @@ public class Result {
         this.maxLossTrade.set(maxLossTrade);
     }
 
-    public Timestamp getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp.get();
     }
 
-    public ObjectProperty<Timestamp> timestampProperty() {
+    public ObjectProperty<LocalDateTime> timestampProperty() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp.set(timestamp);
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "id=" + id +
-                ", strategy_id=" + strategy_id +
-                ", parameter=" + parameter +
-                ", status=" + status +
-                ", averageYield=" + averageYield +
-                ", accumulatedPl=" + accumulatedPl +
-                ", averagePlVol=" + averagePlVol +
-                ", countProfitTrades=" + countProfitTrades +
-                ", countLossTrades=" + countLossTrades +
-                ", maxProfitTrade=" + maxProfitTrade +
-                ", maxLossTrade=" + maxLossTrade +
-                ", timestamp=" + timestamp +
-                '}';
     }
 }

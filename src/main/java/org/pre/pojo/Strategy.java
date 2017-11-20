@@ -3,6 +3,7 @@ package org.pre.pojo;
 import javafx.beans.property.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Strategy {
@@ -11,11 +12,11 @@ public class Strategy {
     private final StringProperty parameter = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
     private final IntegerProperty size = new SimpleIntegerProperty();
-    private final IntegerProperty underlying_id = new SimpleIntegerProperty();
+    private final IntegerProperty dataSet_id = new SimpleIntegerProperty();
     private final StringProperty underlying = new SimpleStringProperty();
     private final ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
     private final ObjectProperty<Date> tillDate = new SimpleObjectProperty<Date>();
-    private final ObjectProperty<Timestamp> timestamp = new SimpleObjectProperty<Timestamp>();
+    private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
     public Strategy(){
     }
@@ -80,16 +81,16 @@ public class Strategy {
         this.size.set(size);
     }
 
-    public int getUnderlying_id() {
-        return underlying_id.get();
+    public int getDataSet_id() {
+        return dataSet_id.get();
     }
 
-    public IntegerProperty underlying_idProperty() {
-        return underlying_id;
+    public IntegerProperty dataSet_idProperty() {
+        return dataSet_id;
     }
 
-    public void setUnderlying_id(int underlying_id) {
-        this.underlying_id.set(underlying_id);
+    public void setDataSet_id(int dataSet_id) {
+        this.dataSet_id.set(dataSet_id);
     }
 
     public String getUnderlying() {
@@ -128,31 +129,15 @@ public class Strategy {
         this.tillDate.set(tillDate);
     }
 
-    public Timestamp gettimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp.get();
     }
 
-    public ObjectProperty<Timestamp> timestampProperty() {
+    public ObjectProperty<LocalDateTime> timestampProperty() {
         return timestamp;
     }
 
-    public void settimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp.set(timestamp);
-    }
-
-    @Override
-    public String toString() {
-        return "Strategy{" +
-                "id=" + id +
-                ", type=" + type +
-                ", parameter=" + parameter +
-                ", status=" + status +
-                ", size=" + size +
-                ", underlying_id=" + underlying_id +
-                ", underlying=" + underlying +
-                ", fromDate=" + fromDate +
-                ", tillDate=" + tillDate +
-                ", timestamp=" + timestamp +
-                '}';
     }
 }

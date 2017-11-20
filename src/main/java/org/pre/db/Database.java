@@ -141,7 +141,6 @@ public class Database {
                 + "  (id INT NOT NULL AUTO_INCREMENT,"
                 + "   strategy_id INT NOT NULL,"
                 + "   parameter VARCHAR(30) NOT NULL,"
-                + "   status VARCHAR(30) NOT NULL,"
                 + "   average_yield DOUBLE NOT NULL,"
                 + "   accumulated_pl DOUBLE NOT NULL,"
                 + "   averagepl_vol DOUBLE NOT NULL,"

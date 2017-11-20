@@ -2,6 +2,7 @@ package org.pre.dao;
 
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.pre.db.Database;
 import org.pre.pojo.Data;
 import org.pre.util.DateUtils;
@@ -15,6 +16,7 @@ import yahoofinance.histquotes.Interval;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -27,7 +29,7 @@ public class DataDAO {
     //Tabelle und Spalten name
     private final static String TABLE_NAME = "data";
     private final static String ID = "id";
-    private final static String DATASED_ID = "dataset_id";
+    private final static String DATASET_ID = "dataset_id";
     private final static String RATE_DATE = "ratedate";
     private final static String RATE = "rate";
     private final static String TIMESTAMP = "timestamp";
@@ -49,7 +51,7 @@ public class DataDAO {
         boolean flag = false;
         PreparedStatement insertData;
         String insertStatement = "INSERT INTO " + TABLE_NAME +
-                "( " + DATASED_ID + ", " + RATE_DATE + ", "
+                "( " + DATASET_ID + ", " + RATE_DATE + ", "
                 + RATE + ") VALUES (?,?,?)";
 
         try{
@@ -102,6 +104,39 @@ public class DataDAO {
         }
 
         return list;
+    }
+
+
+
+    /**
+     * BLA BLA
+     */
+    public ObservableList<Data> getDataList(Integer id) throws SQLException {
+        ObservableList<Data> dataList = FXCollections.observableArrayList();
+        Connection conn = database.getConnection();
+        ResultSet resultSet;
+        PreparedStatement prestmt;
+        // try {
+        //     String insertStatement = "SELECT " + ID + ", " + UNDERLYING + ", " + FROM_DATE + ", " + TO_DATE + ", " +
+        //             DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
+        //     prestmt = conn.prepareStatement(insertStatement);
+        ////     resultSet = prestmt.executeQuery();
+        //     conn.commit();
+        //    while (resultSet.next()){
+        //        //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
+        //        dataSetList.add(new DataSet(
+        //               resultSet.getInt(1),
+        //              resultSet.getString(2),
+        //              resultSet.getDate(3).toLocalDate(),
+        //              resultSet.getDate(4).toLocalDate(),
+        //               resultSet.getInt(5),
+        //               resultSet.getString(6),
+        //              resultSet.getTimestamp(7).toLocalDateTime()));
+        ////       }
+        //   }  finally {
+        //      conn.close();
+        //  }
+        return dataList;
     }
 
 

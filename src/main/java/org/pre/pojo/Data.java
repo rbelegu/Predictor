@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class Data {
     private final IntegerProperty id = new SimpleIntegerProperty();
-    private final IntegerProperty underlying_id = new SimpleIntegerProperty();
+    private final IntegerProperty dataSet_id = new SimpleIntegerProperty();
     private final ObjectProperty<LocalDate> rateDate = new SimpleObjectProperty<>();
     private final DoubleProperty rate = new SimpleDoubleProperty();
     private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
@@ -36,15 +36,15 @@ public class Data {
     }
 
     public int getUnderlying_id() {
-        return underlying_id.get();
+        return dataSet_id.get();
     }
 
     public IntegerProperty underlying_idProperty() {
-        return underlying_id;
+        return dataSet_id;
     }
 
     public void setUnderlying_id(int underlying_id) {
-        this.underlying_id.set(underlying_id);
+        this.dataSet_id.set(underlying_id);
     }
 
     public LocalDate getRateDate() {

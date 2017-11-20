@@ -13,7 +13,7 @@
             <MenuItem mnemonicParsing="false" text="Close" />
         </Menu>
         <Menu mnemonicParsing="false" text="Setting">
-            <MenuItem mnemonicParsing="false" text="DB connection" onAction="#handleDB" />
+            <MenuItem mnemonicParsing="false" text="DB configuration" onAction="#handleDB" />
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <MenuItem mnemonicParsing="false" text="About" onAction="#handleAbout" />
