@@ -4,6 +4,7 @@ import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
 import org.pre.db.Database;
 import org.pre.model.DataSetModel;
+import org.pre.model.StrategyModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -35,6 +36,11 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public StrategyModel strategyModel(){
+        return new StrategyModel();
+    }
+
+    @Bean
     @Scope("prototype")
     public MenuBarController menuBarController() {
         return new MenuBarController();
@@ -48,8 +54,8 @@ public class ApplicationConfig {
 
     @Bean
     @Scope("prototype")
-    public MvaStrategyController mvaStrategyController(DataSetModel dataSetModel) {
-        return new MvaStrategyController(dataSetModel);
+    public MvaStrategyController mvaStrategyController(DataSetModel dataSetModel, StrategyModel strategyModel) {
+        return new MvaStrategyController(dataSetModel, strategyModel);
     }
 
     @Bean
@@ -60,8 +66,8 @@ public class ApplicationConfig {
 
     @Bean
     @Scope("prototype")
-    public StrategyManagerController strategyManagerController() {
-        return new StrategyManagerController();
+    public StrategyManagerController strategyManagerController(StrategyModel strategyModel) {
+        return new StrategyManagerController(strategyModel);
     }
 
     @Bean

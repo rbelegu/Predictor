@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import org.pre.model.DataSetModel;
+import org.pre.model.StrategyModel;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 
@@ -27,10 +28,12 @@ public class MvaStrategyController {
 
 
     private final DataSetModel dataSetModel;
+    private final StrategyModel strategyModel;
 
 
-    public MvaStrategyController(DataSetModel dataSetModel){
+    public MvaStrategyController(DataSetModel dataSetModel, StrategyModel strategyModel){
         this.dataSetModel = dataSetModel;
+        this.strategyModel = strategyModel;
     }
 
 

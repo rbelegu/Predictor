@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
+
 
 public class StrategyDAO {
     private static Database database;
@@ -24,6 +26,10 @@ public class StrategyDAO {
     private final static String SIZE = "size";
     private final static String STATUS = "status";
     private final static String TIMESTAMP = "timestamp";
+    private final static String TABLE_NAME_DATASET = "dataset";
+    private final static String UNDERLYING = "underlying";
+    private final static String FROM_DATE = "from_date";
+    private final static String TO_DATE = "to_date";
 
     @Autowired
     public void setDatabase(Database database){
@@ -105,28 +111,32 @@ public class StrategyDAO {
         Connection conn = database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        //Wieder entfernen
-        Strategy test = new Strategy();
-       // try {
-       //     String insertStatement = "SELECT " + ID + ", " + UNDERLYING + ", " + FROM_DATE + ", " + TO_DATE + ", " +
-       //             DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
-       //     prestmt = conn.prepareStatement(insertStatement);
-       ////     resultSet = prestmt.executeQuery();
-       //     conn.commit();
-        //    while (resultSet.next()){
-        //        //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
-        //        dataSetList.add(new DataSet(
-         //               resultSet.getInt(1),
-          //              resultSet.getString(2),
-          //              resultSet.getDate(3).toLocalDate(),
-          //              resultSet.getDate(4).toLocalDate(),
-         //               resultSet.getInt(5),
-         //               resultSet.getString(6),
-          //              resultSet.getTimestamp(7).toLocalDateTime()));
-     ////       }
-     //   }  finally {
-      //      conn.close();
-      //  }
+        try {
+            String insertStatement = "SELECT " + TABLE_NAME + "." + ID + ", " + TABLE_NAME + "." + DATASET_ID + ", " + TABLE_NAME_DATASET + "." + UNDERLYING + ", " + TABLE_NAME_DATASET + "." + FROM_DATE
+                    + ", " + TABLE_NAME_DATASET + "." + TO_DATE + ", " + TABLE_NAME + "." + TYPE + ", " + TABLE_NAME + "." + PARAMETER + ", "
+                    + TABLE_NAME + "." + SIZE + ", " + TABLE_NAME + "." + STATUS + ", " + TABLE_NAME + "." + TIMESTAMP + " FROM " + TABLE_NAME + "," + TABLE_NAME_DATASET + " WHERE "
+                    + TABLE_NAME + "." + DATASET_ID + " = " + TABLE_NAME_DATASET + "." + ID;
+           prestmt = conn.prepareStatement(insertStatement);
+            resultSet = prestmt.executeQuery();
+           conn.commit();
+            while (resultSet.next()){
+               //Resultat Zwilenweise Auslesen und neues Objekt erstellenn
+                Strategy tempStrategy = new Strategy();
+                tempStrategy.setId(resultSet.getInt(1));
+                tempStrategy.setDataSet_id(resultSet.getInt(2));
+                tempStrategy.setUnderlying(resultSet.getString(3));
+                tempStrategy.setFromDate(convertSQLDateToLocalDate(resultSet.getDate(4)));
+                tempStrategy.setToDate(convertSQLDateToLocalDate(resultSet.getDate(5)));
+                tempStrategy.setType(resultSet.getString(6));
+                tempStrategy.setParameter(resultSet.getString(7));
+                tempStrategy.setSize(resultSet.getInt(8));
+                tempStrategy.setStatus(resultSet.getString(9));
+                tempStrategy.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
+                strategyList.add(tempStrategy);
+           }
+       }  finally {
+           conn.close();
+       }
         return strategyList;
     }
 

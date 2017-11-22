@@ -3,10 +3,12 @@ package org.pre.pojo;
 import javafx.beans.property.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Strategy {
+    private final BooleanProperty checked = new SimpleBooleanProperty();
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty type = new SimpleStringProperty();
     private final StringProperty parameter = new SimpleStringProperty();
@@ -14,11 +16,24 @@ public class Strategy {
     private final IntegerProperty size = new SimpleIntegerProperty();
     private final IntegerProperty dataSet_id = new SimpleIntegerProperty();
     private final StringProperty underlying = new SimpleStringProperty();
-    private final ObjectProperty<Date> fromDate = new SimpleObjectProperty<Date>();
-    private final ObjectProperty<Date> tillDate = new SimpleObjectProperty<Date>();
+    private final ObjectProperty<LocalDate> fromDate = new SimpleObjectProperty<LocalDate>();
+    private final ObjectProperty<LocalDate> toDate = new SimpleObjectProperty<LocalDate>();
     private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
-    public Strategy(){
+
+    public Strategy() {
+    }
+
+    public boolean isChecked() {
+        return checked.get();
+    }
+
+    public BooleanProperty checkedProperty() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked.set(checked);
     }
 
     public int getId() {
@@ -105,28 +120,28 @@ public class Strategy {
         this.underlying.set(underlying);
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate.get();
     }
 
-    public ObjectProperty<Date> fromDateProperty() {
+    public ObjectProperty<LocalDate> fromDateProperty() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate.set(fromDate);
     }
 
-    public Date getTillDate() {
-        return tillDate.get();
+    public LocalDate getToDate() {
+        return toDate.get();
     }
 
-    public ObjectProperty<Date> tillDateProperty() {
-        return tillDate;
+    public ObjectProperty<LocalDate> toDateProperty() {
+        return toDate;
     }
 
-    public void setTillDate(Date tillDate) {
-        this.tillDate.set(tillDate);
+    public void setToDate(LocalDate toDate) {
+        this.toDate.set(toDate);
     }
 
     public LocalDateTime getTimestamp() {
