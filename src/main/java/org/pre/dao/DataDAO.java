@@ -27,6 +27,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
+
 
 public class DataDAO {
     private Database database;
@@ -61,7 +63,7 @@ public class DataDAO {
         try{
             insertData = conn.prepareStatement(insertStatement);
             for (Data data : dataList){
-                insertData.setInt(1, data.getUnderlying_id());
+                insertData.setInt(1, data.getDataSet_id());
                 insertData.setDate(2, java.sql.Date.valueOf(data.getRateDate()));
                 insertData.setDouble(3,data.getRate());
                 insertData.execute();
@@ -116,31 +118,30 @@ public class DataDAO {
     /**
      * BLA BLA
      */
-    public ObservableList<Data> getDataList(Integer id) throws SQLException {
+    public ObservableList<Data> getDataList(Integer dataSetId) throws SQLException {
         ObservableList<Data> dataList = FXCollections.observableArrayList();
         Connection conn = database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        // try {
-        //     String insertStatement = "SELECT " + ID + ", " + UNDERLYING + ", " + FROM_DATE + ", " + TO_DATE + ", " +
-        //             DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
-        //     prestmt = conn.prepareStatement(insertStatement);
-        ////     resultSet = prestmt.executeQuery();
-        //     conn.commit();
-        //    while (resultSet.next()){
-        //        //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
-        //        dataSetList.add(new DataSet(
-        //               resultSet.getInt(1),
-        //              resultSet.getString(2),
-        //              resultSet.getDate(3).toLocalDate(),
-        //              resultSet.getDate(4).toLocalDate(),
-        //               resultSet.getInt(5),
-        //               resultSet.getString(6),
-        //              resultSet.getTimestamp(7).toLocalDateTime()));
-        ////       }
-        //   }  finally {
-        //      conn.close();
-        //  }
+        try {
+            String insertStatement = "SELECT " + ID + ", " + DATASET_ID + ", " + RATE_DATE + ", " + RATE + "," + TIMESTAMP + " FROM " + TABLE_NAME + " WHERE "
+                    + DATASET_ID + " = " + dataSetId;
+            prestmt = conn.prepareStatement(insertStatement);
+            resultSet = prestmt.executeQuery();
+            conn.commit();
+            while (resultSet.next()){
+                //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
+                Data data = new Data();
+                data.setId(resultSet.getInt(1));
+                data.setDataSet_id(resultSet.getInt(2));
+                data.setRateDate(convertSQLDateToLocalDate(resultSet.getDate(3)));
+                data.setRate(resultSet.getDouble(4));
+                data.setTimestamp(resultSet.getTimestamp(5).toLocalDateTime());
+                dataList.add(data);
+            }
+        }  finally {
+            conn.close();
+        }
         return dataList;
     }
 

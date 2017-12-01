@@ -9,10 +9,14 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 
+import org.pre.math_model.Strategies;
 import org.pre.model.DataSetModel;
 import org.pre.model.StrategyModel;
 import org.pre.pojo.DataSet;
+import org.pre.pojo.Strategy;
 import org.pre.util.ProgressStatus;
+
+import java.time.LocalDateTime;
 
 
 public class MvaStrategyController {
@@ -56,13 +60,9 @@ public class MvaStrategyController {
         });
 
         // MVA Max Field
-        mvaMaxField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    mvaMaxField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
+        mvaMaxField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                mvaMaxField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
 
@@ -103,6 +103,16 @@ public class MvaStrategyController {
         for (DataSet item : dataSetModel.getDataSetList()){
             if(item.isChecked() && item.getStatus().equals(ProgressStatus.DONE.name())){
                 System.out.println(item.getUnderlying());
+
+                Strategy strategy = new Strategy();
+                strategy.setUnderlying(item.getUnderlying());
+                strategy.setDataSet_id(item.getId());
+                strategy.setFromDate(item.getFromDate());
+                strategy.setToDate(item.getToDate());
+                strategy.setType(Strategies.MVA.toString());
+                strategy.setParameter(mvaMinField.getText() + ";" + mvaMaxField.getText());
+                strategy.setTimestamp(LocalDateTime.now());
+                strategyModel.addStrategy(strategy);
             }
             //check the boolean value of each item to determine checkbox state
         }

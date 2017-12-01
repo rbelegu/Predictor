@@ -19,20 +19,6 @@ public class Result {
     private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
     public Result(){}
-    public Result(Integer id, Integer strategy_id,String parameter, Double averageYield, Double accumulatedPL, Double averagePlVol, Integer countProfitTrades, Integer countLossTrader,
-            Double maxProfitTrade, Double maxLossTrade, LocalDateTime timestamp) {
-        setId(id);
-        setStrategy_id(strategy_id);
-        setParameter(parameter);
-        setAverageYield(averageYield);
-        setAccumulatedPl(accumulatedPL);
-        setAveragePlVol(averagePlVol);
-        setCountProfitTrades(countProfitTrades);
-        setCountLossTrades(countLossTrader);
-        setMaxLossTrade(maxLossTrade);
-        setMaxProfitTrade(maxProfitTrade);
-        setTimestamp(timestamp);
-    }
 
     public int getId() {
         return id.get();

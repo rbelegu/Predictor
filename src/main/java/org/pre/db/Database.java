@@ -121,7 +121,7 @@ public class Database {
                 + "   status VARCHAR(30) NOT NULL,"
                 + "   size INT,"
                 + "   timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE  CURRENT_TIMESTAMP,"
-                + "   UNIQUE KEY (dataset_id, type),"
+                + "   UNIQUE KEY (dataset_id, type, parameter),"
                 + "   PRIMARY KEY (id),"
                 + "   FOREIGN KEY (dataset_id) REFERENCES dataset(id))"
                 + "   ENGINE=INNODB DEFAULT  CHARSET=UTF8";

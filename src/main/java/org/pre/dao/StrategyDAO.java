@@ -121,18 +121,18 @@ public class StrategyDAO {
            conn.commit();
             while (resultSet.next()){
                //Resultat Zwilenweise Auslesen und neues Objekt erstellenn
-                Strategy tempStrategy = new Strategy();
-                tempStrategy.setId(resultSet.getInt(1));
-                tempStrategy.setDataSet_id(resultSet.getInt(2));
-                tempStrategy.setUnderlying(resultSet.getString(3));
-                tempStrategy.setFromDate(convertSQLDateToLocalDate(resultSet.getDate(4)));
-                tempStrategy.setToDate(convertSQLDateToLocalDate(resultSet.getDate(5)));
-                tempStrategy.setType(resultSet.getString(6));
-                tempStrategy.setParameter(resultSet.getString(7));
-                tempStrategy.setSize(resultSet.getInt(8));
-                tempStrategy.setStatus(resultSet.getString(9));
-                tempStrategy.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
-                strategyList.add(tempStrategy);
+                Strategy strategy = new Strategy();
+                strategy.setId(resultSet.getInt(1));
+                strategy.setDataSet_id(resultSet.getInt(2));
+                strategy.setUnderlying(resultSet.getString(3));
+                strategy.setFromDate(convertSQLDateToLocalDate(resultSet.getDate(4)));
+                strategy.setToDate(convertSQLDateToLocalDate(resultSet.getDate(5)));
+                strategy.setType(resultSet.getString(6));
+                strategy.setParameter(resultSet.getString(7));
+                strategy.setSize(resultSet.getInt(8));
+                strategy.setStatus(resultSet.getString(9));
+                strategy.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
+                strategyList.add(strategy);
            }
        }  finally {
            conn.close();

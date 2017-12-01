@@ -17,8 +17,8 @@ public class Data {
     public Data() {
     }
 
-    public Data(Integer underlying_id, LocalDate rateDate, Double rate) {
-    setUnderlying_id(underlying_id);
+    public Data(Integer dataSet_id, LocalDate rateDate, Double rate) {
+    setDataSet_id(dataSet_id);
     setRateDate(rateDate);
     setRate(rate);
     }
@@ -35,16 +35,16 @@ public class Data {
         this.id.set(id);
     }
 
-    public int getUnderlying_id() {
+    public int getDataSet_id() {
         return dataSet_id.get();
     }
 
-    public IntegerProperty underlying_idProperty() {
+    public IntegerProperty dataSet_idProperty() {
         return dataSet_id;
     }
 
-    public void setUnderlying_id(int underlying_id) {
-        this.dataSet_id.set(underlying_id);
+    public void setDataSet_id(int dataSet_id) {
+        this.dataSet_id.set(dataSet_id);
     }
 
     public LocalDate getRateDate() {

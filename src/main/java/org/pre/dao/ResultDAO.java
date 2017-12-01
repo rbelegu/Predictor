@@ -3,14 +3,15 @@ package org.pre.dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.pre.db.Database;
-
 import org.pre.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ResultDAO {
     private Database database;
@@ -23,7 +24,7 @@ public class ResultDAO {
     private final static String ACCUMULATED_PL = "accumulated_pl";
     private final static String AVERAGEPL_VOL = "averagepl_vol";
     private final static String COUNT_PROFIT_TRADES = "count_profit_trades";
-    private final static String COUNT_LOSS_TRADES = "count_lost_trades";
+    private final static String COUNT_LOSS_TRADES = "count_loss_trades";
     private final static String MAX_PROFIT_TRADE = "max_profit_trade";
     private final static String MAX_LOSS_TRADE = "max_LOSS_trade";
     private final static String TIMESTAMP = "timestamp";
@@ -34,13 +35,51 @@ public class ResultDAO {
         this.database = database;
     }
 
+
     /**
      * BLA BLA
      */
-    public Result insertStrategy(Result strategy){
-        Result test = new Result();
-     return test;
+    public boolean insertResultList(List<Result> resultList) throws SQLException {
+        Connection conn = database.getConnection();
+        boolean flag = false;
+        PreparedStatement insertResult;
+        String insertStatement = "INSERT INTO " + TABLE_NAME +
+                "( " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " + ACCUMULATED_PL + ", " + AVERAGEPL_VOL + ", "
+                + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", " + MAX_LOSS_TRADE + ", " + TIMESTAMP + ") VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+        try{
+            insertResult = conn.prepareStatement(insertStatement);
+            for (Result result : resultList){
+                insertResult.setInt(1, result.getStrategy_id());
+                insertResult.setString(2,result.getParameter());
+                insertResult.setDouble(3,result.getAverageYield());
+                insertResult.setDouble(4,result.getAccumulatedPl());
+                insertResult.setDouble(5,result.getAveragePlVol());
+                insertResult.setInt(6,result.getCountProfitTrades());
+                insertResult.setInt(7,result.getCountLossTrades());
+                insertResult.setDouble(8,result.getMaxProfitTrade());
+                insertResult.setDouble(9,result.getMaxLossTrade());
+                insertResult.setTimestamp(10,java.sql.Timestamp.valueOf(result.getTimestamp()));
+                insertResult.execute();
+            }
+            conn.commit();
+            flag = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            try{
+                System.err.print("Transaction is being rolled back");
+                conn.rollback();
+            }catch(SQLException exc){
+                e.printStackTrace();
+            }
+        } finally{
+            conn.close();
+        }
+        return  flag;
     }
+
+
+
 
     public ObservableList<Result> getResultList() throws SQLException {
         ObservableList<Result> resultList = FXCollections.observableArrayList();
@@ -56,18 +95,19 @@ public class ResultDAO {
             conn.commit();
             while (resultSet.next()){
                 //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
-                resultList.add(new Result(
-                        resultSet.getInt(1),
-                        resultSet.getInt(2),
-                        resultSet.getString(3),
-                        resultSet.getDouble(4),
-                        resultSet.getDouble(5),
-                        resultSet.getDouble(6),
-                        resultSet.getInt(7),
-                        resultSet.getInt(8),
-                        resultSet.getDouble(9),
-                        resultSet.getDouble(10),
-                        resultSet.getTimestamp(11).toLocalDateTime()));
+                Result result = new Result();
+                result.setId(resultSet.getInt(1));
+                result.setStrategy_id(resultSet.getInt(2));
+                result.setParameter(resultSet.getString(3));
+                result.setAverageYield(resultSet.getDouble(4));
+                result.setAccumulatedPl(resultSet.getDouble(5));
+                result.setAveragePlVol(resultSet.getDouble(6));
+                result.setCountProfitTrades(resultSet.getInt(7));
+                result.setCountLossTrades(resultSet.getInt(8));
+                result.setMaxProfitTrade(resultSet.getDouble(9));
+                result.setMaxLossTrade(resultSet.getDouble(10));
+                result.setTimestamp(resultSet.getTimestamp(11).toLocalDateTime());
+                resultList.add(result);
             }
         }  finally {
             conn.close();
