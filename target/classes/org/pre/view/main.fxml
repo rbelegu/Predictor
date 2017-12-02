@@ -28,10 +28,6 @@
                 <Tab text="Strategy Manager">
                     <fx:include fx:id="StoppedStrategies" source="tab/StrategyManager.fxml" />
                 </Tab>
-                <Tab text="Result Analyser">
-                    <fx:include fx:id="ResultAnalyser" source="tab/ResultAnalyser.fxml" />
-                </Tab>
-
             </TabPane>
       </SplitPane>
    </center>

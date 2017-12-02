@@ -153,6 +153,17 @@ public class MvaStrategy {
         return averagePlVol;
     }
 
+    private  void calculateAveragePlVol(){
+        int countTrades = 0;
+        ArrayList<Double> realizedPl = new ArrayList<Double>();
+        for (Mva mva : mvaList) {
+            if (mva.getRealizedPl() != 0) {
+                countTrades += 1;
+            }
+        }
+
+    }
+
     private  void calculateCountProfitTrades(){
         for (Mva mva : mvaList) {
             if (mva.getRealizedPl() > 0) {

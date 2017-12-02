@@ -1,14 +1,21 @@
 package org.pre.controller.tab;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.table.TableFilter;
+import org.pre.model.StrategyModel;
 import org.pre.pojo.DataSet;
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,8 +47,6 @@ public class ResultAnalyserController {
 
 
 
-
-
     @FXML
     public void initialize(ObservableList<Result> results) {
         parameterColumn.setCellValueFactory(cellData -> cellData.getValue().parameterProperty());
@@ -51,11 +56,9 @@ public class ResultAnalyserController {
         countLossTradesColumn.setCellValueFactory(cellData -> cellData.getValue().countLossTradesProperty().asObject());
         maxLossTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxLossTradeProperty().asObject());
         maxProfitTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxProfitTradeProperty().asObject());
-
-
-
         tableResultManager.setItems(results);
         TableFilter filter = new TableFilter(tableResultManager);
 
     }
+
 }

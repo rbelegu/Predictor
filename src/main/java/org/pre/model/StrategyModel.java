@@ -1,8 +1,6 @@
 package org.pre.model;
 
 import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -28,7 +26,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -86,12 +83,11 @@ public class StrategyModel {
             stage.setTitle("DataSet: " + strategy.getUnderlying() + "       Strategy Type:" + strategy.getType());
             stage.setScene(new Scene(root1));
             stage.show();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
+
 
     public void addStrategy(Strategy strategy) {
         Task<Strategy> loadTask = new Task<Strategy>(){
