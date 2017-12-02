@@ -1,12 +1,14 @@
 package org.pre.dao;
 
 import com.mysql.jdbc.Statement;
+import com.zaxxer.hikari.HikariDataSource;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.pre.db.Database;
 import org.pre.pojo.DataSet;
 import org.pre.pojo.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,9 +17,9 @@ import java.sql.SQLException;
 
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
-
+@Repository
 public class StrategyDAO {
-    private static Database database;
+
     private final static String TABLE_NAME = "strategy";
     private final static String ID = "id";
     private final static String DATASET_ID = "dataset_id";
@@ -31,17 +33,12 @@ public class StrategyDAO {
     private final static String FROM_DATE = "from_date";
     private final static String TO_DATE = "to_date";
 
-    @Autowired
-    public void setDatabase(Database database){
-        this.database = database;
-    }
-
 
     /**
      * BLA BLA
      */
     public Strategy insertStrategy(Strategy strategy) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
         try {
@@ -74,7 +71,7 @@ public class StrategyDAO {
      * BLA BLA
      */
     public void updateStrategy(Strategy strategy) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
         try {
@@ -108,14 +105,14 @@ public class StrategyDAO {
      */
     public ObservableList<Strategy> getStrategyList() throws SQLException {
         ObservableList<Strategy> strategyList = FXCollections.observableArrayList();
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
         try {
             String insertStatement = "SELECT " + TABLE_NAME + "." + ID + ", " + TABLE_NAME + "." + DATASET_ID + ", " + TABLE_NAME_DATASET + "." + UNDERLYING + ", " + TABLE_NAME_DATASET + "." + FROM_DATE
                     + ", " + TABLE_NAME_DATASET + "." + TO_DATE + ", " + TABLE_NAME + "." + TYPE + ", " + TABLE_NAME + "." + PARAMETER + ", "
                     + TABLE_NAME + "." + SIZE + ", " + TABLE_NAME + "." + STATUS + ", " + TABLE_NAME + "." + TIMESTAMP + " FROM " + TABLE_NAME + "," + TABLE_NAME_DATASET + " WHERE "
-                    + TABLE_NAME + "." + DATASET_ID + " = " + TABLE_NAME_DATASET + "." + ID;
+                    + TABLE_NAME + "." + DATASET_ID + " = " + TABLE_NAME_DATASET + "." + ID + " ORDER BY " + ID + " ASC ";
            prestmt = conn.prepareStatement(insertStatement);
             resultSet = prestmt.executeQuery();
            conn.commit();

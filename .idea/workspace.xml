@@ -7,32 +7,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/pre/math_model/Mva.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategiesSolver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/pre/math_model/Signals.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/pre/math_model/Strategies.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/MvaStrategyController$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_yahoofinance_api_YahooFinanceAPI_3_11_0.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/ApplicationConfig.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/ApplicationConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/ImportDataController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/ImportDataController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/MvaStrategyController$1.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/MvaStrategyController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/MvaStrategyController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/MvaStrategyController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/StrategyManagerController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/tab/StrategyManagerController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/dao/DataDAO.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/dao/DataDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/db/Database.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/db/Database.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/pojo/Data.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/pojo/Data.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/pojo/Result.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/pojo/Result.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/pojo/Strategy.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/pojo/Strategy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/dao/DataSetDAO.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/dao/DataSetDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/predictor.iml" afterPath="$PROJECT_DIR$/predictor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/pojo/Data.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/pojo/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/view/tab/StrategyManager.fxml" afterPath="$PROJECT_DIR$/target/classes/org/pre/view/tab/StrategyManager.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ResultAnalyser.fxml" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ResultAnalyser.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,7 +53,12 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="predictor@localhost" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="DebuggerManager">
@@ -102,125 +104,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ImportDataController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
+      <file leaf-file-name="DataDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="54" />
-              <folding />
+            <state relative-caret-position="204">
+              <caret line="118" column="53" lean-forward="true" selection-start-line="117" selection-start-column="147" selection-end-line="118" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1512201451377" expanded="true" signature="1530:1661" ph="INSERT INTO data... " />
+                <marker date="1512201451377" expanded="true" signature="3927:3998" ph="SELECT id, r... " />
+                <marker date="1512201451377" expanded="true" signature="3927:4087" ph="SELECT id, d... data" />
+                <marker date="1512201451377" expanded="true" signature="3927:4091" ph="SELECT data.... data" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MvaStrategiesSolver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategiesSolver.java">
+      <file leaf-file-name="ResultAnalyser.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ResultAnalyser.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="48" column="76" lean-forward="true" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2076#2077#0" expanded="true" />
-                <element signature="e#2110#2111#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="147">
+              <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="63" />
+              <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StrategyManager.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="26" column="30" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="StrategyModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="90" column="39" lean-forward="true" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataSetDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+            <state relative-caret-position="227">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
-                <marker date="1511173838320" expanded="true" signature="1510:1725" ph="INSERT INTO dataset... " />
-                <marker date="1511173838320" expanded="true" signature="2855:3179" ph="UPDATE datas... " />
-                <marker date="1511173838320" expanded="true" signature="4202:4356" ph="SELECT id, u... dataset" />
-                <marker date="1511173838320" expanded="true" signature="4202:4370" ph="SELECT id, u... dataset" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MvaStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5739#5740#0" expanded="true" />
-                <element signature="e#5831#5832#0" expanded="true" />
-                <element signature="e#5870#5871#0" expanded="true" />
-                <element signature="e#5906#5907#0" expanded="true" />
-                <element signature="e#6369#6370#0" expanded="true" />
-                <element signature="e#6404#6405#0" expanded="true" />
-                <element signature="e#6443#6444#0" expanded="true" />
-                <element signature="e#6478#6479#0" expanded="true" />
-                <element signature="e#6715#6716#0" expanded="true" />
-                <element signature="e#6755#6756#0" expanded="true" />
-                <element signature="e#6794#6795#0" expanded="true" />
-                <element signature="e#6832#6833#0" expanded="true" />
-                <element signature="e#7282#7283#0" expanded="true" />
-                <element signature="e#7319#7320#0" expanded="true" />
-                <element signature="e#7572#7573#0" expanded="true" />
-                <element signature="e#7607#7608#0" expanded="true" />
-                <element signature="e#8329#8330#0" expanded="true" />
-                <element signature="e#8359#8360#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Mva.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/Mva.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#676#677#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="113" column="60" lean-forward="true" selection-start-line="113" selection-start-column="60" selection-end-line="113" selection-end-column="60" />
-              <folding>
-                <marker date="1511683369183" expanded="true" signature="2316:2817" ph="CREATE TABLE... dataset" />
-                <marker date="1511683369183" expanded="true" signature="2316:2874" ph="CREATE TABLE... dataset" />
-                <marker date="1511683369183" expanded="true" signature="3229:3789" ph="CREATE TABLE... data" />
-                <marker date="1511683369183" expanded="true" signature="4141:4814" ph="CREATE TABLE... strategy" />
-                <marker date="1511683369183" expanded="true" signature="5164:6081" ph="CREATE TABLE... result" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="96" column="59" lean-forward="true" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
-              <folding>
-                <marker date="1511708725149" expanded="true" signature="1754:1885" ph="INSERT INTO data... " />
-                <marker date="1511708725149" expanded="true" signature="4151:4222" ph="SELECT id, r... " />
-                <marker date="1511708725149" expanded="true" signature="4151:4311" ph="SELECT id, d... data" />
-                <marker date="1511708725149" expanded="true" signature="4151:4315" ph="SELECT data.... data" />
+                <element signature="e#2636#2662#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -229,26 +161,89 @@
       <file leaf-file-name="ResultDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+            <state relative-caret-position="122">
+              <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1327#1328#0" expanded="true" />
-                <element signature="e#1367#1368#0" expanded="true" />
-                <marker date="1512155732013" expanded="true" signature="1641:1968" ph="INSERT INTO result... " />
-                <marker date="1512155732013" expanded="true" signature="3610:3907" ph="SELECT id, m... " />
-                <marker date="1512155732013" expanded="true" signature="3610:3908" ph="SELECT id, m... result" />
+                <marker date="1512214003884" expanded="true" signature="1547:1874" ph="INSERT INTO result... " />
+                <marker date="1512214003884" expanded="true" signature="3531:3828" ph="SELECT id, m... " />
+                <marker date="1512214003884" expanded="true" signature="3531:3829" ph="SELECT id, m... result" />
+                <marker date="1512214003884" expanded="true" signature="3531:3896" ph="SELECT id, s... result" />
+                <marker date="1512214003884" expanded="true" signature="3531:3911" ph="SELECT id, s... result" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSetModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java">
+      <file leaf-file-name="Result.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-498">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="93">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="18" selection-end-column="89" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultAnalyserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="52" column="105" lean-forward="false" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StrategyManagerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="901">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataManagerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StrategyDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="114" column="122" lean-forward="true" selection-start-line="114" selection-start-column="122" selection-end-line="114" selection-end-column="122" />
+              <folding>
+                <marker date="1512209360743" expanded="true" signature="1536:1742" ph="INSERT INTO dataset... " />
+                <marker date="1512209360743" expanded="true" signature="2821:3136" ph="UPDATE datas... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4114" ph="SELECT strat... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4133" ph="SELECT strat... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4211" ph="SELECT strat... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4373" ph="SELECT strat... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4411" ph="SELECT strat... " />
+                <marker date="1512209360743" expanded="true" signature="4107:4542" ph="SELECT id, u... dataset" />
+                <marker date="1512209360743" expanded="true" signature="4107:4561" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4593" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4595" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4650" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4653" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4657" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4681" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4687" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4700" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4701" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4707" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4712" ph="SELECT strat... strategy" />
+                <marker date="1512209360743" expanded="true" signature="4107:4715" ph="SELECT strat... strategy" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -278,11 +273,13 @@
       <find>mail</find>
       <find>underlying</find>
       <find>underl</find>
-      <find>dataset</find>
       <find>symbol</find>
       <find>v1</find>
       <find>impor</find>
       <find>maxParamenter</find>
+      <find>datasetdao</find>
+      <find>dataset</find>
+      <find>FUCK</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -309,8 +306,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
         <option value="$PROJECT_DIR$/.idea/compiler.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/CustomDate.java" />
@@ -327,38 +322,40 @@
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/db/DBPreferences.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/strategy/MVA_Strategy.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ImportData.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/util/DateUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/util/CheckBoxTableCellFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/DataManager.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/MvaStrategy.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/pojo/Strategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/util/Strategies.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategyModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/pojo/Data.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/Strategies.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/Signals.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/Mva.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategiesSolver.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ResultAnalyser.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
       </list>
     </option>
@@ -444,9 +441,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -590,7 +586,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1188,7 +1185,10 @@
       <workItem from="1511160788488" duration="36404000" />
       <workItem from="1511371122863" duration="16776000" />
       <workItem from="1511601229905" duration="955000" />
-      <workItem from="1511682459473" duration="61085000" />
+      <workItem from="1511682459473" duration="70180000" />
+      <workItem from="1512175963958" duration="256000" />
+      <workItem from="1512176251484" duration="6538000" />
+      <workItem from="1512197693369" duration="15755000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1508277223349</created>
@@ -1330,11 +1330,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511384873675</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Das Speichern der Datenbank Einstellungen funktioniert. Es gibt aber noch eine Warnung. &#10;Einstellungen der DB sind jetzt nicht mehr statisch hinterlegt.">
+      <created>1512166784597</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1512166784597</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="565658000" />
+    <option name="totallyTimeSpent" value="597302000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1351,20 +1358,21 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16289593" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4954751" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280543" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="0" y="365" width="1916" height="300" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.061761547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12513426" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3642534" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21052632" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28464016" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.114253394" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1382,7 +1390,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.114253394" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1407,13 +1414,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/jre/lib/rt.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/api/LoadOnlineData.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/HistoricalQuoteDataDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/HistoricalQuoteData.java" />
@@ -1434,36 +1434,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DBConfigController.java" />
     <entry file="file://$USER_HOME$/2. Semester/FTOOP/Mail/Abgabe3_MailClient_NinoHafen/Mail_Program/src/MailPreferences.java" />
     <entry file="file://$USER_HOME$/2. Semester/FTOOP/Mail/Abgabe3_MailClient_NinoHafen/Mail_Program/src/GUI_Einstellungen.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1533">
-          <caret line="73" column="21" lean-forward="false" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="58" column="16" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1721,65 +1691,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/DBPreferences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/util/CheckBoxTableCellFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/MvaStrategy.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/util/ProgressStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ImportData.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/DataManager.fxml">
@@ -1793,27 +1709,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="41" column="119" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="41" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="62" column="87" lean-forward="false" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/util/DateUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1822,35 +1717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="149" column="8" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="18" column="91" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1858,47 +1728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="127" column="84" lean-forward="true" selection-start-line="127" selection-start-column="37" selection-end-line="127" selection-end-column="84" />
-          <folding>
-            <marker date="1511698099510" expanded="true" signature="1573:1779" ph="INSERT INTO dataset... " />
-            <marker date="1511698099510" expanded="true" signature="2858:3173" ph="UPDATE datas... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4151" ph="SELECT strat... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4170" ph="SELECT strat... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4248" ph="SELECT strat... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4410" ph="SELECT strat... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4448" ph="SELECT strat... " />
-            <marker date="1511698099510" expanded="true" signature="4144:4579" ph="SELECT id, u... dataset" />
-            <marker date="1511698099510" expanded="true" signature="4144:4598" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4630" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4632" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4687" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4690" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4694" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4718" ph="SELECT strat... strategy" />
-            <marker date="1511698099510" expanded="true" signature="4144:4724" ph="SELECT strat... strategy" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="84" />
           <folding />
         </state>
       </provider>
@@ -1921,22 +1750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/Strategies.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -1945,97 +1758,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="60" column="65" lean-forward="true" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1367#1368#0" expanded="true" />
-            <marker date="1512155732013" expanded="true" signature="1641:1968" ph="INSERT INTO result... " />
-            <marker date="1512155732013" expanded="true" signature="3610:3907" ph="SELECT id, m... " />
-            <marker date="1512155732013" expanded="true" signature="3610:3908" ph="SELECT id, m... result" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
-          <folding>
-            <marker date="1511173838320" expanded="true" signature="1510:1725" ph="INSERT INTO dataset... " />
-            <marker date="1511173838320" expanded="true" signature="2855:3179" ph="UPDATE datas... " />
-            <marker date="1511173838320" expanded="true" signature="4202:4356" ph="SELECT id, u... dataset" />
-            <marker date="1511173838320" expanded="true" signature="4202:4370" ph="SELECT id, u... dataset" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="96" column="59" lean-forward="true" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
-          <folding>
-            <marker date="1511708725149" expanded="true" signature="1754:1885" ph="INSERT INTO data... " />
-            <marker date="1511708725149" expanded="true" signature="4151:4222" ph="SELECT id, r... " />
-            <marker date="1511708725149" expanded="true" signature="4151:4311" ph="SELECT id, d... data" />
-            <marker date="1511708725149" expanded="true" signature="4151:4315" ph="SELECT data.... data" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/Mva.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="113" column="60" lean-forward="true" selection-start-line="113" selection-start-column="60" selection-end-line="113" selection-end-column="60" />
-          <folding>
-            <marker date="1511683369183" expanded="true" signature="2316:2817" ph="CREATE TABLE... dataset" />
-            <marker date="1511683369183" expanded="true" signature="2316:2874" ph="CREATE TABLE... dataset" />
-            <marker date="1511683369183" expanded="true" signature="3229:3789" ph="CREATE TABLE... data" />
-            <marker date="1511683369183" expanded="true" signature="4141:4814" ph="CREATE TABLE... strategy" />
-            <marker date="1511683369183" expanded="true" signature="5164:6081" ph="CREATE TABLE... result" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategiesSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="48" column="76" lean-forward="true" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#639#640#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2045,42 +1775,327 @@
         <state relative-caret-position="357">
           <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5739#5740#0" expanded="true" />
-            <element signature="e#5831#5832#0" expanded="true" />
-            <element signature="e#5870#5871#0" expanded="true" />
-            <element signature="e#5906#5907#0" expanded="true" />
-            <element signature="e#6369#6370#0" expanded="true" />
-            <element signature="e#6404#6405#0" expanded="true" />
-            <element signature="e#6443#6444#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6715#6716#0" expanded="true" />
-            <element signature="e#6755#6756#0" expanded="true" />
-            <element signature="e#6794#6795#0" expanded="true" />
-            <element signature="e#6832#6833#0" expanded="true" />
-            <element signature="e#7282#7283#0" expanded="true" />
-            <element signature="e#7319#7320#0" expanded="true" />
-            <element signature="e#7572#7573#0" expanded="true" />
-            <element signature="e#7607#7608#0" expanded="true" />
-            <element signature="e#8329#8330#0" expanded="true" />
-            <element signature="e#8359#8360#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5739#5740#0" expanded="false" />
+            <element signature="e#5831#5832#0" expanded="false" />
+            <element signature="e#5870#5871#0" expanded="false" />
+            <element signature="e#5906#5907#0" expanded="false" />
+            <element signature="e#6369#6370#0" expanded="false" />
+            <element signature="e#6404#6405#0" expanded="false" />
+            <element signature="e#6443#6444#0" expanded="false" />
+            <element signature="e#6478#6479#0" expanded="false" />
+            <element signature="e#6715#6716#0" expanded="false" />
+            <element signature="e#6755#6756#0" expanded="false" />
+            <element signature="e#6794#6795#0" expanded="false" />
+            <element signature="e#6832#6833#0" expanded="false" />
+            <element signature="e#7282#7283#0" expanded="false" />
+            <element signature="e#7319#7320#0" expanded="false" />
+            <element signature="e#7572#7573#0" expanded="false" />
+            <element signature="e#7607#7608#0" expanded="false" />
+            <element signature="e#8329#8330#0" expanded="false" />
+            <element signature="e#8359#8360#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/DBPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/util/ProgressStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1176">
+          <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategiesSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="48" column="76" lean-forward="false" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1277">
+          <caret line="14" column="84" lean-forward="false" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="58" column="16" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <marker date="1512180678692" expanded="true" signature="2316:2817" ph="CREATE TABLE... dataset" />
+            <marker date="1512180678692" expanded="true" signature="2316:2874" ph="CREATE TABLE... dataset" />
+            <marker date="1512180678692" expanded="true" signature="3229:3789" ph="CREATE TABLE... data" />
+            <marker date="1512180678692" expanded="true" signature="4141:4814" ph="CREATE TABLE... strategy" />
+            <marker date="1512180678692" expanded="true" signature="5164:6081" ph="CREATE TABLE... result" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="24" column="67" lean-forward="true" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="34" column="11" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="34" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataSetDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1227">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1512206847888" expanded="true" signature="1239:1454" ph="INSERT INTO dataset... " />
+            <marker date="1512206847888" expanded="true" signature="2501:2825" ph="UPDATE datas... " />
+            <marker date="1512206847888" expanded="true" signature="3795:3949" ph="SELECT id, u... dataset" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/MvaStrategy.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/ApplicationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1157">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ImportData.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-498">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="341">
+          <caret line="79" column="61" lean-forward="true" selection-start-line="79" selection-start-column="61" selection-end-line="79" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/StrategyDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="114" column="122" lean-forward="true" selection-start-line="114" selection-start-column="122" selection-end-line="114" selection-end-column="122" />
+          <folding>
+            <marker date="1512209360743" expanded="true" signature="1536:1742" ph="INSERT INTO dataset... " />
+            <marker date="1512209360743" expanded="true" signature="2821:3136" ph="UPDATE datas... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4114" ph="SELECT strat... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4133" ph="SELECT strat... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4211" ph="SELECT strat... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4373" ph="SELECT strat... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4411" ph="SELECT strat... " />
+            <marker date="1512209360743" expanded="true" signature="4107:4542" ph="SELECT id, u... dataset" />
+            <marker date="1512209360743" expanded="true" signature="4107:4561" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4593" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4595" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4650" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4653" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4657" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4681" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4687" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4700" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4701" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4707" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4712" ph="SELECT strat... strategy" />
+            <marker date="1512209360743" expanded="true" signature="4107:4715" ph="SELECT strat... strategy" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="118" column="53" lean-forward="true" selection-start-line="117" selection-start-column="147" selection-end-line="118" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1512201451377" expanded="true" signature="1530:1661" ph="INSERT INTO data... " />
+            <marker date="1512201451377" expanded="true" signature="3927:3998" ph="SELECT id, r... " />
+            <marker date="1512201451377" expanded="true" signature="3927:4087" ph="SELECT id, d... data" />
+            <marker date="1512201451377" expanded="true" signature="3927:4091" ph="SELECT data.... data" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/ResultDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
+          <folding>
+            <marker date="1512214003884" expanded="true" signature="1547:1874" ph="INSERT INTO result... " />
+            <marker date="1512214003884" expanded="true" signature="3531:3828" ph="SELECT id, m... " />
+            <marker date="1512214003884" expanded="true" signature="3531:3829" ph="SELECT id, m... result" />
+            <marker date="1512214003884" expanded="true" signature="3531:3896" ph="SELECT id, s... result" />
+            <marker date="1512214003884" expanded="true" signature="3531:3911" ph="SELECT id, s... result" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="18" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="26" column="30" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ResultAnalyser.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/StrategyManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="52" column="105" lean-forward="false" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="90" column="39" lean-forward="true" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="227">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#2636#2662#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

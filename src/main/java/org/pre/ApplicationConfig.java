@@ -1,7 +1,13 @@
 package org.pre;
 
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
+import org.pre.dao.DataDAO;
+import org.pre.dao.DataSetDAO;
+import org.pre.db.DBPreferences;
 import org.pre.db.Database;
 import org.pre.model.DataSetModel;
 import org.pre.model.StrategyModel;
@@ -9,6 +15,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+
+import javax.sql.DataSource;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -20,6 +28,7 @@ public class ApplicationConfig {
     public Database database() {
         return new Database();
     }
+
 
     @Bean
     public Executor executor() {
@@ -46,6 +55,7 @@ public class ApplicationConfig {
         return new MenuBarController();
     }
 
+
     @Bean
     @Scope("prototype")
     public ImportDataController importDataController(DataSetModel dataSetModel) {
@@ -70,10 +80,6 @@ public class ApplicationConfig {
         return new StrategyManagerController(strategyModel);
     }
 
-    @Bean
-    @Scope("prototype")
-    public ResultAnalyserController resultAnalyserController() {
-        return new ResultAnalyserController();
-    }
+
 
 }

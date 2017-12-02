@@ -12,14 +12,14 @@ import org.pre.pojo.Data;
 import org.pre.pojo.DataSet;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import yahoofinance.histquotes.HistoricalQuote;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+@Repository
 public class DataSetModel {
     private Executor exec;
 

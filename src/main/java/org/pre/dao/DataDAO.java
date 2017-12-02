@@ -7,10 +7,8 @@ import org.pre.db.Database;
 import org.pre.pojo.Data;
 import org.pre.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
-import yahoofinance.histquotes.HistoricalQuote;
-import yahoofinance.histquotes.Interval;
+import org.springframework.stereotype.Repository;
+
 
 
 import java.io.BufferedReader;
@@ -29,9 +27,8 @@ import java.util.List;
 
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
-
+@Repository
 public class DataDAO {
-    private Database database;
     //Tabelle und Spalten name
     private final static String TABLE_NAME = "data";
     private final static String ID = "id";
@@ -41,19 +38,13 @@ public class DataDAO {
     private final static String TIMESTAMP = "timestamp";
 
 
-    @Autowired
-    public void setDatabase(Database database){
-        this.database = database;
-    }
-
-
     /**
      * Schreibt die Daten von einem DatenSet in einem Stück (commit) in die DB.
      * -
      * @param dataList		Yahoo Data Run
      */
     public boolean insertDataList(List<Data> dataList) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         boolean flag = false;
         PreparedStatement insertData;
         String insertStatement = "INSERT INTO " + TABLE_NAME +
@@ -120,7 +111,7 @@ public class DataDAO {
      */
     public ObservableList<Data> getDataList(Integer dataSetId) throws SQLException {
         ObservableList<Data> dataList = FXCollections.observableArrayList();
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
         try {

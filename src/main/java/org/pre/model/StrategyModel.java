@@ -1,30 +1,38 @@
 package org.pre.model;
 
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.pre.controller.tab.ResultAnalyserController;
 import org.pre.dao.DataDAO;
-import org.pre.dao.DataSetDAO;
 import org.pre.dao.ResultDAO;
 import org.pre.dao.StrategyDAO;
 import org.pre.math_model.MvaStrategiesSolver;
-import org.pre.math_model.MvaStrategy;
 import org.pre.pojo.Data;
 
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+@Repository
 public class StrategyModel {
 
     private Executor exec;
@@ -64,6 +72,27 @@ public class StrategyModel {
         return strategyList;
     }
 
+    public void showResults(Strategy strategy) throws SQLException {
+        ObservableList<Result> results;
+        ResultDAO resultDAO = new ResultDAO();
+        results = resultDAO.getResultList(strategy.getId());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/pre/view/tab/ResultAnalyser.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            ResultAnalyserController controller = fxmlLoader.<ResultAnalyserController>getController();
+            controller.initialize(results);
+            stage.setTitle("DataSet: " + strategy.getUnderlying() + "       Strategy Type:" + strategy.getType());
+            stage.setScene(new Scene(root1));
+            stage.show();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public void addStrategy(Strategy strategy) {
         Task<Strategy> loadTask = new Task<Strategy>(){
             @Override
@@ -85,7 +114,14 @@ public class StrategyModel {
 
                 Platform.runLater(() -> currentStrategy.setSize(resultList.size()));
                 Platform.runLater(() -> currentStrategy.setStatus(ProgressStatus.DONE.toString()));
-                strategyDAO.updateStrategy(currentStrategy);
+
+                Platform.runLater(() -> {
+                    try {
+                        strategyDAO.updateStrategy(currentStrategy);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
 
 
                 return currentStrategy;

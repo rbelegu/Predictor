@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.pre.db.Database;
 import org.pre.pojo.Result;
+import org.pre.pojo.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Repository
 public class ResultDAO {
-    private Database database;
     //Tabelle und Spalten name
     private final static String TABLE_NAME = "result";
     private final static String ID = "id";
@@ -30,17 +31,11 @@ public class ResultDAO {
     private final static String TIMESTAMP = "timestamp";
 
 
-    @Autowired
-    public void setDatabase(Database database){
-        this.database = database;
-    }
-
-
     /**
      * BLA BLA
      */
     public boolean insertResultList(List<Result> resultList) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         boolean flag = false;
         PreparedStatement insertResult;
         String insertStatement = "INSERT INTO " + TABLE_NAME +
@@ -81,15 +76,16 @@ public class ResultDAO {
 
 
 
-    public ObservableList<Result> getResultList() throws SQLException {
+    public ObservableList<Result> getResultList(int strategy_id) throws SQLException {
         ObservableList<Result> resultList = FXCollections.observableArrayList();
-        Connection conn = database.getConnection();
+        Connection conn = Database.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
         try {
             String insertStatement = "SELECT " + ID + ", " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " +
                     ACCUMULATED_PL + ", " + AVERAGEPL_VOL + ", " + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", "
-                    + MAX_LOSS_TRADE + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
+                    + MAX_LOSS_TRADE + ", " + TIMESTAMP + " FROM " + TABLE_NAME + " WHERE "
+                    + STRATEGY_ID + " = " + strategy_id;
             prestmt = conn.prepareStatement(insertStatement);
             resultSet = prestmt.executeQuery();
             conn.commit();
