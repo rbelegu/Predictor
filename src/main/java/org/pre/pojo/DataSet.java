@@ -18,7 +18,7 @@ public class DataSet {
     private final StringProperty status = new SimpleStringProperty();
     private final ObjectProperty<LocalDateTime> timestamp = new SimpleObjectProperty<>();
 
-    public DataSet(){};
+    public DataSet(){}
 
     public DataSet(Integer id, String underlying, LocalDate fromDate, LocalDate toDate, Integer datapoints, String status, LocalDateTime timestmap) {
     setId(id);

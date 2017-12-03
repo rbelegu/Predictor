@@ -62,7 +62,7 @@
                     <font>
                         <Font size="16.0" />
                     </font></Button>
-                    <Button mnemonicParsing="false" text="Cancel" textFill="#222121">
+                    <Button fx:id="cancelDBBtn" mnemonicParsing="false" onAction="#CancelDBData" text="Cancel" textFill="#222121">
                     <font>
                         <Font size="16.0" />
                     </font></Button>

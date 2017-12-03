@@ -74,9 +74,9 @@ public class StrategyModel {
     public void showResults(Strategy strategy)  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/pre/view/tab/ResultAnalyser.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
-            ResultAnalyserController controller = fxmlLoader.<ResultAnalyserController>getController();
+            ResultAnalyserController controller = fxmlLoader.getController();
             controller.initialize(strategy);
             stage.setTitle("Results    DataSet: " + strategy.getUnderlying() + "       Strategy Type: " + strategy.getType()
                     + "       Time Period:" + strategy.getFromDate().format(DateUtils.getCustomizedDateFormat()) + " - " +

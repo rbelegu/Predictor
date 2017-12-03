@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.pre.db.Database;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main extends Application {
@@ -30,10 +29,7 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("/org/pre/view/pics/icon_fxpredictor.png"));
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
-        primaryStage.setOnHidden(e -> {
-
-            Platform.exit();
-        });
+        primaryStage.setOnHidden(e -> Platform.exit());
     }
 
     @Override

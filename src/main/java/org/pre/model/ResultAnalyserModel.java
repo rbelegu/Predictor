@@ -42,7 +42,7 @@ public class ResultAnalyserModel {
         });
     }
 
-    public void setResultList(){
+    private void setResultList(){
         Task<ObservableList<Result>> loadTask = new Task<ObservableList<Result>>(){
             @Override
             public ObservableList<Result> call() throws SQLException {
