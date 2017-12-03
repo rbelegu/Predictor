@@ -42,7 +42,6 @@ public class MvaStrategiesSolver {
             result.setStrategy_id(strategyId);
             result.setAccumulatedPl(mvaStrategy.getAccumulatedPL());
             result.setAverageYield(mvaStrategy.getAverageYield());
-            result.setAveragePlVol(mvaStrategy.getAveragePlVol());
             result.setMaxLossTrade(mvaStrategy.getMaxLossTrade());
             result.setMaxProfitTrade(mvaStrategy.getMaxProfitTrade());
             result.setCountLossTrades(mvaStrategy.getCountLossTrades());

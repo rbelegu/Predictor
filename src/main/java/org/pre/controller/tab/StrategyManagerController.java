@@ -1,27 +1,18 @@
 package org.pre.controller.tab;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
 import org.pre.model.StrategyModel;
-import org.pre.pojo.DataSet;
-import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
 import org.pre.util.DateUtils;
-
-import java.io.IOException;
+import org.pre.util.ProgressStatus;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -72,30 +63,30 @@ public class StrategyManagerController {
         timestampColumn.setCellValueFactory(cellData -> cellData.getValue().timestampProperty());
         checkBoxColumn.setCellValueFactory(cellData -> cellData.getValue().checkedProperty());
         // Spezial Fälle, Umwandlung LocalDate in Customized Format
-        checkBoxColumn.setCellFactory(param -> new CheckBoxTableCell<Strategy, Boolean>());
+        checkBoxColumn.setCellFactory(param -> new CheckBoxTableCell<>());
         fromDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
         toDateColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedDateFormat()));
         timestampColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedTimestampFormat()));
         tableStrategyManager.setRowFactory(tv -> {
             TableRow<Strategy> row = new TableRow<>();
-            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                        Strategy rowData = row.getItem();
-                        try {
-                            strategyModel.showResults(rowData);
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty() && (row.getItem().getStatus().equals(ProgressStatus.DONE.toString())))) {
+                    Strategy rowData = row.getItem();
+                    try {
+                        strategyModel.showResults(rowData);
+                    } catch (SQLException e) {
 
+                        e.printStackTrace();
                     }
+
+                }else if(event.getClickCount() == 2 && (!row.isEmpty())){
+                    Notifications.create().title("Strategy Task not completed").text("Please wait till Strategy Task is completed").hideAfter(Duration.seconds(30)).showInformation();
                 }
             });
             return row;
         });
         tableStrategyManager.setItems(strategyModel.getStrategyList());
-        TableFilter filter = new TableFilter(tableStrategyManager);
+        TableFilter.forTableView(tableStrategyManager).apply();
     }
 
 

@@ -143,7 +143,6 @@ public class Database {
                 + "   parameter VARCHAR(30) NOT NULL,"
                 + "   average_yield DOUBLE NOT NULL,"
                 + "   accumulated_pl DOUBLE NOT NULL,"
-                + "   averagepl_vol DOUBLE NOT NULL,"
                 + "   count_profit_trades INT NOT NULL,"
                 + "   count_loss_trades INT NOT NULL,"
                 + "   max_profit_trade DOUBLE NOT NULL,"

@@ -35,8 +35,6 @@ public class ResultAnalyserController {
     @FXML
     private TableColumn<Result,Double> accumulatedPlColumn;
     @FXML
-    private TableColumn<Result, Double> averagePlVolColumn;
-    @FXML
     private TableColumn<Result, Integer> countProfitTradesColumn;
     @FXML
     private TableColumn<Result, Integer> countLossTradesColumn;

@@ -13,7 +13,6 @@ public class MvaStrategy {
     private static final Integer DAY_PER_YEAR = 260;
     private double averageYield;
     private double accumulatedPL;
-    private double averagePlVol;
     private int countProfitTrades;
     private int countLossTrades;
     private double maxProfitTrade;
@@ -24,7 +23,6 @@ public class MvaStrategy {
         mvaList = new ArrayList<>();
         this.averageYield = 0;
         this.accumulatedPL = 0;
-        this.averagePlVol = 0;
         this.countProfitTrades = 0;
         this.countLossTrades = 0;
         this.maxProfitTrade = 0;
@@ -149,20 +147,8 @@ public class MvaStrategy {
         return averageYield;
     }
 
-    public double getAveragePlVol() {
-        return averagePlVol;
-    }
 
-    private  void calculateAveragePlVol(){
-        int countTrades = 0;
-        ArrayList<Double> realizedPl = new ArrayList<Double>();
-        for (Mva mva : mvaList) {
-            if (mva.getRealizedPl() != 0) {
-                countTrades += 1;
-            }
-        }
 
-    }
 
     private  void calculateCountProfitTrades(){
         for (Mva mva : mvaList) {

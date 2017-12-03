@@ -17,6 +17,7 @@ public class DateUtils {
         return DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
     }
 
+
     public static java.sql.Date convertLocalDateToSQLDate(LocalDate localDate){
 
         if( localDate == null){

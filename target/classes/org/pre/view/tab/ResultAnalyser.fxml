@@ -20,14 +20,9 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                     <columns>
-                        <TableColumn fx:id="parameterColumn" prefWidth="75.0" text="Parameter">
-                        </TableColumn>
-                        <TableColumn fx:id="averageYieldColumn" prefWidth="75.0" text="Average Yield in %">
-                        </TableColumn>
-                        <TableColumn fx:id="accumulatedPlColumn" prefWidth="75.0" text="Total PnL">
-                        </TableColumn>
-                        <TableColumn fx:id="averagePlVolColumn" prefWidth="75.0" text="Avg. Pnl Vol">
-                        </TableColumn>
+                        <TableColumn fx:id="parameterColumn" prefWidth="75.0" text="Parameter"/>
+                        <TableColumn fx:id="averageYieldColumn" prefWidth="75.0" text="Average Yield in %"/>
+                        <TableColumn fx:id="accumulatedPlColumn" prefWidth="75.0" text="Total PnL"/>
                         <TableColumn fx:id="countProfitTradesColumn" prefWidth="75.0" text="Nr. of Profits" />
                         <TableColumn fx:id="countLossTradesColumn" prefWidth="75.0" text="Nr. of Losses" />
                         <TableColumn fx:id="maxProfitTradeColumn" prefWidth="75.0" text="Max. Profit" />

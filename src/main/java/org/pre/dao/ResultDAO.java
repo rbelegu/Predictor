@@ -23,7 +23,6 @@ public class ResultDAO {
     private final static String PARAMETER = "parameter";
     private final static String AVERAGE_YIELD = "average_yield";
     private final static String ACCUMULATED_PL = "accumulated_pl";
-    private final static String AVERAGEPL_VOL = "averagepl_vol";
     private final static String COUNT_PROFIT_TRADES = "count_profit_trades";
     private final static String COUNT_LOSS_TRADES = "count_loss_trades";
     private final static String MAX_PROFIT_TRADE = "max_profit_trade";
@@ -39,8 +38,8 @@ public class ResultDAO {
         boolean flag = false;
         PreparedStatement insertResult;
         String insertStatement = "INSERT INTO " + TABLE_NAME +
-                "( " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " + ACCUMULATED_PL + ", " + AVERAGEPL_VOL + ", "
-                + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", " + MAX_LOSS_TRADE + ", " + TIMESTAMP + ") VALUES (?,?,?,?,?,?,?,?,?,?)";
+                "( " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " + ACCUMULATED_PL + ", "
+                + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", " + MAX_LOSS_TRADE + ", " + TIMESTAMP + ") VALUES (?,?,?,?,?,?,?,?,?)";
 
         try{
             insertResult = conn.prepareStatement(insertStatement);
@@ -49,12 +48,11 @@ public class ResultDAO {
                 insertResult.setString(2,result.getParameter());
                 insertResult.setDouble(3,result.getAverageYield());
                 insertResult.setDouble(4,result.getAccumulatedPl());
-                insertResult.setDouble(5,result.getAveragePlVol());
-                insertResult.setInt(6,result.getCountProfitTrades());
-                insertResult.setInt(7,result.getCountLossTrades());
-                insertResult.setDouble(8,result.getMaxProfitTrade());
-                insertResult.setDouble(9,result.getMaxLossTrade());
-                insertResult.setTimestamp(10,java.sql.Timestamp.valueOf(result.getTimestamp()));
+                insertResult.setInt(5,result.getCountProfitTrades());
+                insertResult.setInt(6,result.getCountLossTrades());
+                insertResult.setDouble(7,result.getMaxProfitTrade());
+                insertResult.setDouble(8,result.getMaxLossTrade());
+                insertResult.setTimestamp(9,java.sql.Timestamp.valueOf(result.getTimestamp()));
                 insertResult.execute();
             }
             conn.commit();
@@ -83,7 +81,7 @@ public class ResultDAO {
         PreparedStatement prestmt;
         try {
             String insertStatement = "SELECT " + ID + ", " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " +
-                    ACCUMULATED_PL + ", " + AVERAGEPL_VOL + ", " + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", "
+                    ACCUMULATED_PL + ", " + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", "
                     + MAX_LOSS_TRADE + ", " + TIMESTAMP + " FROM " + TABLE_NAME + " WHERE "
                     + STRATEGY_ID + " = " + strategy_id;
             prestmt = conn.prepareStatement(insertStatement);
@@ -97,12 +95,11 @@ public class ResultDAO {
                 result.setParameter(resultSet.getString(3));
                 result.setAverageYield(resultSet.getDouble(4));
                 result.setAccumulatedPl(resultSet.getDouble(5));
-                result.setAveragePlVol(resultSet.getDouble(6));
-                result.setCountProfitTrades(resultSet.getInt(7));
-                result.setCountLossTrades(resultSet.getInt(8));
-                result.setMaxProfitTrade(resultSet.getDouble(9));
-                result.setMaxLossTrade(resultSet.getDouble(10));
-                result.setTimestamp(resultSet.getTimestamp(11).toLocalDateTime());
+                result.setCountProfitTrades(resultSet.getInt(6));
+                result.setCountLossTrades(resultSet.getInt(7));
+                result.setMaxProfitTrade(resultSet.getDouble(8));
+                result.setMaxLossTrade(resultSet.getDouble(9));
+                result.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
                 resultList.add(result);
             }
         }  finally {

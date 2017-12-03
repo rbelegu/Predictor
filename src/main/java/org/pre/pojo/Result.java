@@ -11,7 +11,6 @@ public class Result {
     private final StringProperty parameter = new SimpleStringProperty();
     private final DoubleProperty averageYield = new SimpleDoubleProperty();
     private final DoubleProperty accumulatedPl = new SimpleDoubleProperty();
-    private final DoubleProperty averagePlVol = new SimpleDoubleProperty();
     private final IntegerProperty countProfitTrades = new SimpleIntegerProperty();
     private final IntegerProperty countLossTrades = new SimpleIntegerProperty();
     private final DoubleProperty maxProfitTrade = new SimpleDoubleProperty();
@@ -78,18 +77,6 @@ public class Result {
 
     public void setAccumulatedPl(double accumulatedPl) {
         this.accumulatedPl.set(accumulatedPl);
-    }
-
-    public double getAveragePlVol() {
-        return averagePlVol.get();
-    }
-
-    public DoubleProperty averagePlVolProperty() {
-        return averagePlVol;
-    }
-
-    public void setAveragePlVol(double averagePlVol) {
-        this.averagePlVol.set(averagePlVol);
     }
 
     public int getCountProfitTrades() {

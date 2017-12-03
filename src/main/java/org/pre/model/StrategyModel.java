@@ -20,6 +20,7 @@ import org.pre.pojo.Data;
 
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
+import org.pre.util.DateUtils;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -80,7 +81,9 @@ public class StrategyModel {
             Stage stage = new Stage();
             ResultAnalyserController controller = fxmlLoader.<ResultAnalyserController>getController();
             controller.initialize(results);
-            stage.setTitle("DataSet: " + strategy.getUnderlying() + "       Strategy Type:" + strategy.getType());
+            stage.setTitle("Results    DataSet: " + strategy.getUnderlying() + "       Strategy Type: " + strategy.getType()
+                    + "       Time Period:" + strategy.getFromDate().format(DateUtils.getCustomizedDateFormat()) + " - " +
+                    strategy.getToDate().format(DateUtils.getCustomizedDateFormat()) );
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (Exception e) {
