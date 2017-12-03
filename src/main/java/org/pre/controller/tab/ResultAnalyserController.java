@@ -1,26 +1,20 @@
 package org.pre.controller.tab;
 
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
+
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
+
 import org.controlsfx.control.table.TableFilter;
-import org.pre.model.StrategyModel;
-import org.pre.pojo.DataSet;
+import org.pre.model.ResultAnalyserModel;
+
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ResultAnalyserController {
-
 
 
     @FXML
@@ -44,9 +38,12 @@ public class ResultAnalyserController {
     private TableColumn<Result, Double> maxLossTradeColumn;
 
 
+    private ResultAnalyserModel resultAnalyserModel;
+
 
     @FXML
-    public void initialize(ObservableList<Result> results) {
+    public void initialize(Strategy strategy) {
+         resultAnalyserModel = new ResultAnalyserModel(strategy);
         parameterColumn.setCellValueFactory(cellData -> cellData.getValue().parameterProperty());
         averageYieldColumn.setCellValueFactory(cellData -> cellData.getValue().averageYieldProperty().asObject());
         accumulatedPlColumn.setCellValueFactory(cellData -> cellData.getValue().accumulatedPlProperty().asObject());
@@ -54,8 +51,8 @@ public class ResultAnalyserController {
         countLossTradesColumn.setCellValueFactory(cellData -> cellData.getValue().countLossTradesProperty().asObject());
         maxLossTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxLossTradeProperty().asObject());
         maxProfitTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxProfitTradeProperty().asObject());
-        tableResultManager.setItems(results);
-        TableFilter filter = new TableFilter(tableResultManager);
+        tableResultManager.setItems(resultAnalyserModel.getResultList());
+        TableFilter.forTableView(tableResultManager).apply();
 
     }
 

@@ -72,12 +72,8 @@ public class StrategyManagerController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty() && (row.getItem().getStatus().equals(ProgressStatus.DONE.toString())))) {
                     Strategy rowData = row.getItem();
-                    try {
-                        strategyModel.showResults(rowData);
-                    } catch (SQLException e) {
+                    strategyModel.showResults(rowData);
 
-                        e.printStackTrace();
-                    }
 
                 }else if(event.getClickCount() == 2 && (!row.isEmpty())){
                     Notifications.create().title("Strategy Task not completed").text("Please wait till Strategy Task is completed").hideAfter(Duration.seconds(30)).showInformation();

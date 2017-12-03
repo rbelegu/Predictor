@@ -70,17 +70,13 @@ public class StrategyModel {
         return strategyList;
     }
 
-    public void showResults(Strategy strategy) throws SQLException {
-        ObservableList<Result> results;
-        ResultDAO resultDAO = new ResultDAO();
-        results = resultDAO.getResultList(strategy.getId());
-
+    public void showResults(Strategy strategy)  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/pre/view/tab/ResultAnalyser.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             ResultAnalyserController controller = fxmlLoader.<ResultAnalyserController>getController();
-            controller.initialize(results);
+            controller.initialize(strategy);
             stage.setTitle("Results    DataSet: " + strategy.getUnderlying() + "       Strategy Type: " + strategy.getType()
                     + "       Time Period:" + strategy.getFromDate().format(DateUtils.getCustomizedDateFormat()) + " - " +
                     strategy.getToDate().format(DateUtils.getCustomizedDateFormat()) );
