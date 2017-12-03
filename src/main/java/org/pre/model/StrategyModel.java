@@ -8,6 +8,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -80,6 +81,7 @@ public class StrategyModel {
             stage.setTitle("Results    DataSet: " + strategy.getUnderlying() + "       Strategy Type: " + strategy.getType()
                     + "       Time Period:" + strategy.getFromDate().format(DateUtils.getCustomizedDateFormat()) + " - " +
                     strategy.getToDate().format(DateUtils.getCustomizedDateFormat()) );
+            stage.getIcons().add(new Image("/org/pre/view/pics/icon_fxpredictor.png"));
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (Exception e) {
