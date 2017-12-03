@@ -53,7 +53,7 @@ public class Database {
             return ds.getConnection();
         }
 
-        public static void closeConnectionPool(){
+        public static void closeConnectionPool() {
             ds.close();
         }
 

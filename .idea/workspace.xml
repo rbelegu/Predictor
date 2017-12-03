@@ -7,17 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/pics/icon_fxpredictor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/pics/loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/pics/logo_fxpredictor.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/Main.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/Preloader.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/Preloader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/MenuBarController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/MenuBarController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/Main.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,67 +98,87 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSetModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/DataSetModel.java">
+      <file leaf-file-name="DBConfigController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="85" column="10" lean-forward="false" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+            <state relative-caret-position="420">
+              <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/dao/DataDAO.java">
+      <file leaf-file-name="StrategyManager.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1599">
-              <caret line="118" column="53" lean-forward="false" selection-start-line="117" selection-start-column="147" selection-end-line="118" selection-end-column="53" />
-              <folding>
-                <marker date="1512201451377" expanded="true" signature="1530:1661" ph="INSERT INTO data... " />
-                <marker date="1512201451377" expanded="true" signature="3927:3998" ph="SELECT id, r... " />
-                <marker date="1512201451377" expanded="true" signature="3927:4087" ph="SELECT id, d... data" />
-                <marker date="1512201451377" expanded="true" signature="3927:4091" ph="SELECT data.... data" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MvaStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="37" column="35" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+            <state relative-caret-position="21">
+              <caret line="26" column="30" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultAnalyserModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/ResultAnalyserModel.java">
+      <file leaf-file-name="DBConfig.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="42" column="5" lean-forward="false" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-              <folding>
-                <element signature="e#1209#1482#0" expanded="true" />
-                <element signature="e#1481#1482#0" expanded="true" />
-                <element signature="e#2021#2022#0" expanded="true" />
-                <element signature="e#2054#2055#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="298">
+              <caret line="57" column="85" lean-forward="true" selection-start-line="57" selection-start-column="85" selection-end-line="57" selection-end-column="85" />
+              <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            <state relative-caret-position="297">
+              <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
               <folding>
-                <marker date="1512315001793" expanded="true" signature="2316:2817" ph="CREATE TABLE... dataset" />
-                <marker date="1512315001793" expanded="true" signature="2316:2874" ph="CREATE TABLE... dataset" />
-                <marker date="1512315001793" expanded="true" signature="3229:3789" ph="CREATE TABLE... data" />
-                <marker date="1512315001793" expanded="true" signature="4141:4814" ph="CREATE TABLE... strategy" />
-                <marker date="1512315001793" expanded="true" signature="5164:6027" ph="CREATE TABLE... result" />
+                <element signature="e#1824#1825#0" expanded="true" />
+                <element signature="e#1858#1859#0" expanded="true" />
+                <marker date="1512339690051" expanded="true" signature="2317:2818" ph="CREATE TABLE... dataset" />
+                <marker date="1512339690051" expanded="true" signature="2317:2875" ph="CREATE TABLE... dataset" />
+                <marker date="1512339690051" expanded="true" signature="3230:3790" ph="CREATE TABLE... data" />
+                <marker date="1512339690051" expanded="true" signature="4142:4815" ph="CREATE TABLE... strategy" />
+                <marker date="1512339690051" expanded="true" signature="5165:6028" ph="CREATE TABLE... result" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataManagerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-161">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImportDataController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="469">
+              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultAnalyserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,34 +194,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Preloader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Preloader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            <state relative-caret-position="441">
+              <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultAnalyserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -275,9 +267,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/util/CellUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/db/DbPreferences.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DBConfigController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/db/DBPreferences.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/strategy/MVA_Strategy.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/tab/ImportData.fxml" />
@@ -318,11 +308,13 @@
         <option value="$PROJECT_DIR$/src/main/java/org/pre/ApplicationResultConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/model/ResultAnalyserModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" />
       </list>
     </option>
   </component>
@@ -1167,7 +1159,7 @@
       <workItem from="1512197693369" duration="15789000" />
       <workItem from="1512220987876" duration="8880000" />
       <workItem from="1512241251113" duration="1931000" />
-      <workItem from="1512291128342" duration="29532000" />
+      <workItem from="1512291128342" duration="31386000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1508277223349</created>
@@ -1351,11 +1343,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512315258480</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Das Speichern der Datenbank Einstellungen funktioniert. Es gibt aber noch eine Warnung. &#10;Einstellungen der DB sind jetzt nicht mehr statisch hinterlegt.">
+      <created>1512338399311</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1512338399311</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="637679000" />
+    <option name="totallyTimeSpent" value="639533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1762,17 +1761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="58" column="16" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -1807,30 +1795,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/math_model/MvaChart.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="75" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/MvaStrategyController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1701">
@@ -1862,17 +1826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="22" column="95" lean-forward="false" selection-start-line="22" selection-start-column="95" selection-end-line="22" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-261">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -2029,30 +1982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding>
-            <marker date="1512315001793" expanded="true" signature="2316:2817" ph="CREATE TABLE... dataset" />
-            <marker date="1512315001793" expanded="true" signature="2316:2874" ph="CREATE TABLE... dataset" />
-            <marker date="1512315001793" expanded="true" signature="3229:3789" ph="CREATE TABLE... data" />
-            <marker date="1512315001793" expanded="true" signature="4141:4814" ph="CREATE TABLE... strategy" />
-            <marker date="1512315001793" expanded="true" signature="5164:6027" ph="CREATE TABLE... result" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/model/ResultAnalyserModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -2115,10 +2044,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="441">
+          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+          <folding>
+            <element signature="e#1824#1825#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+            <marker date="1512339690051" expanded="true" signature="2317:2818" ph="CREATE TABLE... dataset" />
+            <marker date="1512339690051" expanded="true" signature="2317:2875" ph="CREATE TABLE... dataset" />
+            <marker date="1512339690051" expanded="true" signature="3230:3790" ph="CREATE TABLE... data" />
+            <marker date="1512339690051" expanded="true" signature="4142:4815" ph="CREATE TABLE... strategy" />
+            <marker date="1512339690051" expanded="true" signature="5165:6028" ph="CREATE TABLE... result" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/DataManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ImportDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/tab/StrategyManager.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="26" column="30" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="57" column="85" lean-forward="true" selection-start-line="57" selection-start-column="85" selection-end-line="57" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
   </component>
