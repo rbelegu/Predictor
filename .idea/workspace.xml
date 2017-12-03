@@ -7,16 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/DBConfigController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/DBConfigController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/Main.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/controller/MenuBarController.class" afterPath="$PROJECT_DIR$/target/classes/org/pre/controller/MenuBarController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/Main.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/model/ResultAnalyserModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/model/ResultAnalyserModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/util/ProgressStatus.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/util/ProgressStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml" afterPath="$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/view/DBConfig.fxml" afterPath="$PROJECT_DIR$/target/classes/org/pre/view/DBConfig.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" afterPath="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/pre/view/MenuBar.fxml" afterPath="$PROJECT_DIR$/target/classes/org/pre/view/MenuBar.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,16 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/DataSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="14" column="84" lean-forward="false" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Result.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/pojo/Result.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,16 +119,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuBarController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MenuBarController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+            <state relative-caret-position="462">
+              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#447#448#0" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Preloader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -309,7 +304,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/pre/ApplicationResultConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/tab/ResultAnalyserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/model/StrategyModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/db/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/DBConfigController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/DBConfig.fxml" />
@@ -317,6 +311,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/pre/Main.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/pre/view/MenuBar.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/pre/Preloader.java" />
       </list>
     </option>
   </component>
@@ -1161,7 +1156,7 @@
       <workItem from="1512197693369" duration="15789000" />
       <workItem from="1512220987876" duration="8880000" />
       <workItem from="1512241251113" duration="1931000" />
-      <workItem from="1512291128342" duration="32348000" />
+      <workItem from="1512291128342" duration="32480000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1508277223349</created>
@@ -1366,11 +1361,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512340301728</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Menubar is working">
+      <created>1512341241873</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1512341241873</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="640495000" />
+    <option name="totallyTimeSpent" value="640627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1432,7 +1434,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <MESSAGE value="Das Speichern der Datenbank Einstellungen funktioniert. Es gibt aber noch eine Warnung. &#10;Einstellungen der DB sind jetzt nicht mehr statisch hinterlegt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Das Speichern der Datenbank Einstellungen funktioniert. Es gibt aber noch eine Warnung. &#10;Einstellungen der DB sind jetzt nicht mehr statisch hinterlegt." />
+    <MESSAGE value="Menubar is working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menubar is working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1980,14 +1983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/db/Database.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -2134,13 +2129,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/controller/MenuBarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+        <state relative-caret-position="462">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#447#448#0" expanded="true" />
             <element signature="e#478#479#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pre/Preloader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

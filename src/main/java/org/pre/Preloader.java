@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Preloader extends javafx.application.Preloader {
     private Stage preloaderStage;
@@ -25,8 +26,8 @@ public class Preloader extends javafx.application.Preloader {
         BorderPane root = new BorderPane(loading);
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("FX Predictor");
         primaryStage.getIcons().add(new Image("/org/pre/view/pics/icon_fxpredictor.png"));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
