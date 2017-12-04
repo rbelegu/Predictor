@@ -14,6 +14,7 @@ import org.pre.model.ResultAnalyserModel;
 import org.pre.model.StrategyModel;
 import org.pre.pojo.Strategy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
@@ -23,6 +24,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 @Configuration
+@ComponentScan
 public class ApplicationConfig {
 
 
@@ -81,6 +83,8 @@ public class ApplicationConfig {
     public StrategyManagerController strategyManagerController(StrategyModel strategyModel) {
         return new StrategyManagerController(strategyModel);
     }
+
+
 
 
 

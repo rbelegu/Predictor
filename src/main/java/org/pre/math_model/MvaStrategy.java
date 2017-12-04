@@ -111,7 +111,7 @@ public class MvaStrategy {
                     mva.setDirection(Signals.FLAT.toString());
                 }
 
-            System.out.println("Spot=" + mva.getSpotRate() + ";" + " MVA=" + mva.getMvaRate() + ";" + " Direction=" + mva.getDirection() + ";" + " REALIZED PL" + mva.getAccumulatedRealizedPl());
+         //   System.out.println("Spot=" + mva.getSpotRate() + ";" + " MVA=" + mva.getMvaRate() + ";" + " Direction=" + mva.getDirection() + ";" + " REALIZED PL" + mva.getAccumulatedRealizedPl());
             }
 
 

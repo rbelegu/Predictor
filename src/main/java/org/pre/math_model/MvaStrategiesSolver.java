@@ -47,8 +47,6 @@ public class MvaStrategiesSolver {
             result.setCountLossTrades(mvaStrategy.getCountLossTrades());
             result.setCountProfitTrades(mvaStrategy.getCountProfitTrades());
             result.setTimestamp(LocalDateTime.now());
-            System.out.println(mvaStrategy.getAccumulatedPL());
-            System.out.println(dataList.size());
             resultList.add(result);
         }
 
