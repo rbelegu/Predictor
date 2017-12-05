@@ -27,7 +27,7 @@ import java.util.List;
 
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
-@Repository
+
 public class DataDAO {
     //Tabelle und Spalten name
     private final static String TABLE_NAME = "data";
