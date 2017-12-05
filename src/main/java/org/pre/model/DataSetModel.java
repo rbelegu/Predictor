@@ -10,6 +10,7 @@ import org.pre.dao.DataDAO;
 import org.pre.dao.DataSetDAO;
 import org.pre.pojo.Data;
 import org.pre.pojo.DataSet;
+import org.pre.util.CSVReader;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -70,7 +71,7 @@ public class DataSetModel {
                 Platform.runLater(() -> dataSetList.addAll(currentDataSet));
                 List<Data> dataList;
                 try {
-                    dataList = dataDAO.getDataListFromCsv(csvPath, currentDataSet.getId());
+                    dataList = CSVReader.getDataListFromCsv(csvPath, currentDataSet.getId());
                     Platform.runLater(() -> currentDataSet.setDatapoints(dataList.size()));
                     Platform.runLater(() -> currentDataSet.setFromDate(dataList.get(0).getRateDate()));
                     Platform.runLater(() -> currentDataSet.setToDate((dataList.get(dataList.size()-1).getRateDate())));
