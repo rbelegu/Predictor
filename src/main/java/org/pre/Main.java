@@ -9,10 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 
 public class Main extends Application {
 
-    private AnnotationConfigApplicationContext applicationContext;
+    private static AnnotationConfigApplicationContext applicationContext;
+
+    public static AnnotationConfigApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
 
     @Override
     public void init() throws Exception {

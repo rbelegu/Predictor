@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,9 +13,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import org.pre.controller.tab.util.CheckBoxTableCellFactory?>
+
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pre.controller.tab.StrategyManagerController">
 <children>
     <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -49,6 +49,7 @@
             </GridPane.margin>
         </TableView>
         <ToolBar GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+            <Button fx:id="showStrategyResultsBtn" mnemonicParsing="false" onAction="#ShowStrategyResults" text="Show Results" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" text="Drop" textFill="#222121">
                 <font>

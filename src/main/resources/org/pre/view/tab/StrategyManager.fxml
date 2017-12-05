@@ -49,7 +49,7 @@
             </GridPane.margin>
         </TableView>
         <ToolBar GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-            <Button mnemonicParsing="false" text="Show Results" />
+            <Button fx:id="showStrategyResultsBtn" mnemonicParsing="false" onAction="#ShowStrategyResults" text="Show Results" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" text="Drop" textFill="#222121">
                 <font>

@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.pre.Main;
 import org.pre.controller.tab.ResultAnalyserController;
 import org.pre.dao.DataDAO;
 import org.pre.dao.ResultDAO;
@@ -24,6 +25,9 @@ import org.pre.pojo.Strategy;
 import org.pre.util.DateUtils;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -31,11 +35,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Executor;
 
-@Repository
+
 public class StrategyModel {
 
     private Executor exec;
-
 
     @Autowired
     public void setExecutor(Executor exec){
@@ -74,6 +77,7 @@ public class StrategyModel {
     public void showResults(Strategy strategy)  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/pre/view/tab/ResultAnalyser.fxml"));
+         //   fxmlLoader.setControllerFactory(Main.getApplicationContext()::getBean);
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             ResultAnalyserController controller = fxmlLoader.getController();

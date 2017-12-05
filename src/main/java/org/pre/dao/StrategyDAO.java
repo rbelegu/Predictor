@@ -8,6 +8,9 @@ import org.pre.db.Database;
 import org.pre.pojo.DataSet;
 import org.pre.pojo.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +22,7 @@ import java.util.concurrent.Executor;
 
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
-@Component
+
 public class StrategyDAO {
 
     private final static String TABLE_NAME = "strategy";
@@ -36,13 +39,7 @@ public class StrategyDAO {
     private final static String TO_DATE = "to_date";
 
 
-    private Executor exec;
 
-    @Autowired
-    public void setExecutor(Executor exec){
-        System.out.println("POSITIV");
-        this.exec = exec;
-    }
     /**
      * BLA BLA
      */

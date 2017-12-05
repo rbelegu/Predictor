@@ -121,7 +121,6 @@ public class DataDAO {
             resultSet = prestmt.executeQuery();
             conn.commit();
             while (resultSet.next()){
-                //Resultat Zwilenweise Auslesen und neus EMail-Objekt erstellen
                 Data data = new Data();
                 data.setId(resultSet.getInt(1));
                 data.setDataSet_id(resultSet.getInt(2));

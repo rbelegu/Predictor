@@ -10,6 +10,9 @@ import org.pre.pojo.DataSet;
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -17,17 +20,15 @@ import java.sql.SQLException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class ResultAnalyserModel {
+public class ResultModel {
     private Executor exec;
-
-
 
 
     private ObservableList<Result> resultList;
     private Strategy strategy;
 
 
-    public ResultAnalyserModel(Strategy strategy){
+    public ResultModel(Strategy strategy){
        this.strategy = strategy;
         resultList = FXCollections.observableArrayList();
         setExecutor();

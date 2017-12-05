@@ -7,12 +7,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import org.controlsfx.control.table.TableFilter;
-import org.pre.model.ResultAnalyserModel;
+import org.pre.model.ResultModel;
 
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
-
-
 
 public class ResultAnalyserController {
 
@@ -38,12 +36,13 @@ public class ResultAnalyserController {
     private TableColumn<Result, Double> maxLossTradeColumn;
 
 
-    private ResultAnalyserModel resultAnalyserModel;
+    private ResultModel resultModel;
 
+    public ResultAnalyserController(){System.out.println("fdslfjdsflk");}
 
     @FXML
     public void initialize(Strategy strategy) {
-         resultAnalyserModel = new ResultAnalyserModel(strategy);
+         resultModel = new ResultModel(strategy);
         parameterColumn.setCellValueFactory(cellData -> cellData.getValue().parameterProperty());
         averageYieldColumn.setCellValueFactory(cellData -> cellData.getValue().averageYieldProperty().asObject());
         accumulatedPlColumn.setCellValueFactory(cellData -> cellData.getValue().accumulatedPlProperty().asObject());
@@ -51,7 +50,7 @@ public class ResultAnalyserController {
         countLossTradesColumn.setCellValueFactory(cellData -> cellData.getValue().countLossTradesProperty().asObject());
         maxLossTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxLossTradeProperty().asObject());
         maxProfitTradeColumn.setCellValueFactory(cellData -> cellData.getValue().maxProfitTradeProperty().asObject());
-        tableResultManager.setItems(resultAnalyserModel.getResultList());
+        tableResultManager.setItems(resultModel.getResultList());
         TableFilter.forTableView(tableResultManager).apply();
 
     }

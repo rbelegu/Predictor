@@ -1,12 +1,18 @@
 package org.pre.controller.tab;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PropertySheet;
 import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
 import org.pre.model.StrategyModel;
@@ -16,6 +22,8 @@ import org.pre.util.ProgressStatus;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import static java.lang.System.out;
 
 public class StrategyManagerController {
 
@@ -41,6 +49,8 @@ public class StrategyManagerController {
     private TableColumn<Strategy, LocalDateTime> timestampColumn;
     @FXML
     private TableColumn<Strategy, Boolean> checkBoxColumn;
+    @FXML
+    private Button showStrategyResultsBtn;
 
 
     private final StrategyModel strategyModel;
@@ -51,7 +61,7 @@ public class StrategyManagerController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         underlyingColumn.setCellValueFactory(cellData -> cellData.getValue().underlyingProperty());
         typeColumn.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
@@ -75,7 +85,7 @@ public class StrategyManagerController {
                     strategyModel.showResults(rowData);
 
 
-                }else if(event.getClickCount() == 2 && (!row.isEmpty())){
+                } else if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Notifications.create().title("Strategy Task not completed").text("Please wait till Strategy Task is completed").hideAfter(Duration.seconds(30)).showInformation();
                 }
             });
@@ -83,6 +93,23 @@ public class StrategyManagerController {
         });
         tableStrategyManager.setItems(strategyModel.getStrategyList());
         TableFilter.forTableView(tableStrategyManager).apply();
+    }
+
+
+    @FXML
+    private void ShowStrategyResults(ActionEvent event) {
+        int count = 0;
+        for (Strategy item : strategyModel.getStrategyList()){
+            if(item.isChecked() && item.getStatus().equals(ProgressStatus.DONE.name())){
+                count += 1;
+                strategyModel.showResults(item);
+            }else if(item.isChecked()){
+                Notifications.create().title(item.getUnderlying() + " is not valid!").text("You have to check a valid Strategy with Status DONE").showInformation();
+                count += 1;
+            }
+    }
+    if(count == 0){
+        Notifications.create().title("No checked Strategy").text("You have to check a valid Strategy with Status DONE").showInformation();}
     }
 
 

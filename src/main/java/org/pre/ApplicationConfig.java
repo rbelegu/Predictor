@@ -1,25 +1,17 @@
 package org.pre;
 
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
-import org.pre.dao.DataDAO;
-import org.pre.dao.DataSetDAO;
-import org.pre.db.DBPreferences;
 import org.pre.db.Database;
 import org.pre.model.DataSetModel;
-import org.pre.model.ResultAnalyserModel;
 import org.pre.model.StrategyModel;
-import org.pre.pojo.Strategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 
-import javax.sql.DataSource;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
