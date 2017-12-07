@@ -1,5 +1,8 @@
 package org.pre;
 
+import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -11,6 +14,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+
+import static com.sun.javafx.font.PrismFontFactory.isEmbedded;
 
 public class Preloader extends javafx.application.Preloader {
     private Stage preloaderStage;
@@ -33,9 +39,25 @@ public class Preloader extends javafx.application.Preloader {
     }
 
     @Override
-    public void handleStateChangeNotification(StateChangeNotification stateChangeNotification) {
-        if (stateChangeNotification.getType() == StateChangeNotification.Type.BEFORE_START) {
-            preloaderStage.close();
+    public void handleStateChangeNotification(StateChangeNotification evt) {
+        if (evt.getType() == StateChangeNotification.Type.BEFORE_START) {
+            if (isEmbedded && preloaderStage.isShowing()) {
+                //fade out, hide stage at the end of animation
+                FadeTransition ft = new FadeTransition(
+                        Duration.millis(1000), preloaderStage.getScene().getRoot());
+                ft.setFromValue(1.0);
+                ft.setToValue(0.0);
+                final Stage s = preloaderStage;
+                EventHandler<ActionEvent> eh = new EventHandler<ActionEvent>() {
+                    public void handle(ActionEvent t) {
+                        s.hide();
+                    }
+                };
+                ft.setOnFinished(eh);
+                ft.play();
+            } else {
+                preloaderStage.hide();
+            }
         }
     }
 }
