@@ -31,7 +31,7 @@ public class MvaStrategy extends Position {
         for (Mva mva : mvaList) {
             if (mva.getMvaRate() > 0) {
                 // LONG SIGNAL
-                if (mva.getSpotRate() > mva.getMvaRate() && lastTradingSignal.toString().equals(Signals.FLAT.toString())) {
+                if (mva.getSpotRate() > mva.getMvaRate() && lastTradingSignal.equals(Signals.FLAT.toString())) {
                     lastEntryRate = mva.getSpotRate();
                     lastTradingSignal = Signals.LONG.toString();
                     mva.setDirection(Signals.LONG.toString());
@@ -91,8 +91,7 @@ public class MvaStrategy extends Position {
                     mva.setDirection(Signals.FLAT.toString());
                 }
 
-                //   System.out.println("Spot=" + mva.getSpotRate() + ";" + " MVA=" + mva.getMvaRate() + ";" + " Direction=" + mva.getDirection() + ";" + " REALIZED PL" + mva.getAccumulatedRealizedPl());
-            }
+          }
         }}
 
 

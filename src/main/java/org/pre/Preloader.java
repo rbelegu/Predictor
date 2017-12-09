@@ -5,12 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -48,11 +45,7 @@ public class Preloader extends javafx.application.Preloader {
                 ft.setFromValue(1.0);
                 ft.setToValue(0.0);
                 final Stage s = preloaderStage;
-                EventHandler<ActionEvent> eh = new EventHandler<ActionEvent>() {
-                    public void handle(ActionEvent t) {
-                        s.hide();
-                    }
-                };
+                EventHandler<ActionEvent> eh = t -> s.hide();
                 ft.setOnFinished(eh);
                 ft.play();
             } else {

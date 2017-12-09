@@ -105,9 +105,6 @@ public class StrategyModel {
                 List<Data> dataList = dataDAO.getDataList(strategy.getDataSet_id());
                 // Solver Factory aufrufen und Result zurückerhalten
                 StrategySolver strategySolver = StrategySolverFactory.getStrategySolver(dataList, currentStrategy.getParameter(), currentStrategy.getId(), currentStrategy.getType());
-
-                // MvaStrategiesSolver mvaStrategiesSolver = new MvaStrategiesSolver(dataList, currentStrategy.getParameter(), currentStrategy.getId());
-
                 assert strategySolver != null;
                 List<Result> resultList = strategySolver.getResultList();
                 ResultDAO resultDAO = new ResultDAO();
@@ -133,7 +130,7 @@ public class StrategyModel {
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
             Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
         });
-        loadTask.setOnSucceeded(event -> Notifications.create().title("Import was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation());
+        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation());
         exec.execute(loadTask);
     }
 
