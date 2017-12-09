@@ -12,23 +12,19 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
-import org.pre.Main;
 import org.pre.controller.tab.ResultAnalyserController;
 import org.pre.dao.DataDAO;
 import org.pre.dao.ResultDAO;
 import org.pre.dao.StrategyDAO;
-import org.pre.math_model.MvaStrategiesSolver;
 import org.pre.pojo.Data;
 
 import org.pre.pojo.Result;
 import org.pre.pojo.Strategy;
+import org.pre.strategy_model.factory.StrategySolver;
+import org.pre.strategy_model.factory.StrategySolverFactory;
 import org.pre.util.DateUtils;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
@@ -107,9 +103,13 @@ public class StrategyModel {
                 DataDAO dataDAO = new DataDAO();
                 // Data holen
                 List<Data> dataList = dataDAO.getDataList(strategy.getDataSet_id());
-                MvaStrategiesSolver mvaStrategiesSolver = new MvaStrategiesSolver(dataList, currentStrategy.getParameter(), currentStrategy.getId());
+                // Solver Factory aufrufen und Result zurückerhalten
+                StrategySolver strategySolver = StrategySolverFactory.getStrategySolver(dataList, currentStrategy.getParameter(), currentStrategy.getId(), currentStrategy.getType());
 
-                List<Result> resultList = mvaStrategiesSolver.getResultList();
+                // MvaStrategiesSolver mvaStrategiesSolver = new MvaStrategiesSolver(dataList, currentStrategy.getParameter(), currentStrategy.getId());
+
+                assert strategySolver != null;
+                List<Result> resultList = strategySolver.getResultList();
                 ResultDAO resultDAO = new ResultDAO();
                 resultDAO.insertResultList(resultList);
 

@@ -1,4 +1,4 @@
-package org.pre.math_model;
+package org.pre.strategy_model;
 
 public enum Signals {
     LONG,

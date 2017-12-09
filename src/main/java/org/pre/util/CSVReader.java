@@ -15,7 +15,6 @@ public class CSVReader {
 
 
     public static List<Data> getDataListFromCsv(String path, Integer underlying_id) throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
         String CsvFile = path;
         String FieldDelimiter = ";";
         List<Data> list = FXCollections.observableArrayList();
@@ -26,7 +25,7 @@ public class CSVReader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(FieldDelimiter, -1);
-                list.add(new Data(underlying_id, LocalDate.parse(fields[0], formatter), Double.parseDouble(fields[1])));
+                list.add(new Data(underlying_id, LocalDate.parse(fields[0], DateUtils.getCustomizedDateFormat()), Double.parseDouble(fields[1])));
             }
 
         } catch (FileNotFoundException ex) {

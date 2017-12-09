@@ -1,13 +1,17 @@
-package org.pre.math_model;
+package org.pre.strategy_model.factory;
 
 import org.pre.pojo.Data;
 import org.pre.pojo.Result;
 
+import org.pre.strategy_model.figures.Figures;
+import org.pre.strategy_model.position.MvaStrategy;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class MvaStrategiesSolver {
+public class MvaSolver extends StrategySolver{
 
     private List<Data> dataList;
     private List<Result> resultList;
@@ -17,13 +21,13 @@ public class MvaStrategiesSolver {
     private int strategyId;
     private final static String SEPARATOR =";";
 
-    public MvaStrategiesSolver(List<Data> dataList, String parameter, int strategyId)  {
+    MvaSolver(List<Data> dataList, String parameter, int strategyId){
         resultList = new ArrayList<>();
         this.dataList = dataList;
         this.parameter = parameter;
         this.strategyId = strategyId;
         setSplitParameter();
-        dataList.sort((o1, o2) -> o1.getRateDate().compareTo(o2.getRateDate()));
+        dataList.sort(Comparator.comparing(Data::getRateDate));
         createResultList();
     }
 
@@ -36,26 +40,26 @@ public class MvaStrategiesSolver {
 
     private void createResultList(){
         for(int i=minMva; i<=maxMva; i++){
-            MvaStrategy mvaStrategy = new MvaStrategy(i, dataList);
             Result result = new Result();
+            MvaStrategy mvaStrategy = new MvaStrategy(i, dataList);
+            Figures figures = new Figures(mvaStrategy.getBasePositionList());
             result.setParameter(Integer.toString(i));
             result.setStrategy_id(strategyId);
-            result.setAccumulatedPl(mvaStrategy.getAccumulatedPL());
-            result.setAverageYield(mvaStrategy.getAverageYield());
-            result.setMaxLossTrade(mvaStrategy.getMaxLossTrade());
-            result.setMaxProfitTrade(mvaStrategy.getMaxProfitTrade());
-            result.setCountLossTrades(mvaStrategy.getCountLossTrades());
-            result.setCountProfitTrades(mvaStrategy.getCountProfitTrades());
+            result.setAccumulatedPl(figures.getAccumulatedPL());
+            result.setAverageYield(figures.getAverageYield());
+            result.setMaxLossTrade(figures.getMaxLossTrade());
+            result.setMaxProfitTrade(figures.getMaxProfitTrade());
+            result.setCountLossTrades(figures.getCountLossTrades());
+            result.setCountProfitTrades(figures.getCountProfitTrades());
             result.setTimestamp(LocalDateTime.now());
             resultList.add(result);
         }
-
-
     }
 
 
-
+    @Override
     public List<Result> getResultList(){
         return  resultList;
     }
+
 }

@@ -9,8 +9,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 
-import org.controlsfx.control.Notifications;
-import org.pre.math_model.Strategies;
+import org.pre.strategy_model.Strategies;
 import org.pre.model.DataSetModel;
 import org.pre.model.StrategyModel;
 import org.pre.pojo.DataSet;
