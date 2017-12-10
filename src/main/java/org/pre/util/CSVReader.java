@@ -11,8 +11,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class CSVReader {
-
-
     public static List<Data> getDataListFromCsv(String path, Integer underlying_id) throws Exception {
         String FieldDelimiter = ";";
         List<Data> list = FXCollections.observableArrayList();

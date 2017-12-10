@@ -8,11 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.core.Logger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
 public class Main extends Application {
-
     private static AnnotationConfigApplicationContext applicationContext;
 
     public static AnnotationConfigApplicationContext getApplicationContext() {

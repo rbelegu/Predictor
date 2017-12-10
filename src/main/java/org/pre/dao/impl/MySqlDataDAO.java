@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.pre.dao.datasource.MySqlDatasource;
 import org.pre.dao.itf.DataDAO;
-import org.pre.db.Database;
 import org.pre.pojo.Data;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
