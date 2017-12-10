@@ -31,10 +31,8 @@ public class DBConfigController {
 
     public void SaveDBData(ActionEvent actionEvent) {
         // Prüfen ob sicher Parameter geändert hatte
-        System.out.println("SIA");
         if(!Objects.equals(mySqlPreferences.getdbURL(), dbURLTextField.getText()) || !Objects.equals(mySqlPreferences.getdbUser(), dbUserTextField.getText()) ||
                 !Objects.equals(mySqlPreferences.getdbPassword(), dbPasswordTextField.getText())){
-            System.out.println("SIA");
             MySqlPreferences.setdbURL(dbURLTextField.getText());
             MySqlPreferences.setdbUser(dbUserTextField.getText());
             MySqlPreferences.setdbPassword(dbPasswordTextField.getText());
