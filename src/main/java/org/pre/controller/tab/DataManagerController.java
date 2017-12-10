@@ -60,6 +60,7 @@ public class DataManagerController {
         timestampColumn.setCellFactory(CellUtils.getDateCell(DateUtils.getCustomizedTimestampFormat()));
         tableDataManager.setItems(dataSetModel.getDataSetList());
         TableFilter.forTableView(tableDataManager).apply();
+
     }
 
 

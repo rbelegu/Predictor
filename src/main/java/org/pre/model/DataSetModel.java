@@ -8,7 +8,6 @@ import javafx.concurrent.Task;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.pre.dao.itf.DataDAO;
-
 import org.pre.dao.factory.DAOFactory;
 import org.pre.dao.itf.DataSetDAO;
 import org.pre.pojo.Data;
@@ -16,11 +15,8 @@ import org.pre.pojo.DataSet;
 import org.pre.util.CSVReader;
 import org.pre.util.ProgressStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.format.DateTimeParseException;
