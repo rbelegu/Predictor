@@ -1,8 +1,6 @@
 package org.pre.controller.tab;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,14 +10,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
-import org.controlsfx.control.PropertySheet;
 import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
 import org.pre.model.StrategyModel;
 import org.pre.pojo.Strategy;
 import org.pre.util.DateUtils;
 import org.pre.util.ProgressStatus;
-import java.sql.SQLException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

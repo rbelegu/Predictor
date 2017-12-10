@@ -15,7 +15,8 @@ import org.controlsfx.control.Notifications;
 import org.pre.controller.tab.ResultAnalyserController;
 import org.pre.dao.DataDAO;
 import org.pre.dao.ResultDAO;
-import org.pre.dao.StrategyDAO;
+import org.pre.dao.factory.DAOFactory;
+import org.pre.dao.itf.StrategyDAO;
 import org.pre.pojo.Data;
 
 import org.pre.pojo.Result;
@@ -35,7 +36,7 @@ import java.util.concurrent.Executor;
 public class StrategyModel {
 
     private Executor exec;
-
+    private DAOFactory daoFactory;
     @Autowired
     public void setExecutor(Executor exec){
         this.exec = exec;
@@ -45,6 +46,7 @@ public class StrategyModel {
 
     public StrategyModel(){
         strategyList = FXCollections.observableArrayList();
+        daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
     }
 
 
@@ -53,8 +55,8 @@ public class StrategyModel {
         Task<ObservableList<Strategy>> loadTask = new Task<ObservableList<Strategy>>(){
             @Override
             public ObservableList<Strategy> call() throws SQLException {
-                StrategyDAO newAccess = new StrategyDAO();
-                return newAccess.getStrategyList();
+                StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
+                return strategyDAO.getStrategyList();
             }
         };
         loadTask.setOnFailed(event ->{
@@ -97,7 +99,7 @@ public class StrategyModel {
                 // Speichern des Objekts mit Running Status in DB und danach in Tabelle publishen.
                 // Status auf Running setzen
                 strategy.setStatus(ProgressStatus.RUNNING.toString());
-                StrategyDAO strategyDAO = new StrategyDAO();
+                StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
                 Strategy currentStrategy = strategyDAO.insertStrategy(strategy);
                 Platform.runLater(() -> strategyList.addAll(currentStrategy));
                 DataDAO dataDAO = new DataDAO();

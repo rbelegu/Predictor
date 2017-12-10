@@ -3,6 +3,8 @@ package org.pre;
 
 import org.pre.controller.MenuBarController;
 import org.pre.controller.tab.*;
+import org.pre.dao.datasource.Datasource;
+import org.pre.dao.datasource.MySqlDatasource;
 import org.pre.db.Database;
 import org.pre.model.DataSetModel;
 import org.pre.model.StrategyModel;
@@ -26,6 +28,11 @@ public class ApplicationConfig {
     @Bean(destroyMethod = "closeConnectionPool")
     public Database database() {
         return new Database();
+    }
+
+    @Bean(destroyMethod = "closeConnectionPool")
+    public MySqlDatasource mySqlDatasource() {
+        return new MySqlDatasource();
     }
 
 

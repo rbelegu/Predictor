@@ -8,7 +8,6 @@ import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
 import org.pre.model.DataSetModel;
 import org.pre.pojo.DataSet;
-import org.pre.pojo.Strategy;
 import org.pre.util.DateUtils;
 
 import java.time.LocalDate;
