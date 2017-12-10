@@ -130,7 +130,7 @@ public class StrategyModel {
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
             Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
         });
-        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation());
+        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text(loadTask.getValue().getUnderlying() + " - " + loadTask.getValue().getType()).hideAfter(Duration.minutes(2)).showInformation());
         exec.execute(loadTask);
     }
 

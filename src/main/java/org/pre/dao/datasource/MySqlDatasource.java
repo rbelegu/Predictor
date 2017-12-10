@@ -1,55 +1,61 @@
-package org.pre.db;
-
+package org.pre.dao.datasource;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.pre.db.DBPreferences;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+public class MySqlDatasource implements Datasource {
 
-public class Database {
-        private static HikariConfig config = new HikariConfig();
-        private static HikariDataSource ds;
+
+    private static HikariConfig config = new HikariConfig();
+    private static HikariDataSource ds;
 
     static {
-            DBPreferences dbPreferences = new DBPreferences();
-            config.setJdbcUrl( dbPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
-            config.setUsername( dbPreferences.getdbUser() );        //root
-            config.setPassword( dbPreferences.getdbPassword() );    //no Password
-            config.setConnectionTestQuery("SELECT 1");
-            config.setMaximumPoolSize(10);
-            config.setAutoCommit(false);
-            config.addDataSourceProperty( "cachePrepStmts" , "true" );
-            config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
-            config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
+        DBPreferences dbPreferences = new DBPreferences();
+        config.setJdbcUrl( dbPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
+        config.setUsername( dbPreferences.getdbUser() );        //root
+        config.setPassword( dbPreferences.getdbPassword() );    //no Password
+        config.setConnectionTestQuery("SELECT 1");
+        config.setMaximumPoolSize(10);
+        config.setAutoCommit(false);
+        config.addDataSourceProperty( "cachePrepStmts" , "true" );
+        config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
+        config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
 
-            try {
-                ds = new HikariDataSource( config );
-            }catch (Exception e){
-                System.err.println((e.getMessage()));
+        try {
+            ds = new HikariDataSource( config );
+        }catch (Exception e){
+            System.err.println((e.getMessage()));
 
-            }
         }
+    }
 
-        public Database() {
-            try {
-                createDataSetTable();
-                createDataTable();
-                createStrategyTable();
-                createResultTable();
-            }catch (Exception e){
-                System.err.println(e.getMessage());
-            }
+    public MySqlDatasource() {
+        try {
+            createDataSetTable();
+            createDataTable();
+            createStrategyTable();
+            createResultTable();
+        }catch (Exception e){
+            System.err.println(e.getMessage());
         }
+    }
 
-        public static Connection getConnection() throws SQLException {
-            return ds.getConnection();
-        }
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
+    }
 
-        public static void closeConnectionPool() {
+    public static void closeConnectionPool() {
+        try {
             ds.close();
+        }catch (NullPointerException e){
+            System.err.println(e.getMessage());
         }
+    }
 
     //******************************************************************
     // D A T E N B A N K - D E S I G N E   [ N E U   E R S T E L L E N ]
@@ -150,6 +156,5 @@ public class Database {
         stmt.execute(sqlCreate);
         conn.close();
     }
-
 
 }
