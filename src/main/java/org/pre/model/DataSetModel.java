@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import javax.annotation.PostConstruct;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -90,8 +92,12 @@ public class DataSetModel {
         };
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
-            System.err.println(exception.getCause() + "\n" + exception.getMessage());
-            Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
+            System.err.println(exception.getMessage());
+            if(exception.getCause() instanceof  FileNotFoundException){
+                Notifications.create().title("Error:").text("Your CSV Path doesn't exist!").hideAfter(Duration.minutes(5)).showError();
+            }else {
+                Notifications.create().title("Error:").text("Oops something went wrong!").hideAfter(Duration.minutes(5)).showError();
+            }
         });
         loadTask.setOnSucceeded(event -> Notifications.create().title("Import was successful").text(loadTask.getValue().getUnderlying()).hideAfter(Duration.minutes(2)).showInformation());
         exec.execute(loadTask);

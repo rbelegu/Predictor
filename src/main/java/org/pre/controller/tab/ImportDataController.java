@@ -48,9 +48,7 @@ public class ImportDataController {
                 underlyingTextField.textProperty().isEmpty()
                         .or(csvPathField.textProperty().isEmpty()));
         // Symbol Textfeld alles gross schreiben
-        underlyingTextField.textProperty().addListener((ov, oldValue, newValue) -> {
-            underlyingTextField.setText(newValue.toUpperCase());
-        });
+        underlyingTextField.textProperty().addListener((ov, oldValue, newValue) -> underlyingTextField.setText(newValue.toUpperCase()));
 
     }
 

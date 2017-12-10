@@ -117,7 +117,7 @@ public class MvaStrategyController {
                 userInfo = userInfo + item.getUnderlying() + newLine;}
         }
         if (userInfo != ""){
-            Notifications.create().title("Status for the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(2)).showWarning();
+            Notifications.create().title("Status of the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(2)).showWarning();
         }
     }
 

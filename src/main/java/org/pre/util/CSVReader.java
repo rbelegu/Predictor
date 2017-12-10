@@ -4,23 +4,21 @@ import javafx.collections.FXCollections;
 import org.pre.pojo.Data;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 
 public class CSVReader {
 
 
-    public static List<Data> getDataListFromCsv(String path, Integer underlying_id) throws IOException {
-        String CsvFile = path;
+    public static List<Data> getDataListFromCsv(String path, Integer underlying_id) throws Exception {
         String FieldDelimiter = ";";
         List<Data> list = FXCollections.observableArrayList();
         BufferedReader br;
         try {
-            br = new BufferedReader(new FileReader(CsvFile));
+            br = new BufferedReader(new FileReader(path));
             br.readLine(); // this will read the first line
             String line;
             while ((line = br.readLine()) != null) {
@@ -28,13 +26,12 @@ public class CSVReader {
                 list.add(new Data(underlying_id, LocalDate.parse(fields[0], DateUtils.getCustomizedDateFormat()), Double.parseDouble(fields[1])));
             }
 
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+            throw new Exception(ex);
         }
         // Sort old to new
-        list.sort((o1, o2) -> o1.getRateDate().compareTo(o2.getRateDate()));
+        list.sort(Comparator.comparing(Data::getRateDate));
 
 
         return list;
