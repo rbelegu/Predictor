@@ -84,7 +84,13 @@ public class DataSetModel {
                     dataSetDAO.updateDataSet(currentDataSet);
                 }catch(Exception e){
                     Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.FAILED.toString()));
-                      dataSetDAO.updateDataSet(currentDataSet);
+                    Platform.runLater(() -> {
+                                try {
+                                    dataSetDAO.updateDataSet(currentDataSet);
+                                } catch (SQLException ex) {
+                                    ex.printStackTrace();
+                                }
+                            });
                       throw e;
                 }
                 return currentDataSet;
