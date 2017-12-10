@@ -38,7 +38,7 @@ public class ResultAnalyserController {
 
     private ResultModel resultModel;
 
-    public ResultAnalyserController(){System.out.println("fdslfjdsflk");}
+    public ResultAnalyserController(){}
 
     @FXML
     public void initialize(Strategy strategy) {

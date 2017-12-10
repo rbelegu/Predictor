@@ -1,10 +1,11 @@
-package org.pre.db;
+package org.pre.dao.preferences;
 
 import java.util.prefs.Preferences;
 
-public class DBPreferences{
+public class MySqlPreferences {
     
     private static Preferences prefs;
+    // jdbc:mysql://localhost:3306/
     private static String ID1 = "dbURL";
     private static String ID2 = "dbUser";
     private static String ID3 = "dbPassword";

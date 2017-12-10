@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.pre.db.DBPreferences;
+import org.pre.dao.preferences.MySqlPreferences;
 
 public class DBConfigController {
     @FXML private TextField dbURLTextField;
@@ -14,16 +14,16 @@ public class DBConfigController {
     @FXML private javafx.scene.control.Button cancelDBBtn;
 
     public void initialize() {
-        DBPreferences dbPreferences = new DBPreferences();
-        dbURLTextField.setText(dbPreferences.getdbURL());
-        dbUserTextField.setText(dbPreferences.getdbUser());
-        dbPasswordTextField.setText(dbPreferences.getdbPassword());
+        MySqlPreferences mySqlPreferences = new MySqlPreferences();
+        dbURLTextField.setText(mySqlPreferences.getdbURL());
+        dbUserTextField.setText(mySqlPreferences.getdbUser());
+        dbPasswordTextField.setText(mySqlPreferences.getdbPassword());
     }
 
     public void SaveDBData(ActionEvent actionEvent) {
-        DBPreferences.setdbURL(dbURLTextField.getText());
-        DBPreferences.setdbUser(dbUserTextField.getText());
-        DBPreferences.setdbPassword(dbPasswordTextField.getText());
+        MySqlPreferences.setdbURL(dbURLTextField.getText());
+        MySqlPreferences.setdbUser(dbUserTextField.getText());
+        MySqlPreferences.setdbPassword(dbPasswordTextField.getText());
         // get a handle to the stage
         Stage stage = (Stage) saveDBBtn.getScene().getWindow();
         // do what you have to do

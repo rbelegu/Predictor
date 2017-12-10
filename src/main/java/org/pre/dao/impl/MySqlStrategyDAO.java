@@ -6,9 +6,6 @@ import javafx.collections.ObservableList;
 import org.pre.dao.datasource.MySqlDatasource;
 import org.pre.dao.itf.StrategyDAO;
 import org.pre.pojo.Strategy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +14,6 @@ import java.sql.SQLException;
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
 public class MySqlStrategyDAO implements StrategyDAO {
-
-    public MySqlStrategyDAO(){}
 
     private final static String TABLE_NAME = "strategy";
     private final static String ID = "id";
@@ -38,10 +33,9 @@ public class MySqlStrategyDAO implements StrategyDAO {
      * BLA BLA
      */
     public Strategy insertStrategy(Strategy strategy) throws SQLException {
-        Connection conn = MySqlDatasource.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try {
+        try (Connection conn = MySqlDatasource.getConnection()) {
             String insertStatement = "INSERT INTO " + TABLE_NAME +
                     "( " + DATASET_ID + ", " + TYPE + ", "
                     + PARAMETER + ", " + STATUS + ", " + SIZE + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
@@ -60,8 +54,6 @@ public class MySqlStrategyDAO implements StrategyDAO {
                 strategy.setId(resultSet.getInt(1));
                 return strategy;
             }
-        }  finally {
-            conn.close();
         }
         return strategy;
     }
@@ -71,10 +63,8 @@ public class MySqlStrategyDAO implements StrategyDAO {
      * BLA BLA
      */
     public void updateStrategy(Strategy strategy) throws SQLException {
-        Connection conn = MySqlDatasource.getConnection();
-        ResultSet resultSet;
         PreparedStatement prestmt;
-        try {
+        try (Connection conn = MySqlDatasource.getConnection()) {
             String insertStatement = "UPDATE " + TABLE_NAME + " SET "
                     + DATASET_ID + " = ?, "
                     + TYPE + " = ?, "
@@ -94,8 +84,6 @@ public class MySqlStrategyDAO implements StrategyDAO {
             prestmt.setInt(7, strategy.getId());
             prestmt.executeUpdate();
             conn.commit();
-        }  finally {
-            conn.close();
         }
     }
 
@@ -105,10 +93,9 @@ public class MySqlStrategyDAO implements StrategyDAO {
      */
     public ObservableList<Strategy> getStrategyList() throws SQLException {
         ObservableList<Strategy> strategyList = FXCollections.observableArrayList();
-        Connection conn = MySqlDatasource.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try {
+        try (Connection conn = MySqlDatasource.getConnection()) {
             String insertStatement = "SELECT " + TABLE_NAME + "." + ID + ", " + TABLE_NAME + "." + DATASET_ID + ", " + TABLE_NAME_DATASET + "." + UNDERLYING + ", " + TABLE_NAME_DATASET + "." + FROM_DATE
                     + ", " + TABLE_NAME_DATASET + "." + TO_DATE + ", " + TABLE_NAME + "." + TYPE + ", " + TABLE_NAME + "." + PARAMETER + ", "
                     + TABLE_NAME + "." + SIZE + ", " + TABLE_NAME + "." + STATUS + ", " + TABLE_NAME + "." + TIMESTAMP + " FROM " + TABLE_NAME + "," + TABLE_NAME_DATASET + " WHERE "
@@ -116,7 +103,7 @@ public class MySqlStrategyDAO implements StrategyDAO {
             prestmt = conn.prepareStatement(insertStatement);
             resultSet = prestmt.executeQuery();
             conn.commit();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 //Resultat Zwilenweise Auslesen und neues Objekt erstellenn
                 Strategy strategy = new Strategy();
                 strategy.setId(resultSet.getInt(1));
@@ -131,8 +118,6 @@ public class MySqlStrategyDAO implements StrategyDAO {
                 strategy.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
                 strategyList.add(strategy);
             }
-        }  finally {
-            conn.close();
         }
         return strategyList;
     }

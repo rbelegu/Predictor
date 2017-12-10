@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.pre.strategy_model.Strategies;
 import org.pre.model.DataSetModel;
 import org.pre.model.StrategyModel;
@@ -39,9 +41,6 @@ public class MvaStrategyController {
         this.dataSetModel = dataSetModel;
         this.strategyModel = strategyModel;
     }
-
-
-
 
     public void initialize() {
         // Button ist nur Aktive wenn die Felder auch ausgefüllt sind!
@@ -100,10 +99,11 @@ public class MvaStrategyController {
 
     @FXML
     private void CreateMvaStrategies(ActionEvent event) {
+        String userInfo = "";
+        String newLine = System.getProperty("line.separator");
         for (DataSet item : dataSetModel.getDataSetList()){
             if(item.isChecked() && item.getStatus().equals(ProgressStatus.DONE.name())){
                 System.out.println(item.getUnderlying());
-
                 Strategy strategy = new Strategy();
                 strategy.setUnderlying(item.getUnderlying());
                 strategy.setDataSet_id(item.getId());
@@ -113,8 +113,11 @@ public class MvaStrategyController {
                 strategy.setParameter(mvaMinField.getText() + ";" + mvaMaxField.getText());
                 strategy.setTimestamp(LocalDateTime.now());
                 strategyModel.addStrategy(strategy);
-            }
-            //check the boolean value of each item to determine checkbox state
+            } else if(item.isChecked()){
+                userInfo = userInfo + item.getUnderlying() + newLine;}
+        }
+        if (userInfo != ""){
+            Notifications.create().title("Status for the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(2)).showWarning();
         }
     }
 

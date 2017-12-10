@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.pre.controller.tab.ResultAnalyserController;
-import org.pre.dao.DataDAO;
-import org.pre.dao.ResultDAO;
+import org.pre.dao.itf.DataDAO;
+import org.pre.dao.itf.ResultDAO;
 import org.pre.dao.factory.DAOFactory;
 import org.pre.dao.itf.StrategyDAO;
 import org.pre.pojo.Data;
@@ -102,14 +102,14 @@ public class StrategyModel {
                 StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
                 Strategy currentStrategy = strategyDAO.insertStrategy(strategy);
                 Platform.runLater(() -> strategyList.addAll(currentStrategy));
-                DataDAO dataDAO = new DataDAO();
+                DataDAO dataDAO = daoFactory.getDataDAO();
                 // Data holen
                 List<Data> dataList = dataDAO.getDataList(strategy.getDataSet_id());
                 // Solver Factory aufrufen und Result zurückerhalten
                 StrategySolver strategySolver = StrategySolverFactory.getStrategySolver(dataList, currentStrategy.getParameter(), currentStrategy.getId(), currentStrategy.getType());
                 assert strategySolver != null;
                 List<Result> resultList = strategySolver.getResultList();
-                ResultDAO resultDAO = new ResultDAO();
+                ResultDAO resultDAO = daoFactory.getResultDAO();
                 resultDAO.insertResultList(resultList);
 
                 Platform.runLater(() -> currentStrategy.setSize(resultList.size()));
@@ -122,8 +122,6 @@ public class StrategyModel {
                         e.printStackTrace();
                     }
                 });
-
-
                 return currentStrategy;
             }
         };

@@ -2,7 +2,7 @@ package org.pre.dao.datasource;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.pre.db.DBPreferences;
+import org.pre.dao.preferences.MySqlPreferences;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,10 +15,10 @@ public class MySqlDatasource implements Datasource {
     private static HikariDataSource ds;
 
     static {
-        DBPreferences dbPreferences = new DBPreferences();
-        config.setJdbcUrl( dbPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
-        config.setUsername( dbPreferences.getdbUser() );        //root
-        config.setPassword( dbPreferences.getdbPassword() );    //no Password
+        MySqlPreferences mySqlPreferences = new MySqlPreferences();
+        config.setJdbcUrl( mySqlPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
+        config.setUsername( mySqlPreferences.getdbUser() );        //root
+        config.setPassword( mySqlPreferences.getdbPassword() );    //no Password
         config.setConnectionTestQuery("SELECT 1");
         config.setMaximumPoolSize(10);
         config.setAutoCommit(false);
