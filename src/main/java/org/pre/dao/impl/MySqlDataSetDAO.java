@@ -7,10 +7,7 @@ import org.pre.dao.datasource.MySqlDatasource;
 import org.pre.dao.itf.DataSetDAO;
 import org.pre.pojo.DataSet;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import static org.pre.util.DateUtils.convertLocalDateToSQLDate;
 import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
@@ -53,6 +50,8 @@ public class MySqlDataSetDAO implements DataSetDAO {
                 dataSet.setId(resultSet.getInt(1));
                 return dataSet;
             }
+        }catch(SQLException ex){
+            throw new SQLException(dataSet.getUnderlying(), ex);
         }
         return dataSet;
     }

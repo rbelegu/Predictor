@@ -1,5 +1,6 @@
 package org.pre.model;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,8 @@ import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -76,13 +79,14 @@ public class DataSetModel {
                 List<Data> dataList;
                 try {
                     dataList = CSVReader.getDataListFromCsv(csvPath, currentDataSet.getId());
+                    if(dataList.isEmpty()){throw new IndexOutOfBoundsException("Data List is empty!");}
                     Platform.runLater(() -> currentDataSet.setDatapoints(dataList.size()));
                     Platform.runLater(() -> currentDataSet.setFromDate(dataList.get(0).getRateDate()));
                     Platform.runLater(() -> currentDataSet.setToDate((dataList.get(dataList.size()-1).getRateDate())));
                    dataDAO.insertDataList(dataList);
                     Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.DONE.toString()));
                     dataSetDAO.updateDataSet(currentDataSet);
-                }catch(Exception e){
+                }catch(SQLException | IndexOutOfBoundsException e){
                     Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.FAILED.toString()));
                     Platform.runLater(() -> {
                                 try {
@@ -99,9 +103,18 @@ public class DataSetModel {
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
             System.err.println(exception.getMessage());
-            if(exception.getCause() instanceof  FileNotFoundException){
+
+            if(exception instanceof FileNotFoundException) {
                 Notifications.create().title("Error:").text("Your CSV Path doesn't exist!").hideAfter(Duration.minutes(5)).showError();
-            }else {
+            } else if(exception.getCause() instanceof SQLIntegrityConstraintViolationException) {
+                Notifications.create().title("Dublicated entry not allowed:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
+            } else if(exception instanceof DateTimeParseException) {
+                Notifications.create().title("Corrupt CSV File:").text("Please check the Date Format in your CSV File!").hideAfter(Duration.minutes(5)).showError();
+            } else if(exception instanceof NumberFormatException) {
+                Notifications.create().title("Corrupt CSV File:").text("Please check the Rate Format in your CSV File!").hideAfter(Duration.minutes(5)).showError();
+            } else if(exception instanceof IndexOutOfBoundsException) {
+                Notifications.create().title("Corrupt CSV File:").text("No Data in your CSV File!").hideAfter(Duration.minutes(5)).showError();
+            } else {
                 Notifications.create().title("Error:").text("Oops something went wrong!").hideAfter(Duration.minutes(5)).showError();
             }
         });

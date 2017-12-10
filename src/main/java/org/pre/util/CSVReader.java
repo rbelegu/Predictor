@@ -2,11 +2,14 @@ package org.pre.util;
 
 import javafx.collections.FXCollections;
 import org.pre.pojo.Data;
+import org.springframework.expression.ParseException;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Comparator;
 import java.util.List;
 
@@ -24,9 +27,9 @@ public class CSVReader {
                 list.add(new Data(underlying_id, LocalDate.parse(fields[0], DateUtils.getCustomizedDateFormat()), Double.parseDouble(fields[1])));
             }
 
-        } catch (IOException ex) {
+        } catch (FileNotFoundException | DateTimeParseException | NumberFormatException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception(ex);
+            throw ex;
         }
         // Sort old to new
         list.sort(Comparator.comparing(Data::getRateDate));
