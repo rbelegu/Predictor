@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public interface DataSetDAO {
     DataSet insertDataSet(DataSet dataSet) throws SQLException;
+    boolean deleteDataSet(int data_id) throws SQLException;
     void updateDataSet(DataSet dataSet) throws SQLException;
     ObservableList<DataSet> getDataSetList() throws SQLException;
 }

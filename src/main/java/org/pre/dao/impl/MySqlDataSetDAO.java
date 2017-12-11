@@ -15,6 +15,8 @@ import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 
 public class MySqlDataSetDAO implements DataSetDAO {
     private final static String TABLE_NAME = "dataset";
+    private final static String CHILD_TABLE_NAME_DATA = "data";
+    private final static String CHILD_DATASET_ID = "dataset_id";
     private final static String ID = "id";
     private final static String UNDERLYING = "underlying";
     private final static String FROM_DATE = "from_date";
@@ -29,9 +31,10 @@ public class MySqlDataSetDAO implements DataSetDAO {
      * BLA BLA
      */
     public DataSet insertDataSet(DataSet dataSet) throws SQLException {
+        Connection conn = MySqlDatasource.getConnection();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        try  {
             String insertStatement = "INSERT INTO " + TABLE_NAME +
                     "( " + UNDERLYING + ", " + FROM_DATE + ", "
                     + TO_DATE + ", " + DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
@@ -52,6 +55,8 @@ public class MySqlDataSetDAO implements DataSetDAO {
             }
         }catch(SQLException ex){
             throw new SQLException(dataSet.getUnderlying(), ex);
+        }finally{
+            conn.close();
         }
         return dataSet;
     }
@@ -60,9 +65,43 @@ public class MySqlDataSetDAO implements DataSetDAO {
     /**
      * BLA BLA
      */
+    public boolean deleteDataSet(int data_id) throws SQLException {
+        Connection conn = MySqlDatasource.getConnection();
+        boolean flag = false;
+        PreparedStatement prestmt;
+        String deleteStatementData = "DELETE FROM " + CHILD_TABLE_NAME_DATA + " WHERE " + CHILD_DATASET_ID + " = " + data_id;
+        String deleteStatementDataSet = "DELETE FROM " + TABLE_NAME +  " WHERE " + ID + " = " + data_id;
+
+        try{
+            prestmt = conn.prepareStatement(deleteStatementData);
+            prestmt.executeUpdate();
+            prestmt = conn.prepareStatement(deleteStatementDataSet);
+            prestmt.executeUpdate();
+
+            conn.commit();
+            flag = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            try{
+                System.err.print("Transaction is being rolled back");
+                conn.rollback();
+            }catch(SQLException exc){
+                exc.printStackTrace();
+            }
+            throw e;
+        } finally{
+            conn.close();
+        }
+        return  flag;
+    }
+
+    /**
+     * BLA BLA
+     */
     public void updateDataSet(DataSet dataSet) throws SQLException {
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        Connection conn = MySqlDatasource.getConnection();
+        try  {
             String insertStatement = "UPDATE " + TABLE_NAME + " SET "
                     + UNDERLYING + " = ?, "
                     + FROM_DATE + " = ?, "
@@ -82,6 +121,8 @@ public class MySqlDataSetDAO implements DataSetDAO {
             prestmt.setInt(7, dataSet.getId());
             prestmt.executeUpdate();
             conn.commit();
+        }finally {
+            conn.close();
         }
     }
 
@@ -94,7 +135,8 @@ public class MySqlDataSetDAO implements DataSetDAO {
 
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        Connection conn = MySqlDatasource.getConnection();
+        try {
             String insertStatement = "SELECT " + ID + ", " + UNDERLYING + ", " + FROM_DATE + ", " + TO_DATE + ", " +
                     DATAPOINTS + ", " + STATUS + ", " + TIMESTAMP + " FROM " + TABLE_NAME;
             prestmt = conn.prepareStatement(insertStatement);
@@ -111,6 +153,8 @@ public class MySqlDataSetDAO implements DataSetDAO {
                         resultSet.getString(6),
                         resultSet.getTimestamp(7).toLocalDateTime()));
             }
+        }finally{
+            conn.close();
         }
         return dataSetList;
 

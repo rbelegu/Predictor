@@ -62,18 +62,42 @@ public class DataSetModel {
         return dataSetList;
     }
 
+    public void removeDataSet(DataSet dataSet){
+        DataSet lastShowOnSuccess = dataSet;
+        Task<Void> loadTask = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                DataSetDAO dataSetDAO = daoFactory.getDataSetDAO();
+                dataSetDAO.deleteDataSet(dataSet.getId());
+                Platform.runLater(() -> dataSetList.remove(dataSet));
+                return null;
+            }
+        };
+        loadTask.setOnFailed(event ->{
+            Throwable exception = loadTask.getException();
+            if(exception instanceof SQLIntegrityConstraintViolationException) {
+                Notifications.create().title("Error:").text("You have to delete first your" + "\n" + "Strategies which contain the following DataSet:"
+                + "\n" + lastShowOnSuccess.getUnderlying() ).hideAfter(Duration.minutes(1)).showError();
+            }else {
+                Notifications.create().title("Error:").text("The following DataSet couldn't be removed" + "\n" + lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showError();
+            } });
+        loadTask.setOnSucceeded(event -> Notifications.create().title("DataSet successfully removed").text(lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showInformation());
+        exec.execute(loadTask);
+    }
+
+
     public void addDataSet(DataSet dataSet, String csvPath){
         Task<DataSet> loadTask = new Task<DataSet>(){
             @Override
             public DataSet call() throws Exception {
                 // Speichern des Objekts mit Running Status in DB und danach in Tabelle publishen.
-
+                List<Data> dataList;
+                DataSet currentDataSet;
                 DataDAO dataDAO = daoFactory.getDataDAO();
                 DataSetDAO dataSetDAO = daoFactory.getDataSetDAO();
-                DataSet currentDataSet = dataSetDAO.insertDataSet(dataSet);
-                Platform.runLater(() -> dataSetList.addAll(currentDataSet));
-                List<Data> dataList;
+                currentDataSet = dataSetDAO.insertDataSet(dataSet);
                 try {
+                    Platform.runLater(() -> dataSetList.addAll(currentDataSet));
                     dataList = CSVReader.getDataListFromCsv(csvPath, currentDataSet.getId());
                     if(dataList.isEmpty()){throw new IndexOutOfBoundsException("Data List is empty!");}
                     Platform.runLater(() -> currentDataSet.setDatapoints(dataList.size()));
@@ -82,7 +106,7 @@ public class DataSetModel {
                    dataDAO.insertDataList(dataList);
                     Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.DONE.toString()));
                     dataSetDAO.updateDataSet(currentDataSet);
-                }catch(SQLException | IndexOutOfBoundsException e){
+                }catch(SQLException | IndexOutOfBoundsException | DateTimeParseException | FileNotFoundException | NumberFormatException e){
                     Platform.runLater(() -> currentDataSet.setStatus(ProgressStatus.FAILED.toString()));
                     Platform.runLater(() -> {
                                 try {

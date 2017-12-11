@@ -60,6 +60,35 @@ public class MySqlDataDAO implements DataDAO {
         return  flag;
     }
 
+
+    /**
+     * BLA BLA
+     */
+    public boolean deleteDataList(int data_id) throws SQLException {
+        Connection conn = MySqlDatasource.getConnection();
+        boolean flag = false;
+        PreparedStatement prestmt;
+        String deleteStatement = "DELETE FROM " + TABLE_NAME + " WHERE " + DATASET_ID + " = " + data_id;
+
+        try{
+            prestmt = conn.prepareStatement(deleteStatement);
+            prestmt.executeUpdate();
+            conn.commit();
+            flag = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            try{
+                System.err.print("Transaction is being rolled back");
+                conn.rollback();
+            }catch(SQLException exc){
+                e.printStackTrace();
+            }
+        } finally{
+            conn.close();
+        }
+        return  flag;
+    }
+
     /**
      * BLA BLA
      */

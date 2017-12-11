@@ -1,5 +1,6 @@
 package org.pre.dao.datasource;
 
+import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.pre.dao.preferences.MySqlPreferences;
@@ -54,6 +55,7 @@ public class MySqlDatasource implements Datasource {
             ds.close();
         }catch (NullPointerException e){
             System.err.println(e.getMessage());
+
         }
     }
 

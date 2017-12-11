@@ -71,11 +71,44 @@ public class MySqlResultDAO implements ResultDAO {
 
 
 
+    /**
+     * BLA BLA
+     */
+    public boolean deleteResultList(int strategy_id) throws SQLException {
+        Connection conn = MySqlDatasource.getConnection();
+        boolean flag = false;
+        PreparedStatement prestmt;
+        String deleteStatement = "DELETE FROM " + TABLE_NAME + " WHERE " + STRATEGY_ID + " = " + strategy_id;
+
+        try{
+            prestmt = conn.prepareStatement(deleteStatement);
+            prestmt.executeUpdate();
+            conn.commit();
+            flag = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            try{
+                System.err.print("Transaction is being rolled back");
+                conn.rollback();
+            }catch(SQLException exc){
+                e.printStackTrace();
+            }
+        } finally{
+            conn.close();
+        }
+        return  flag;
+    }
+
+
+
+
+
     public ObservableList<Result> getResultList(int strategy_id) throws SQLException {
         ObservableList<Result> resultList = FXCollections.observableArrayList();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        Connection conn = MySqlDatasource.getConnection();
+        try {
             String insertStatement = "SELECT " + ID + ", " + STRATEGY_ID + ", " + PARAMETER + ", " + AVERAGE_YIELD + ", " +
                     ACCUMULATED_PL + ", " + COUNT_PROFIT_TRADES + ", " + COUNT_LOSS_TRADES + ", " + MAX_PROFIT_TRADE + ", "
                     + MAX_LOSS_TRADE + ", " + TIMESTAMP + " FROM " + TABLE_NAME + " WHERE "
@@ -98,6 +131,8 @@ public class MySqlResultDAO implements ResultDAO {
                 result.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
                 resultList.add(result);
             }
+        }finally{
+            conn.close();
         }
         return resultList;
     }

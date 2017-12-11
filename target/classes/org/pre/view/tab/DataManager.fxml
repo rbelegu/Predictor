@@ -46,7 +46,7 @@
         </TableView>
         <ToolBar GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Drop" textFill="#222121">
+            <Button fx:id="removeDataSetBtn" mnemonicParsing="false" onAction="#RemoveDataSet" text="Drop" textFill="#222121">
                 <font>
                     <Font size="16.0" />
                 </font></Button>

@@ -67,6 +67,8 @@ public class StrategyModel {
         exec.execute(loadTask);
     }
 
+
+
     public ObservableList<Strategy> getStrategyList() {
 
         return strategyList;
@@ -92,6 +94,33 @@ public class StrategyModel {
     }
 
 
+    public void removeStrategy(Strategy strategy){
+        Strategy lastShowOnSuccess = strategy;
+        Task<Strategy> loadTask = new Task<Strategy>() {
+            @Override
+            public Strategy call() throws Exception {
+                try {
+                    ResultDAO resultDAO = daoFactory.getResultDAO();
+                    resultDAO.deleteResultList(strategy.getId());
+                    StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
+                    strategyDAO.deleteStrategy(strategy.getId());
+                    Platform.runLater(() -> strategyList.remove(strategy));
+                }catch (SQLException e){
+                    throw e;
+                }
+
+                return lastShowOnSuccess;
+            }
+        };
+        loadTask.setOnFailed(event ->{
+        Throwable exception = loadTask.getException();
+        System.err.println(exception.getCause() + "\n" + exception.getMessage());
+        Notifications.create().title("Error:").text("The following Strategy couldn't be removed" + "\n" + loadTask.getValue().getUnderlying()).showError();
+        });
+        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy successfully removed").text(loadTask.getValue().getUnderlying() + "\n" + loadTask.getValue().getType()).hideAfter(Duration.minutes(1)).showInformation());
+        exec.execute(loadTask);
+    }
+
     public void addStrategy(Strategy strategy) {
         Task<Strategy> loadTask = new Task<Strategy>(){
             @Override
@@ -111,10 +140,8 @@ public class StrategyModel {
                 List<Result> resultList = strategySolver.getResultList();
                 ResultDAO resultDAO = daoFactory.getResultDAO();
                 resultDAO.insertResultList(resultList);
-
                 Platform.runLater(() -> currentStrategy.setSize(resultList.size()));
                 Platform.runLater(() -> currentStrategy.setStatus(ProgressStatus.DONE.toString()));
-
                 Platform.runLater(() -> {
                     try {
                         strategyDAO.updateStrategy(currentStrategy);
@@ -122,15 +149,13 @@ public class StrategyModel {
                         e.printStackTrace();
                     }
                 });
-
-
                 return currentStrategy;
             }
         };
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
             System.err.println(exception.getCause() + "\n" + exception.getMessage());
-            Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
+            Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(1)).showError();
         });
         loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text(loadTask.getValue().getUnderlying() + "\n" + loadTask.getValue().getType()).hideAfter(Duration.minutes(2)).showInformation());
         exec.execute(loadTask);

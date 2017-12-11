@@ -110,6 +110,22 @@ public class StrategyManagerController {
     }
 
 
+    @FXML
+    private void RemoveStrategy(ActionEvent event) {
+        int count = 0;
+        for (Strategy item : strategyModel.getStrategyList()){
+            if(item.isChecked() && (item.getStatus().equals(ProgressStatus.DONE.name())|| item.getStatus().equals(ProgressStatus.FAILED.name()))){
+                count += 1;
+                strategyModel.removeStrategy(item);
+            }else if(item.isChecked()){
+                Notifications.create().title(item.getUnderlying() + " is not valid!").text("You have to check a valid Strategy with Status DONE or FAILED").showInformation();
+                count += 1;
+            }
+        }
+        if(count == 0){
+            Notifications.create().title("No checked Strategy").text("You have to check a valid Strategy with Status DONE or FAILED").showInformation();}
+    }
+
 
 
 }

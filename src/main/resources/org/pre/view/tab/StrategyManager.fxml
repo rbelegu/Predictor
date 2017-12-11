@@ -51,7 +51,7 @@
         <ToolBar GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             <Button fx:id="showStrategyResultsBtn" mnemonicParsing="false" onAction="#ShowStrategyResults" text="Show Results" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Drop" textFill="#222121">
+            <Button fx:id="removeStrategyBtn" mnemonicParsing="false" onAction="#RemoveStrategy" text="Drop" textFill="#222121">
                 <font>
                     <Font size="16.0" />
                 </font></Button>

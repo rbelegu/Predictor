@@ -62,6 +62,34 @@ public class MySqlStrategyDAO implements StrategyDAO {
     /**
      * BLA BLA
      */
+    public boolean deleteStrategy(int strategy_id) throws SQLException {
+        Connection conn = MySqlDatasource.getConnection();
+        boolean flag = false;
+        PreparedStatement prestmt;
+        String deleteStatement = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = " + strategy_id;
+
+        try{
+            prestmt = conn.prepareStatement(deleteStatement);
+            prestmt.executeUpdate();
+            conn.commit();
+            flag = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            try{
+                System.err.print("Transaction is being rolled back");
+                conn.rollback();
+            }catch(SQLException exc){
+                e.printStackTrace();
+            }
+        } finally{
+            conn.close();
+        }
+        return  flag;
+    }
+
+    /**
+     * BLA BLA
+     */
     public void updateStrategy(Strategy strategy) throws SQLException {
         PreparedStatement prestmt;
         try (Connection conn = MySqlDatasource.getConnection()) {
