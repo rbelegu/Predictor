@@ -2,9 +2,12 @@ package org.pre.controller.tab;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.stage.StageStyle;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.table.TableFilter;
 import org.pre.controller.util.CellUtils;
@@ -15,6 +18,8 @@ import org.pre.util.ProgressStatus;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Iterator;
+import java.util.Optional;
 
 
 public class DataManagerController {
@@ -69,17 +74,31 @@ public class DataManagerController {
     @FXML
     private void RemoveDataSet(ActionEvent event) {
         int count = 0;
-        for (DataSet item : dataSetModel.getDataSetList()){
+        for (Iterator<DataSet> dataSetListIterator = dataSetModel.getDataSetList().listIterator(); dataSetListIterator.hasNext();){
+            DataSet item= dataSetListIterator.next();
             if(item.isChecked() && (item.getStatus().equals(ProgressStatus.DONE.name())|| item.getStatus().equals(ProgressStatus.FAILED.name()))){
                 count += 1;
                 dataSetModel.removeDataSet(item);
+                dataSetListIterator.remove();
+            }else if(item.isChecked() && (item.getStatus().equals(ProgressStatus.RUNNING.name()))){
+                count += 1;
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initStyle(StageStyle.UTILITY);
+                alert.setTitle("Information " + item.getUnderlying());
+                alert.setHeaderText("Are you sure to remove " + "\n" + "the following running Data Set?");
+                alert.setContentText(item.getUnderlying());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    dataSetModel.removeDataSet(item);
+                    dataSetListIterator.remove();
+                }
             }else if(item.isChecked()){
-                Notifications.create().title(item.getUnderlying() + " is not valid!").text("You have to check a valid DataSet with Status DONE or FAILED").showInformation();
+                Notifications.create().title(item.getUnderlying() + " is not valid!").text("You have to check a valid DataSet with Status DONE / RUNNING / FAILED").showInformation();
                 count += 1;
             }
         }
         if(count == 0){
-            Notifications.create().title("No checked DataSet").text("You have to check a valid DataSet with Status DONE or FAILED").showInformation();}
+            Notifications.create().title("No checked DataSet").text("You have to check a valid DataSet with Status DONE / RUNNING / FAILED").showInformation();}
     }
 
 

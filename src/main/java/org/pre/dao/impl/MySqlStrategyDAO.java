@@ -16,6 +16,8 @@ import static org.pre.util.DateUtils.convertSQLDateToLocalDate;
 public class MySqlStrategyDAO implements StrategyDAO {
 
     private final static String TABLE_NAME = "strategy";
+    private final static String CHILD_TABLE_NAME_RESULT = "result";
+    private final static String CHILD_STRATEGY_ID = "strategy_id";
     private final static String ID = "id";
     private final static String DATASET_ID = "dataset_id";
     private final static String TYPE = "type";
@@ -35,7 +37,8 @@ public class MySqlStrategyDAO implements StrategyDAO {
     public Strategy insertStrategy(Strategy strategy) throws SQLException {
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        Connection conn = MySqlDatasource.getConnection();
+        try {
             String insertStatement = "INSERT INTO " + TABLE_NAME +
                     "( " + DATASET_ID + ", " + TYPE + ", "
                     + PARAMETER + ", " + STATUS + ", " + SIZE + ", " + TIMESTAMP + ") VALUES ( " + "?, ?, ?, ?, ?, ? )";
@@ -54,6 +57,11 @@ public class MySqlStrategyDAO implements StrategyDAO {
                 strategy.setId(resultSet.getInt(1));
                 return strategy;
             }
+        }catch(SQLException ex){
+            throw new SQLException("Data Set: " +strategy.getUnderlying() + "\n" + "Strategy Type: " +strategy.getType() + "\n"
+                    + "Parameter: " + strategy.getParameter(), ex);
+        }finally{
+            conn.close();
         }
         return strategy;
     }
@@ -66,10 +74,13 @@ public class MySqlStrategyDAO implements StrategyDAO {
         Connection conn = MySqlDatasource.getConnection();
         boolean flag = false;
         PreparedStatement prestmt;
-        String deleteStatement = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = " + strategy_id;
+        String deleteStatementResult = "DELETE FROM " + CHILD_TABLE_NAME_RESULT + " WHERE " + CHILD_STRATEGY_ID + " = " + strategy_id;
+        String deleteStatementStrategy = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = " + strategy_id;
 
         try{
-            prestmt = conn.prepareStatement(deleteStatement);
+            prestmt = conn.prepareStatement(deleteStatementResult);
+            prestmt.executeUpdate();
+            prestmt = conn.prepareStatement(deleteStatementStrategy);
             prestmt.executeUpdate();
             conn.commit();
             flag = true;
@@ -123,7 +134,8 @@ public class MySqlStrategyDAO implements StrategyDAO {
         ObservableList<Strategy> strategyList = FXCollections.observableArrayList();
         ResultSet resultSet;
         PreparedStatement prestmt;
-        try (Connection conn = MySqlDatasource.getConnection()) {
+        Connection conn = MySqlDatasource.getConnection();
+        try  {
             String insertStatement = "SELECT " + TABLE_NAME + "." + ID + ", " + TABLE_NAME + "." + DATASET_ID + ", " + TABLE_NAME_DATASET + "." + UNDERLYING + ", " + TABLE_NAME_DATASET + "." + FROM_DATE
                     + ", " + TABLE_NAME_DATASET + "." + TO_DATE + ", " + TABLE_NAME + "." + TYPE + ", " + TABLE_NAME + "." + PARAMETER + ", "
                     + TABLE_NAME + "." + SIZE + ", " + TABLE_NAME + "." + STATUS + ", " + TABLE_NAME + "." + TIMESTAMP + " FROM " + TABLE_NAME + "," + TABLE_NAME_DATASET + " WHERE "
@@ -146,6 +158,8 @@ public class MySqlStrategyDAO implements StrategyDAO {
                 strategy.setTimestamp(resultSet.getTimestamp(10).toLocalDateTime());
                 strategyList.add(strategy);
             }
+        }finally{
+            conn.close();
         }
         return strategyList;
     }

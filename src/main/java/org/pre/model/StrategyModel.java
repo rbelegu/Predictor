@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -93,29 +94,26 @@ public class StrategyModel {
         }
     }
 
-
+// Null Point wenn DB crashed, removed aus der liste über COntroller beim iterator sonst gibt runtime exception
     public void removeStrategy(Strategy strategy){
         Strategy lastShowOnSuccess = strategy;
         Task<Strategy> loadTask = new Task<Strategy>() {
             @Override
             public Strategy call() throws Exception {
                 try {
-                    ResultDAO resultDAO = daoFactory.getResultDAO();
-                    resultDAO.deleteResultList(strategy.getId());
                     StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
                     strategyDAO.deleteStrategy(strategy.getId());
-                    Platform.runLater(() -> strategyList.remove(strategy));
-                }catch (SQLException e){
+                }catch (SQLException | NullPointerException e){
+                    Platform.runLater(() ->  strategyList.add(lastShowOnSuccess));
                     throw e;
                 }
-
                 return lastShowOnSuccess;
             }
         };
         loadTask.setOnFailed(event ->{
         Throwable exception = loadTask.getException();
         System.err.println(exception.getCause() + "\n" + exception.getMessage());
-        Notifications.create().title("Error:").text("The following Strategy couldn't be removed" + "\n" + loadTask.getValue().getUnderlying()).showError();
+        Notifications.create().title("Error:").text("The following Strategy couldn't be removed" + "\n" + lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showError();
         });
         loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy successfully removed").text(loadTask.getValue().getUnderlying() + "\n" + loadTask.getValue().getType()).hideAfter(Duration.minutes(1)).showInformation());
         exec.execute(loadTask);
@@ -130,34 +128,54 @@ public class StrategyModel {
                 strategy.setStatus(ProgressStatus.RUNNING.toString());
                 StrategyDAO strategyDAO = daoFactory.getStrategyDAO();
                 Strategy currentStrategy = strategyDAO.insertStrategy(strategy);
-                Platform.runLater(() -> strategyList.addAll(currentStrategy));
-                DataDAO dataDAO = daoFactory.getDataDAO();
-                // Data holen
-                List<Data> dataList = dataDAO.getDataList(strategy.getDataSet_id());
-                // Solver Factory aufrufen und Result zurückerhalten
-                StrategySolver strategySolver = StrategySolverFactory.getStrategySolver(dataList, currentStrategy.getParameter(), currentStrategy.getId(), currentStrategy.getType());
-                assert strategySolver != null;
-                List<Result> resultList = strategySolver.getResultList();
-                ResultDAO resultDAO = daoFactory.getResultDAO();
-                resultDAO.insertResultList(resultList);
-                Platform.runLater(() -> currentStrategy.setSize(resultList.size()));
-                Platform.runLater(() -> currentStrategy.setStatus(ProgressStatus.DONE.toString()));
-                Platform.runLater(() -> {
-                    try {
-                        strategyDAO.updateStrategy(currentStrategy);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                });
+                try {
+                    Platform.runLater(() -> strategyList.addAll(currentStrategy));
+                    DataDAO dataDAO = daoFactory.getDataDAO();
+                    // Data holen
+                    List<Data> dataList = dataDAO.getDataList(strategy.getDataSet_id());
+                    // Solver Factory aufrufen und Result zurückerhalten
+                    StrategySolver strategySolver = StrategySolverFactory.getStrategySolver(dataList, currentStrategy.getParameter(), currentStrategy.getId(), currentStrategy.getType());
+                    assert strategySolver != null;
+                    List<Result> resultList = strategySolver.getResultList();
+                    ResultDAO resultDAO = daoFactory.getResultDAO();
+                    resultDAO.insertResultList(resultList);
+                    Platform.runLater(() -> currentStrategy.setSize(resultList.size()));
+                    Platform.runLater(() -> currentStrategy.setStatus(ProgressStatus.DONE.toString()));
+                    Platform.runLater(() -> {
+                        try {
+                            strategyDAO.updateStrategy(currentStrategy);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }catch (SQLException | ArrayIndexOutOfBoundsException | NullPointerException e){
+                    Platform.runLater(() -> currentStrategy.setStatus(ProgressStatus.FAILED.toString()));
+                    Platform.runLater(() -> {
+                        try {
+                            strategyDAO.updateStrategy(currentStrategy);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+
+                        }
+                    });
+                    throw e;
+                }
                 return currentStrategy;
             }
         };
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
-            System.err.println(exception.getCause() + "\n" + exception.getMessage());
-            Notifications.create().title("Error:").text(exception.getMessage()).hideAfter(Duration.minutes(1)).showError();
-        });
-        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text(loadTask.getValue().getUnderlying() + "\n" + loadTask.getValue().getType()).hideAfter(Duration.minutes(2)).showInformation());
+           System.err.println(exception.getCause() + "\n" + exception.getMessage());
+            if(exception instanceof ArrayIndexOutOfBoundsException) {
+                Notifications.create().title("Empty Data Set").text(exception.getMessage()).hideAfter(Duration.minutes(1)).showError();
+            }else if(exception.getCause() instanceof SQLIntegrityConstraintViolationException) {
+                Notifications.create().title("Dublicated entry not allowed:").text(exception.getMessage()).hideAfter(Duration.minutes(5)).showError();
+            }else {
+                Notifications.create().title("Error:").text("Oops something went wrong!").hideAfter(Duration.minutes(1)).showError();
+            }
+            });
+        loadTask.setOnSucceeded(event -> Notifications.create().title("Strategy creation was successful").text("Data Set: " + loadTask.getValue().getUnderlying() + "\n"
+                + "Strategy Type: " + loadTask.getValue().getType() + "\n" + "Parameter: " + loadTask.getValue().getParameter()).hideAfter(Duration.minutes(1)).showInformation());
         exec.execute(loadTask);
     }
 

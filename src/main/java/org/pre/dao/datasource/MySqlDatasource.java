@@ -32,6 +32,7 @@ public class MySqlDatasource implements Datasource {
         }catch (Exception e){
             System.err.println((e.getMessage()));
 
+
         }
     }
 
@@ -42,6 +43,7 @@ public class MySqlDatasource implements Datasource {
             createStrategyTable();
             createResultTable();
         }catch (Exception e){
+
             System.err.println(e.getMessage());
         }
     }

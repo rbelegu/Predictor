@@ -3,11 +3,9 @@ package org.pre.controller.tab;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.table.TableFilter;
@@ -19,6 +17,8 @@ import org.pre.util.ProgressStatus;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Iterator;
+import java.util.Optional;
 
 import static java.lang.System.out;
 
@@ -113,11 +113,28 @@ public class StrategyManagerController {
     @FXML
     private void RemoveStrategy(ActionEvent event) {
         int count = 0;
-        for (Strategy item : strategyModel.getStrategyList()){
+        for (Iterator<Strategy> strategyListIterator = strategyModel.getStrategyList().listIterator(); strategyListIterator.hasNext();){
+            Strategy item= strategyListIterator.next();
             if(item.isChecked() && (item.getStatus().equals(ProgressStatus.DONE.name())|| item.getStatus().equals(ProgressStatus.FAILED.name()))){
                 count += 1;
                 strategyModel.removeStrategy(item);
-            }else if(item.isChecked()){
+                strategyListIterator.remove();
+            }else if(item.isChecked() && (item.getStatus().equals(ProgressStatus.RUNNING.name()))){
+                count += 1;
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initStyle(StageStyle.UTILITY);
+                alert.setTitle("Information " + item.getUnderlying());
+                alert.setHeaderText("Are you sure to remove " + "\n" + "the following running Strategy?");
+                alert.setContentText(item.getUnderlying() +
+                        "\n" + item.getParameter());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    strategyModel.removeStrategy(item);
+                    strategyListIterator.remove();
+                }
+
+            }
+                else if(item.isChecked()){
                 Notifications.create().title(item.getUnderlying() + " is not valid!").text("You have to check a valid Strategy with Status DONE or FAILED").showInformation();
                 count += 1;
             }

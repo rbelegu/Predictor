@@ -1,8 +1,8 @@
 package org.pre.strategy_model.figures;
 
-import org.pre.pojo.Result;
+
 import org.pre.strategy_model.pojo.Base;
-import sun.net.www.content.text.Generic;
+
 
 import java.util.List;
 
@@ -25,7 +25,11 @@ public class Figures {
     }
 
     private void calculateAccumulatedPL(){
-        accumulatedPL = baseList.get(baseList.size()-1).getAccumulatedRealizedPl();
+        try {
+            accumulatedPL = baseList.get(baseList.size() - 1).getAccumulatedRealizedPl();
+        }catch (ArrayIndexOutOfBoundsException ex){
+            throw new ArrayIndexOutOfBoundsException("Your Data Set is empty");
+        }
     }
 
     private void calculateAverageYield(){

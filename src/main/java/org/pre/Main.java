@@ -21,7 +21,6 @@ public class Main extends Application {
     @Override
     public void init() throws Exception {
         applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-
     }
 
     @Override

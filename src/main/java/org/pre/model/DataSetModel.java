@@ -67,9 +67,13 @@ public class DataSetModel {
         Task<Void> loadTask = new Task<Void>() {
             @Override
             public Void call() throws Exception {
-                DataSetDAO dataSetDAO = daoFactory.getDataSetDAO();
-                dataSetDAO.deleteDataSet(dataSet.getId());
-                Platform.runLater(() -> dataSetList.remove(dataSet));
+                try {
+                    DataSetDAO dataSetDAO = daoFactory.getDataSetDAO();
+                    dataSetDAO.deleteDataSet(dataSet.getId());
+                }catch (SQLException | NullPointerException e){
+                        Platform.runLater(() ->  dataSetList.add(lastShowOnSuccess));
+                        throw e;
+                    }
                 return null;
             }
         };

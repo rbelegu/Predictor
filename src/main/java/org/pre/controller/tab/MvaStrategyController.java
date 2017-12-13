@@ -19,6 +19,7 @@ import org.pre.pojo.Strategy;
 import org.pre.util.ProgressStatus;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 public class MvaStrategyController {
@@ -116,9 +117,10 @@ public class MvaStrategyController {
             } else if(item.isChecked()){
                 userInfo = userInfo + item.getUnderlying() + newLine;}
         }
-        if (userInfo != ""){
-            Notifications.create().title("Status of the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(2)).showWarning();
-        }
+        if (!Objects.equals(userInfo, "")){
+            Notifications.create().title("Status of the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(1)).showInformation();
+        }else if(Objects.equals(userInfo, "")){
+            Notifications.create().title("No checked Data Set").text("You have to check a valid Data Set with Status DONE").hideAfter(Duration.minutes(1)).showInformation();}
     }
 
 
