@@ -80,12 +80,12 @@ public class DataSetModel {
         loadTask.setOnFailed(event ->{
             Throwable exception = loadTask.getException();
             if(exception instanceof SQLIntegrityConstraintViolationException) {
-                Notifications.create().title("Error:").text("You have to delete first your" + "\n" + "Strategies which contain the following DataSet:"
+                Notifications.create().title("Info:").text("Firstly, you have to delete all your" + "\n" + "Strategies which containing the following DataSet:"
                 + "\n" + lastShowOnSuccess.getUnderlying() ).hideAfter(Duration.minutes(1)).showError();
             }else {
-                Notifications.create().title("Error:").text("The following DataSet couldn't be removed" + "\n" + lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showError();
+                Notifications.create().title("Info:").text("The following DataSet couldn't be removed" + "\n" + lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showError();
             } });
-        loadTask.setOnSucceeded(event -> Notifications.create().title("DataSet successfully removed").text(lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showInformation());
+        loadTask.setOnSucceeded(event -> Notifications.create().title("DataSet successfully removed!").text(lastShowOnSuccess.getUnderlying()).hideAfter(Duration.minutes(1)).showInformation());
         exec.execute(loadTask);
     }
 

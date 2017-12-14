@@ -101,6 +101,7 @@ public class MvaStrategyController {
     @FXML
     private void CreateMvaStrategies(ActionEvent event) {
         String userInfo = "";
+        int userInfoCounter = 0;
         String newLine = System.getProperty("line.separator");
         for (DataSet item : dataSetModel.getDataSetList()){
             if(item.isChecked() && item.getStatus().equals(ProgressStatus.DONE.name())){
@@ -116,10 +117,11 @@ public class MvaStrategyController {
                 strategyModel.addStrategy(strategy);
             } else if(item.isChecked()){
                 userInfo = userInfo + item.getUnderlying() + newLine;}
+                userInfoCounter += 1;
         }
-        if (!Objects.equals(userInfo, "")){
+        if (userInfo != ""){
             Notifications.create().title("Status of the following DataSet(s) is not DONE").text(userInfo).hideAfter(Duration.minutes(1)).showInformation();
-        }else if(Objects.equals(userInfo, "")){
+        }else if(userInfoCounter == 0){
             Notifications.create().title("No checked Data Set").text("You have to check a valid Data Set with Status DONE").hideAfter(Duration.minutes(1)).showInformation();}
     }
 

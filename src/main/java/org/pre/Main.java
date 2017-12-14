@@ -19,8 +19,11 @@ public class Main extends Application {
     }
 
     @Override
-    public void init() throws Exception {
-        applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+    public void init() {
+        try {
+            applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        }catch (Exception e){};
+
     }
 
     @Override

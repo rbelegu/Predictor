@@ -10,23 +10,17 @@ import org.pre.dao.itf.StrategyDAO;
 import org.pre.dao.impl.MySqlDataDAO;
 import org.pre.dao.itf.DataDAO;
 
+
 public class MySqlDAOFactory extends DAOFactory {
 
 
     public DataDAO getDataDAO() {
         return new MySqlDataDAO();
     }
-
-    public DataSetDAO getDataSetDAO() {
-        return new MySqlDataSetDAO() ;
-    }
-
-
+    public DataSetDAO getDataSetDAO() {return new MySqlDataSetDAO() ; }
     public ResultDAO getResultDAO() {
         return new MySqlResultDAO();
     }
-
-
     public StrategyDAO getStrategyDAO() {
         return new MySqlStrategyDAO();
     }

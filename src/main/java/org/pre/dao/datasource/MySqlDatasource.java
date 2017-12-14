@@ -1,25 +1,33 @@
 package org.pre.dao.datasource;
 
-import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.apache.log4j.Logger;
 import org.pre.dao.preferences.MySqlPreferences;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Stellt die Kommunikation zur Datenbank her
+ * und bietet Funktionen fuer das Ausfuehren
+ * von diversen Datenbanken-Statements
+ *
+ * @author D. Tsichlakis
+ *
+ */
+
 public class MySqlDatasource implements Datasource {
 
-
+    private final static Logger logger = Logger.getLogger(MySqlDatasource.class);
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;
 
     static {
         MySqlPreferences mySqlPreferences = new MySqlPreferences();
-        config.setJdbcUrl( mySqlPreferences.getdbURL() );          //jdbc:mysql://localhost/predictor
-        config.setUsername( mySqlPreferences.getdbUser() );        //root
-        config.setPassword( mySqlPreferences.getdbPassword() );    //no Password
+        config.setJdbcUrl( mySqlPreferences.getdbURL() );
+        config.setUsername( mySqlPreferences.getdbUser() );
+        config.setPassword( mySqlPreferences.getdbPassword() );
         config.setConnectionTestQuery("SELECT 1");
         config.setMaximumPoolSize(10);
         config.setAutoCommit(false);
@@ -30,8 +38,7 @@ public class MySqlDatasource implements Datasource {
         try {
             ds = new HikariDataSource( config );
         }catch (Exception e){
-            System.err.println((e.getMessage()));
-
+            logger.error("This is error", e);
 
         }
     }
@@ -43,8 +50,7 @@ public class MySqlDatasource implements Datasource {
             createStrategyTable();
             createResultTable();
         }catch (Exception e){
-
-            System.err.println(e.getMessage());
+            logger.error("This is error", e);
         }
     }
 
@@ -56,7 +62,7 @@ public class MySqlDatasource implements Datasource {
         try {
             ds.close();
         }catch (NullPointerException e){
-            System.err.println(e.getMessage());
+            logger.error("NullPointerException by closing Connection Pool");
 
         }
     }
@@ -68,7 +74,8 @@ public class MySqlDatasource implements Datasource {
     /**
      * Erstellt die DataSet Tabelle auf der Datenbank
      *
-     * @throws SQLException
+     * @throws SQLException Wirft eine SQLException wenn es Probleme mit
+     * der Datenbankverbindung gibt.
      */
     private void createDataSetTable() throws SQLException {
         Connection conn = getConnection();
@@ -91,7 +98,8 @@ public class MySqlDatasource implements Datasource {
     /**
      * Erstellt die Data Tabelle auf der Datenbank
      *
-     * @throws SQLException
+     * @throws SQLException Wirft eine SQLException wenn es Probleme mit
+     * der Datenbankverbindung gibt.
      */
     private void createDataTable() throws SQLException {
         Connection conn = getConnection();
@@ -113,7 +121,8 @@ public class MySqlDatasource implements Datasource {
     /**
      * Erstellt die Strategy Tabelle auf der Datenbank
      *
-     * @throws SQLException
+     * @throws SQLException Wirft eine SQLException wenn es Probleme mit
+     * der Datenbankverbindung gibt.
      */
     private void createStrategyTable() throws SQLException {
         Connection conn = getConnection();
@@ -135,9 +144,10 @@ public class MySqlDatasource implements Datasource {
     }
 
     /**
-     * Erstellt die Strategy Tabelle auf der Datenbank
+     * Erstellt die Result Tabelle auf der Datenbank
      *
-     * @throws SQLException
+     * @throws SQLException Wirft eine SQLException wenn es Probleme mit
+     * der Datenbankverbindung gibt.
      */
     private void createResultTable() throws SQLException {
         Connection conn = getConnection();
