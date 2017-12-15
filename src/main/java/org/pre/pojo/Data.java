@@ -17,6 +17,11 @@ public class Data {
     public Data() {
     }
 
+    public Data(LocalDate rateDate, Double rate) {
+        setRateDate(rateDate);
+        setRate(rate);
+    }
+
     public Data(Integer dataSet_id, LocalDate rateDate, Double rate) {
     setDataSet_id(dataSet_id);
     setRateDate(rateDate);
