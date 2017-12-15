@@ -42,7 +42,7 @@
                         <RowConstraints />
                     </rowConstraints>
                      <children>
-                         <Label text="MYSQL DB URL:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                         <Label text="MySQL DB URL:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                          <TextField fx:id="dbURLTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                          <Separator prefHeight="3.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                          <Label text="DB User:" GridPane.columnIndex="0" GridPane.rowIndex="2" />

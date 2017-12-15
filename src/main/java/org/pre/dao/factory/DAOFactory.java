@@ -7,19 +7,18 @@ import org.pre.dao.itf.StrategyDAO;
 
 /**
  * Abstract DAO Factory, stellt die Verbindung zu
- * den einzelnen DAO Factory Implementierung her und definiert
- * die zu implementierenden .
+ * der gewünschten DAO Factory Implementierung her und definiert
+ * die zu implementierenden Methoden.
  *
  * @author D. Tsichlakis
  *
  */
-
 public abstract class DAOFactory {
 
-    // DAO Type welcher von der Factory unterstützt wird
+    // DAO Typen welche von der Factory unterstützt werden.
     public static final int MYSQL = 1;
 
-    // Die konkreten Factories müssen folgenden methoden implementieren.
+    // Die konkreten Factories müssen folgenden Methoden implementieren.
     public abstract DataDAO getDataDAO();
     public abstract DataSetDAO getDataSetDAO();
     public abstract ResultDAO getResultDAO();
@@ -30,7 +29,7 @@ public abstract class DAOFactory {
      * Gibt das konkrete DAOFactory Objekt zurueck
      *
      * @param whichFactory	Name bzw. Nummer der zu nutzenden DAOFactory
-     * @return	Die konkreten DAOFactory
+     * @return	DAOFactory
      */
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch (whichFactory) {

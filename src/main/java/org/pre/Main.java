@@ -22,7 +22,9 @@ public class Main extends Application {
     public void init() {
         try {
             applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        }catch (Exception e){};
+        }catch (Exception e){
+
+        };
 
     }
 

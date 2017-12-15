@@ -2,6 +2,7 @@ package org.pre.dao.datasource;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import com.zaxxer.hikari.pool.HikariPool;
 import org.apache.log4j.Logger;
 import org.pre.dao.preferences.MySqlPreferences;
 import java.sql.Connection;
@@ -37,8 +38,8 @@ public class MySqlDatasource implements Datasource {
 
         try {
             ds = new HikariDataSource( config );
-        }catch (Exception e){
-            logger.error("This is error", e);
+        }catch (HikariPool.PoolInitializationException e){
+            logger.error("Error", e);
 
         }
     }

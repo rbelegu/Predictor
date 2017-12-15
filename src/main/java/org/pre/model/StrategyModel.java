@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.pre.Main;
 import org.pre.controller.tab.ResultAnalyserController;
 import org.pre.dao.itf.DataDAO;
 import org.pre.dao.itf.ResultDAO;
@@ -78,7 +79,7 @@ public class StrategyModel {
     public void showResults(Strategy strategy)  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/pre/view/tab/ResultAnalyser.fxml"));
-         //   fxmlLoader.setControllerFactory(Main.getApplicationContext()::getBean);
+            // fxmlLoader.setControllerFactory(Main.getApplicationContext()::getBean);
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             ResultAnalyserController controller = fxmlLoader.getController();

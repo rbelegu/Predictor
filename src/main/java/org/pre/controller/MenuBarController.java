@@ -43,7 +43,8 @@ public class MenuBarController {
         alert.setTitle("About");
         alert.setGraphic(new ImageView(this.getClass().getResource("/org/pre/view/pics/icon_fxpredictor.png").toString()));
         alert.setHeaderText("FX Predictor V 1.0");
-        alert.setContentText("by Nino Hafen, Rinon Belegu, Dimitrios Tsichlakis!");
+        alert.setContentText("by Nino Hafen, Rinon Belegu, Dimitrios Tsichlakis!" + "\n" + "\n" +
+        "24h Support - Call +41 79 288 93 44");
         // Get the Stage.
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         // Add a custom icon.
