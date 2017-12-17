@@ -37,13 +37,14 @@ public class ImportDataController {
 
 
     public ImportDataController(DataSetModel dataSetModel) {
-
+    	 System.out.println("h1");
         this.dataSetModel = dataSetModel;
     }
 
 
     public void initialize() {
         // Button ist nur Aktive wenn die Felder auch ausgefüllt sind!
+    	System.out.println("h1");
         importDateBtn.disableProperty().bind(
                 underlyingTextField.textProperty().isEmpty()
                         .or(csvPathField.textProperty().isEmpty()));

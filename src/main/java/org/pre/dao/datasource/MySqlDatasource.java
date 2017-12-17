@@ -51,6 +51,7 @@ public class MySqlDatasource implements Datasource {
             createStrategyTable();
             createResultTable();
         }catch (Exception e){
+        	//TODO Sauber am besten noch Funktionsname mit angeben. Erleichtert die Suche in allen Logs die properties schauen gut aus. 
             logger.error("This is error", e);
         }
     }
